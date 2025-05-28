@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccncnjkm8w8ta"]
+[gd_scene load_steps=6 format=3 uid="uid://ccncnjkm8w8ta"]
 
 [ext_resource type="Script" uid="uid://kjtpy8vvpaku" path="res://Scenes/creature.gd" id="1_01bph"]
 [ext_resource type="Texture2D" uid="uid://bdfdjbcxauyb" path="res://Sprites/creature2.png" id="1_vbe5j"]
+[ext_resource type="Texture2D" uid="uid://2daiyonkbh6l" path="res://Sprites/creature2_white_border.png" id="3_ulpcw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulpcw"]
 size = Vector2(60, 60)
@@ -17,11 +18,18 @@ script = ExtResource("1_01bph")
 scale = Vector2(2, 2)
 texture = ExtResource("1_vbe5j")
 
+[node name="Border" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("3_ulpcw")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_ulpcw")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_01bph")

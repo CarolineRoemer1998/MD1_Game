@@ -12,6 +12,9 @@ var buffered_direction := Vector2.ZERO
 var hovering_over : Node = null
 var currently_possessed_creature : Creature = null
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+
 func _ready():
 	target_position = position.snapped(GRID_SIZE/2)
 	position = target_position
@@ -30,12 +33,8 @@ func _unhandled_input(event):
 			KEY_D:
 				direction = Vector2.RIGHT
 			
-			# check if player possesses creature
 			KEY_F:
-				if hovering_over != null and hovering_over is Creature and currently_possessed_creature == null:
-					currently_possessed_creature = hovering_over
-				elif currently_possessed_creature is Creature:
-					currently_possessed_creature = null
+				possess_or_unpossess_creature()
 
 		if direction != Vector2.ZERO:
 			if is_moving:
@@ -57,6 +56,7 @@ func _process(delta):
 			if buffered_direction != Vector2.ZERO:
 				try_move(buffered_direction)
 				buffered_direction = Vector2.ZERO
+
 
 func try_move(direction: Vector2):
 	var new_pos = target_position + direction * GRID_SIZE
@@ -90,6 +90,18 @@ func try_move(direction: Vector2):
 			is_moving = true
 		else:
 			buffered_direction = Vector2.ZERO
+
+
+func possess_or_unpossess_creature():
+	if hovering_over != null and hovering_over is Creature and currently_possessed_creature == null:
+		currently_possessed_creature = hovering_over
+		sprite_2d.modulate = Color(1, 1, 1, 0.1)
+		hovering_over.border.visible = true
+	elif currently_possessed_creature is Creature:
+		currently_possessed_creature = null
+		sprite_2d.modulate = Color(1, 1, 1, 0.6)
+		hovering_over.border.visible = false
+
 
 func _on_creature_detected(creature: Node) -> void:
 	if creature is Creature:

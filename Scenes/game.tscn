@@ -9,11 +9,11 @@
 
 [node name="Background_Lvl1" parent="." instance=ExtResource("1_wrm1d")]
 
+[node name="Creature" parent="." instance=ExtResource("4_3dryh")]
+position = Vector2(288, 288)
+
 [node name="Player" parent="." instance=ExtResource("3_3dryh")]
 position = Vector2(352, 480)
 
 [node name="Pushable" parent="." instance=ExtResource("4_wowpa")]
 position = Vector2(416, 288)
-
-[node name="Creature" parent="." instance=ExtResource("4_3dryh")]
-position = Vector2(288, 288)
