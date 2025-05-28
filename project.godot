@@ -15,6 +15,19 @@ run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://Scripts/globals.gd"
+
+[display]
+
+window/size/viewport_width=704
+window/size/viewport_height=704
+
+[layer_names]
+
+2d_physics/layer_2="Creature"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

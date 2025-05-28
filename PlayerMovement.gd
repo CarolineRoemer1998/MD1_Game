@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
+class_name Player
+
 const GRID_SIZE := Vector2(64,64)
 const MOVE_SPEED := 500.0
 
 var target_position: Vector2
 var is_moving := false
 var buffered_direction := Vector2.ZERO
+
+var hovering_over : Node = null
+var currently_possessed_creature : Creature = null
 
 func _ready():
 	target_position = position.snapped(GRID_SIZE/2)
@@ -24,6 +29,13 @@ func _unhandled_input(event):
 				direction = Vector2.LEFT
 			KEY_D:
 				direction = Vector2.RIGHT
+			
+			# check if player possesses creature
+			KEY_F:
+				if hovering_over != null and hovering_over is Creature and currently_possessed_creature == null:
+					currently_possessed_creature = hovering_over
+				elif currently_possessed_creature is Creature:
+					currently_possessed_creature = null
 
 		if direction != Vector2.ZERO:
 			if is_moving:
@@ -34,7 +46,11 @@ func _unhandled_input(event):
 func _process(delta):
 	if is_moving:
 		position = position.move_toward(target_position, MOVE_SPEED * delta)
-
+		
+		# move creature if possessing
+		if currently_possessed_creature != null:
+			currently_possessed_creature.position = currently_possessed_creature.position.move_toward(target_position, MOVE_SPEED * delta)
+		
 		if position == target_position:
 			is_moving = false
 
@@ -74,3 +90,12 @@ func try_move(direction: Vector2):
 			is_moving = true
 		else:
 			buffered_direction = Vector2.ZERO
+
+func _on_creature_detected(creature: Node) -> void:
+	if creature is Creature:
+		hovering_over = creature
+
+
+func _on_creature_undetected(creature: Node) -> void:
+	if creature is Creature:
+		hovering_over = null
