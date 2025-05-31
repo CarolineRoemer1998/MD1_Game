@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="MD1_Game"
-run/main_scene="res://Scenes/game.tscn"
+run/main_scene="uid://cglpr8l7nytcg"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Globals="*res://Scripts/globals.gd"
+SceneSwitcher="*res://Scripts/scene_switcher.gd"
 
 [display]
 

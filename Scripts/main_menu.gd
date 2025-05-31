@@ -2,11 +2,11 @@ extends Control
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+	SceneSwitcher.switch_scene("res://Scenes/game.tscn")
 
 
 func _on_stettings_pressed() -> void:
-	pass # Replace with function body.
+	SceneSwitcher.switch_scene("res://Scenes/Menu/Settings.tscn")
 
 
 func _on_exit_pressed() -> void:
