@@ -96,10 +96,12 @@ texture = ExtResource("1_vbe5j")
 
 [node name="Border" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(0.799725, 0.421917, 5.77569e-07, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("3_ulpcw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_ulpcw")
 
 [node name="Area2D_Right" type="Area2D" parent="."]
