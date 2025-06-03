@@ -12,6 +12,7 @@ var hovering_over: Creature = null
 var currently_possessed_creature: Creature = null
 var possessed_creature_until_next_tile: Creature = null
 
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 
@@ -31,11 +32,17 @@ func _unhandled_input(event):
 
 		# Bewegungsrichtungen abfragen
 		match event.keycode:
-			KEY_W: direction = Vector2.UP
-			KEY_S: direction = Vector2.DOWN
-			KEY_A: direction = Vector2.LEFT
-			KEY_D: direction = Vector2.RIGHT
-			KEY_F: possess_or_unpossess_creature()
+			KEY_W: 
+				direction = Vector2.UP
+			KEY_S: 
+				direction = Vector2.DOWN
+			KEY_A: 
+				direction = Vector2.LEFT
+			KEY_D: 
+				direction = Vector2.RIGHT
+				
+			KEY_F: 
+				possess_or_unpossess_creature()
 
 		# Bewegungsversuch oder Puffern bei laufender Bewegung
 		if direction != Vector2.ZERO:
@@ -71,7 +78,7 @@ func move(delta):
 func try_move(direction: Vector2):
 	var new_pos = target_position + direction * GRID_SIZE
 	var space_state = get_world_2d().direct_space_state
-
+	merge_if_possible(direction)
 	# Prüfen ob ein Objekt am Zielort ist
 	var query := PhysicsPointQueryParameters2D.new()
 	query.position = new_pos
@@ -87,6 +94,31 @@ func try_move(direction: Vector2):
 	# Objekt vorhanden, prüfen ob pushable
 	try_push_and_move(result, new_pos, direction, space_state)
 
+
+func merge_if_possible(direction : Vector2) -> bool:
+	if currently_possessed_creature != null:
+		match direction:
+			Vector2(1.0, 0.0): # right
+				if currently_possessed_creature.neighbor_right != null:
+					if currently_possessed_creature.can_merge_with(currently_possessed_creature.neighbor_right):
+						print("MERGE WITH RIGHT")
+						return true
+			Vector2(0.0, 1.0): # bottom
+				if currently_possessed_creature.neighbor_bottom != null:
+					if currently_possessed_creature.can_merge_with(currently_possessed_creature.neighbor_bottom):
+						print("MERGE WITH BOTTOM")
+						return true
+			Vector2(-1.0, 0.0): # left
+				if currently_possessed_creature.neighbor_left != null:
+					if currently_possessed_creature.can_merge_with(currently_possessed_creature.neighbor_left):
+						print("MERGE WITH LEFT")
+						return true
+			Vector2(0.0, -1.0): # top
+				if currently_possessed_creature.neighbor_top != null:
+					if currently_possessed_creature.can_merge_with(currently_possessed_creature.neighbor_top):
+						print("MERGE WITH TOP")
+						return true
+	return false
 
 func try_push_and_move(object_to_push, new_pos, direction, space_state):
 	# Objekt vorhanden, prüfen ob pushable
@@ -142,7 +174,12 @@ func possess_or_unpossess_creature():
 
 func _on_creature_detected(creature: Node) -> void:
 	if creature is Creature:
-		hovering_over = creature
+		if currently_possessed_creature == null:
+			hovering_over = creature
+		else:
+			# Merge Möglichkeit eröffnen
+			pass
+			
 
 
 func _on_creature_undetected(creature: Node) -> void:
