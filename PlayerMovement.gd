@@ -52,8 +52,9 @@ func _unhandled_input(event):
 				KEY_D: 
 					direction = Vector2.RIGHT
 					
-				KEY_F: 
-					possess_or_unpossess_creature()
+				KEY_F:
+					if not is_moving:
+						possess_or_unpossess_creature()
 
 			# Bewegungsversuch oder Puffern bei laufender Bewegung
 			if direction != Vector2.ZERO:
@@ -63,7 +64,7 @@ func _unhandled_input(event):
 					try_move(direction)
 		else:
 			if event.keycode == KEY_SPACE or event.keycode == MOUSE_BUTTON_LEFT:
-				SceneSwitcher.switch_scene("res://Scenes/Menu/MainMenu.tscn") # TODO: über Globals zu nächstem level switchen
+				SceneSwitcher.go_to_next_level()
 
 
 func move(delta):
