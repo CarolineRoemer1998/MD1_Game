@@ -14,6 +14,8 @@ var possessed_creature_until_next_tile: Creature = null
 @export var trail_scene: PackedScene 
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var win_animation: AnimationPlayer = $"../WinScreen/WinAnimation"
+
 
 
 func _ready():
@@ -122,6 +124,7 @@ func _merge(direction : Vector2, neighbor : Creature):
 				neighbor.shrink()
 				merged_creature.visible = true
 				merged_creature.appear()
+				win_animation.play("You win")
 			return true
 	return false
 
