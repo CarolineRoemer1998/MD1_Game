@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs2a730k3etf4"]
+[gd_scene load_steps=11 format=3 uid="uid://bs2a730k3etf4"]
 
+[ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scenes/level.gd" id="1_bdlbp"]
 [ext_resource type="PackedScene" uid="uid://drl8fvb23s6aj" path="res://Scenes/background_lvl1.tscn" id="1_ysn8j"]
 [ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/creature.tscn" id="2_6ll4n"]
 [ext_resource type="PackedScene" uid="uid://g3u7bc1jo6gj" path="res://Scenes/player.tscn" id="3_kylad"]
@@ -8,9 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://b5oef15uma7m5" path="res://Sprites/creature1.png" id="6_rpty4"]
 [ext_resource type="Texture2D" uid="uid://dk3restrcp6l4" path="res://Sprites/creature1_white_border.png" id="7_6jj8j"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/merged_creature.tscn" id="8_6ll4n"]
-[ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="9_kylad"]
+[ext_resource type="PackedScene" path="res://Scenes/Menu/win_screen.tscn" id="9_kylad"]
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_bdlbp")
 
 [node name="Background_Lvl1" parent="." instance=ExtResource("1_ysn8j")]
 
@@ -47,3 +49,4 @@ visible = false
 [editable path="Creature"]
 [editable path="Pushable"]
 [editable path="Creature2"]
+[editable path="WinScreen"]

@@ -26,7 +26,7 @@ color = Color(1, 0.426317, 0.352492, 1)
 
 [sub_resource type="Animation" id="Animation_1mbql"]
 resource_name = "Appear"
-length = 0.4
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,6 +51,20 @@ tracks/1/keys = {
 "values": [{
 "args": [],
 "method": &"emit_hearts"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_win_screen"
 }]
 }
 

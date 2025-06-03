@@ -21,6 +21,7 @@ func _ready():
 	# Spieler korrekt auf Grid ausrichten
 	target_position = position.snapped(GRID_SIZE / 2)
 	position = target_position
+	
 
 
 func _process(delta):
