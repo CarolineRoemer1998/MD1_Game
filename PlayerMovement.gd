@@ -194,8 +194,8 @@ func _on_creature_undetected(creature: Node) -> void:
 		hovering_over = null
 
 
-func spawn_trail(position: Vector2):
+func spawn_trail(input_position: Vector2):
 	var trail = trail_scene.instantiate()
 	get_tree().current_scene.add_child(trail)
-	trail.global_position = position
+	trail.global_position = input_position
 	trail.restart()	
