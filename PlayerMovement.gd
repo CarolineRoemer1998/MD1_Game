@@ -121,6 +121,9 @@ func _merge(direction : Vector2, neighbor : Creature):
 				currently_possessed_creature.queue_free()
 				neighbor.queue_free()
 				merged_creature.visible = true
+				var particles = merged_creature.get_child(1)
+				if particles is GPUParticles2D:
+					particles.emitting = true
 			return true
 	return false
 
