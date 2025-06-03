@@ -114,16 +114,14 @@ func _merge(direction : Vector2, neighbor : Creature):
 		if currently_possessed_creature.can_merge_with(neighbor):
 			var spawn_position = currently_possessed_creature.position + direction
 			var merged_creature = get_tree().get_first_node_in_group("MergedCreature")
-			if merged_creature:
+			if merged_creature and merged_creature is MergedCreature:
 				merged_creature.position = spawn_position
 				merged_creature.visible = false  # ← erst mal verstecken
 				await get_tree().create_timer(0.1).timeout # creatures verschwinden und merged_creature taucht erst nach 0.1 sekunden
-				currently_possessed_creature.queue_free()
-				neighbor.queue_free()
+				currently_possessed_creature.shrink()
+				neighbor.shrink()
 				merged_creature.visible = true
-				var particles = merged_creature.get_child(1)
-				if particles is GPUParticles2D:
-					particles.emitting = true
+				merged_creature.appear()
 			return true
 	return false
 

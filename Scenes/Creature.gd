@@ -4,6 +4,8 @@ class_name Creature
 
 enum CREATURE_COLOR {Red, Blue, Yellow, Green, Purple, Turquois, Orange, Pink}
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 @onready var border: Sprite2D = $Border
 
 @onready var area_2d_right: Area2D = $Area2D_Right
@@ -33,6 +35,12 @@ func can_merge_with(creature : Creature) -> bool:
 		return true
 	else:
 		return false
+
+func shrink():
+	animation_player.play("Shrink")
+
+func disappear():
+	queue_free()
 
 # -----------------------------------------------------------
 # Check if creature stands next to other creature
