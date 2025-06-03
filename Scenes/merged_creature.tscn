@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://23u33yt4jga3"]
+
+[ext_resource type="Texture2D" uid="uid://bkwqs8t200o3w" path="res://Sprites/creature-merge-1-2.png" id="2_hlrf2"]
+
+[node name="MergedCreature" type="CharacterBody2D" groups=["MergedCreature"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_hlrf2")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]

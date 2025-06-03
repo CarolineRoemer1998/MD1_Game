@@ -100,25 +100,28 @@ func merge_if_possible(direction : Vector2) -> bool:
 	if currently_possessed_creature != null:
 		match direction:
 			Vector2(1.0, 0.0): # right
-				if currently_possessed_creature.neighbor_right != null:
-					if currently_possessed_creature.can_merge_with(currently_possessed_creature.neighbor_right):
-						print("MERGE WITH RIGHT")
-						return true
+				return await _merge(Vector2(64,0), currently_possessed_creature.neighbor_right)
 			Vector2(0.0, 1.0): # bottom
-				if currently_possessed_creature.neighbor_bottom != null:
-					if currently_possessed_creature.can_merge_with(currently_possessed_creature.neighbor_bottom):
-						print("MERGE WITH BOTTOM")
-						return true
+				return await _merge(Vector2(0,64), currently_possessed_creature.neighbor_bottom)
 			Vector2(-1.0, 0.0): # left
-				if currently_possessed_creature.neighbor_left != null:
-					if currently_possessed_creature.can_merge_with(currently_possessed_creature.neighbor_left):
-						print("MERGE WITH LEFT")
-						return true
+				return await _merge(Vector2(-64,0), currently_possessed_creature.neighbor_left)
 			Vector2(0.0, -1.0): # top
-				if currently_possessed_creature.neighbor_top != null:
-					if currently_possessed_creature.can_merge_with(currently_possessed_creature.neighbor_top):
-						print("MERGE WITH TOP")
-						return true
+				return await _merge(Vector2(0,-64), currently_possessed_creature.neighbor_top)
+	return false
+	
+func _merge(direction : Vector2, neighbor : Creature):
+	if neighbor != null:
+		if currently_possessed_creature.can_merge_with(neighbor):
+			var spawn_position = currently_possessed_creature.position + direction
+			var merged_creature = get_tree().get_first_node_in_group("MergedCreature")
+			if merged_creature:
+				merged_creature.position = spawn_position
+				merged_creature.visible = false  # ← erst mal verstecken
+				await get_tree().create_timer(0.1).timeout # creatures verschwinden und merged_creature taucht erst nach 0.1 sekunden
+				currently_possessed_creature.queue_free()
+				neighbor.queue_free()
+				merged_creature.visible = true
+			return true
 	return false
 
 func try_push_and_move(object_to_push, new_pos, direction, space_state):

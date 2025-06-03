@@ -10,7 +10,7 @@ func switch_scene(res_path):
 
 func _deferred_switch_scene(res_path):
 	current_scene.free()
-	var s = load(res_path)
-	current_scene = s.instantiate()
+	var new_scene = load(res_path)
+	current_scene = new_scene.instantiate()
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
