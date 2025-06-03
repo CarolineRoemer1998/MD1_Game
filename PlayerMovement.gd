@@ -16,6 +16,8 @@ var possessed_creature_until_next_tile: Creature = null
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+var can_move := true
+
 
 func _ready():
 	# Spieler korrekt auf Grid ausrichten
@@ -31,27 +33,30 @@ func _process(delta):
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
 		var direction := Vector2.ZERO
+		if can_move:
+			# Bewegungsrichtungen abfragen
+			match event.keycode:
+				KEY_W: 
+					direction = Vector2.UP
+				KEY_S: 
+					direction = Vector2.DOWN
+				KEY_A: 
+					direction = Vector2.LEFT
+				KEY_D: 
+					direction = Vector2.RIGHT
+					
+				KEY_F: 
+					possess_or_unpossess_creature()
 
-		# Bewegungsrichtungen abfragen
-		match event.keycode:
-			KEY_W: 
-				direction = Vector2.UP
-			KEY_S: 
-				direction = Vector2.DOWN
-			KEY_A: 
-				direction = Vector2.LEFT
-			KEY_D: 
-				direction = Vector2.RIGHT
-				
-			KEY_F: 
-				possess_or_unpossess_creature()
-
-		# Bewegungsversuch oder Puffern bei laufender Bewegung
-		if direction != Vector2.ZERO:
-			if is_moving:
-				buffered_direction = direction
-			else:
-				try_move(direction)
+			# Bewegungsversuch oder Puffern bei laufender Bewegung
+			if direction != Vector2.ZERO:
+				if is_moving:
+					buffered_direction = direction
+				else:
+					try_move(direction)
+		else:
+			if event.keycode == KEY_SPACE:
+				SceneSwitcher.switch_scene("res://Scenes/Menu/MainMenu.tscn") # TODO: über Globals zu nächstem level switchen
 
 
 func move(delta):
@@ -124,6 +129,7 @@ func _merge(direction : Vector2, neighbor : Creature):
 				neighbor.shrink()
 				merged_creature.visible = true
 				merged_creature.appear()
+			can_move = false
 			return true
 	return false
 
