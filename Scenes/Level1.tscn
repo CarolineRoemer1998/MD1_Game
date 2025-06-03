@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs2a730k3etf4"]
+[gd_scene load_steps=13 format=3 uid="uid://bs2a730k3etf4"]
 
 [ext_resource type="PackedScene" uid="uid://drl8fvb23s6aj" path="res://Scenes/background_lvl1.tscn" id="1_ysn8j"]
 [ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/creature.tscn" id="2_6ll4n"]
@@ -8,6 +8,67 @@
 [ext_resource type="Texture2D" uid="uid://b5oef15uma7m5" path="res://Sprites/creature1.png" id="6_rpty4"]
 [ext_resource type="Texture2D" uid="uid://dk3restrcp6l4" path="res://Sprites/creature1_white_border.png" id="7_6jj8j"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/merged_creature.tscn" id="8_6ll4n"]
+[ext_resource type="FontFile" uid="uid://d3id6ewnchky" path="res://Fonts/GrapeSoda.ttf" id="9_kylad"]
+
+[sub_resource type="Animation" id="Animation_bdlbp"]
+resource_name = "You win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2h8qs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rpty4"]
+_data = {
+&"RESET": SubResource("Animation_2h8qs"),
+&"You win": SubResource("Animation_bdlbp")
+}
 
 [node name="Level1" type="Node2D"]
 
@@ -41,6 +102,45 @@ texture = ExtResource("7_6jj8j")
 
 [node name="MergedCreature" parent="." instance=ExtResource("8_6ll4n")]
 visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Control")
+libraries = {
+&"": SubResource("AnimationLibrary_rpty4")
+}
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 352.0
+offset_top = 288.0
+offset_right = 352.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="WinLable" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.5
+offset_top = -40.0
+offset_right = 157.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_kylad")
+theme_override_font_sizes/font_size = 80
+text = "You Win!!!"
+horizontal_alignment = 1
 
 [editable path="Creature"]
 [editable path="Pushable"]
