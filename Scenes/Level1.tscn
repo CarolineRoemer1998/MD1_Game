@@ -20,11 +20,14 @@ script = ExtResource("1_bdlbp")
 position = Vector2(288, 288)
 desired_color = 6
 
+[node name="Border" parent="Creature" index="1"]
+modulate = Color(0.87451, 0.443137, 0.14902, 1)
+
 [node name="Player" parent="." instance=ExtResource("3_kylad")]
 position = Vector2(352, 480)
 
 [node name="Pushable" parent="." instance=ExtResource("4_bdlbp")]
-position = Vector2(160, 160)
+position = Vector2(288, 352)
 
 [node name="Sprite2D" parent="Pushable" index="0"]
 scale = Vector2(2, 2)
@@ -39,6 +42,7 @@ desired_color = 0
 texture = ExtResource("6_rpty4")
 
 [node name="Border" parent="Creature2" index="1"]
+modulate = Color(0.67451, 0.196078, 0.196078, 1)
 texture = ExtResource("7_6jj8j")
 
 [node name="MergedCreature" parent="." instance=ExtResource("8_6ll4n")]

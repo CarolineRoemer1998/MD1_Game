@@ -15,8 +15,14 @@ var possessed_creature_until_next_tile: Creature = null
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var heart: Sprite2D = $Heart
 
 var can_move := true
+
+var heart_position_right := Vector2(32,0)
+var heart_position_bottom := Vector2(0,32)
+var heart_position_left := Vector2(-32,0)
+var heart_position_top := Vector2(0,-32)
 
 
 func _ready():
@@ -28,6 +34,7 @@ func _ready():
 
 func _process(delta):
 	move(delta)
+	update_heart_visibility()
 
 
 func _unhandled_input(event):
@@ -55,7 +62,7 @@ func _unhandled_input(event):
 				else:
 					try_move(direction)
 		else:
-			if event.keycode == KEY_SPACE:
+			if event.keycode == KEY_SPACE or event.keycode == MOUSE_BUTTON_LEFT:
 				SceneSwitcher.switch_scene("res://Scenes/Menu/MainMenu.tscn") # TODO: über Globals zu nächstem level switchen
 
 
@@ -105,6 +112,7 @@ func try_move(direction: Vector2):
 
 func merge_if_possible(direction : Vector2) -> bool:
 	if currently_possessed_creature != null:
+		print(self.position, heart_position_right, heart.position)
 		match direction:
 			Vector2(1.0, 0.0): # right
 				return await _merge(Vector2(64,0), currently_possessed_creature.neighbor_right)
@@ -132,6 +140,7 @@ func _merge(direction : Vector2, neighbor : Creature):
 			can_move = false
 			return true
 	return false
+
 
 func try_push_and_move(object_to_push, new_pos, direction, space_state):
 	# Objekt vorhanden, prüfen ob pushable
@@ -210,3 +219,36 @@ func spawn_trail(input_position: Vector2):
 	get_tree().current_scene.add_child(trail)
 	trail.global_position = input_position
 	trail.restart()	
+
+
+func update_heart_visibility():
+	# Wenn keine Kreatur gerade besessen ist → Herz aus
+	if currently_possessed_creature == null:
+		heart.visible = false
+		return
+
+	# Checke alle 4 Richtungen
+	var c := currently_possessed_creature
+
+	if c.neighbor_right and c.can_merge_with(c.neighbor_right):
+		heart.position = self.position + heart_position_right
+		heart.visible = true
+		return
+
+	if c.neighbor_bottom and c.can_merge_with(c.neighbor_bottom):
+		heart.position = self.position + heart_position_bottom
+		heart.visible = true
+		return
+
+	if c.neighbor_left and c.can_merge_with(c.neighbor_left):
+		heart.position = self.position + heart_position_left
+		heart.visible = true
+		return
+
+	if c.neighbor_top and c.can_merge_with(c.neighbor_top):
+		heart.position = self.position + heart_position_top
+		heart.visible = true
+		return
+
+	# Kein passender Nachbar gefunden → Herz aus
+	heart.visible = false
