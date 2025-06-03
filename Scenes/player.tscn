@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://g3u7bc1jo6gj"]
+[gd_scene load_steps=6 format=3 uid="uid://g3u7bc1jo6gj"]
 
 [ext_resource type="Script" uid="uid://dr4elx8otc5ga" path="res://PlayerMovement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dxqtt8bthdbbk" path="res://Sprites/spirit.png" id="2_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://cknlg04piy5rc" path="res://Scenes/move_trail.tscn" id="3_6t5aa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
 size = Vector2(64, 64)
@@ -12,6 +13,7 @@ size = Vector2(64, 64)
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_cvnsp")
+trail_scene = ExtResource("3_6t5aa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.6)

@@ -11,7 +11,7 @@ var buffered_direction: Vector2 = Vector2.ZERO
 var hovering_over: Creature = null
 var currently_possessed_creature: Creature = null
 var possessed_creature_until_next_tile: Creature = null
-
+@export var trail_scene: PackedScene 
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
@@ -87,6 +87,7 @@ func try_move(direction: Vector2):
 
 	# Kein Objekt: Bewegung frei
 	if result.is_empty():
+		spawn_trail(position)
 		target_position = new_pos
 		set_is_moving(true)
 		return
@@ -185,3 +186,10 @@ func _on_creature_detected(creature: Node) -> void:
 func _on_creature_undetected(creature: Node) -> void:
 	if creature is Creature and hovering_over == creature:
 		hovering_over = null
+
+
+func spawn_trail(position: Vector2):
+	var trail = trail_scene.instantiate()
+	get_tree().current_scene.add_child(trail)
+	trail.global_position = position
+	trail.restart()	
