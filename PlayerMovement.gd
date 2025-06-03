@@ -14,6 +14,7 @@ var possessed_creature_until_next_tile: Creature = null
 @export var trail_scene: PackedScene 
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _ready():
@@ -55,7 +56,7 @@ func _unhandled_input(event):
 func move(delta):
 	if is_moving:
 		position = position.move_toward(target_position, MOVE_SPEED * delta)
-
+		
 		if possessed_creature_until_next_tile:
 			# Besessene Kreatur mitziehen
 			possessed_creature_until_next_tile.position = possessed_creature_until_next_tile.position.move_toward(
@@ -149,9 +150,14 @@ func try_push_and_move(object_to_push, new_pos, direction, space_state):
 func set_is_moving(value: bool):
 	is_moving = value
 
-	# Falls Spieler etwas besitzt und Bewegung beginnt, merken
-	if value and currently_possessed_creature:
-		possessed_creature_until_next_tile = currently_possessed_creature
+	if value:
+		# Sound NUR EINMAL pro Tile-Bewegung abspielen
+		audio_stream_player_2d.stop()
+		audio_stream_player_2d.play()
+
+		# Besessene Kreatur mitziehen lassen
+		if currently_possessed_creature:
+			possessed_creature_until_next_tile = currently_possessed_creature
 
 
 func possess_or_unpossess_creature():
