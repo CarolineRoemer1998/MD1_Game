@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs2a730k3etf4"]
+[gd_scene load_steps=10 format=3 uid="uid://bs2a730k3etf4"]
 
 [ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scenes/level.gd" id="1_bdlbp"]
 [ext_resource type="PackedScene" uid="uid://drl8fvb23s6aj" path="res://Scenes/background_lvl1.tscn" id="1_ysn8j"]
 [ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/creature.tscn" id="2_6ll4n"]
 [ext_resource type="PackedScene" uid="uid://g3u7bc1jo6gj" path="res://Scenes/player.tscn" id="3_kylad"]
-[ext_resource type="Texture2D" uid="uid://b5oef15uma7m5" path="res://Sprites/creature1.png" id="6_rpty4"]
-[ext_resource type="Texture2D" uid="uid://dk3restrcp6l4" path="res://Sprites/creature1_white_border.png" id="7_6jj8j"]
+[ext_resource type="Texture2D" uid="uid://cwx0mgxmotrej" path="res://Sprites/creature2_blue.png" id="4_kylad"]
+[ext_resource type="Texture2D" uid="uid://c7p7y7nww4tef" path="res://Sprites/creature1_yellow_left.png" id="5_kylad"]
+[ext_resource type="Texture2D" uid="uid://ca1gqbcm7vxgc" path="res://Sprites/creature1_white_border_left.png" id="6_kylad"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/merged_creature.tscn" id="8_6ll4n"]
 [ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="9_kylad"]
 
@@ -18,8 +19,8 @@ script = ExtResource("1_bdlbp")
 position = Vector2(288, 288)
 desired_color = 6
 
-[node name="Border" parent="Creature" index="1"]
-modulate = Color(0.87451, 0.443137, 0.14902, 1)
+[node name="Sprite2D" parent="Creature" index="0"]
+texture = ExtResource("4_kylad")
 
 [node name="Creature2" parent="." instance=ExtResource("2_6ll4n")]
 position = Vector2(416, 288)
@@ -27,11 +28,10 @@ own_color = 6
 desired_color = 0
 
 [node name="Sprite2D" parent="Creature2" index="0"]
-texture = ExtResource("6_rpty4")
+texture = ExtResource("5_kylad")
 
 [node name="Border" parent="Creature2" index="1"]
-modulate = Color(0.67451, 0.196078, 0.196078, 1)
-texture = ExtResource("7_6jj8j")
+texture = ExtResource("6_kylad")
 
 [node name="Player" parent="." instance=ExtResource("3_kylad")]
 position = Vector2(352, 480)
@@ -43,4 +43,5 @@ visible = false
 
 [editable path="Creature"]
 [editable path="Creature2"]
+[editable path="MergedCreature"]
 [editable path="WinScreen"]

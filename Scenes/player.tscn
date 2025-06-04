@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://g3u7bc1jo6gj"]
 
 [ext_resource type="Script" uid="uid://dr4elx8otc5ga" path="res://PlayerMovement.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://dxqtt8bthdbbk" path="res://Sprites/spirit.png" id="2_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://cknlg04piy5rc" path="res://Scenes/move_trail.tscn" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://fyfq7o17n313" path="res://Sprites/spirit_pink.png" id="3_x3wgy"]
 [ext_resource type="AudioStream" uid="uid://damiurfwmb0mb" path="res://Sounds/step5.mp3" id="4_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://cofwdobgak6xr" path="res://Sprites/heart.png" id="5_fkybt"]
 [ext_resource type="FontFile" uid="uid://d3id6ewnchky" path="res://Fonts/GrapeSoda.ttf" id="6_x3wgy"]
@@ -95,9 +95,9 @@ script = ExtResource("1_cvnsp")
 trail_scene = ExtResource("3_6t5aa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.317647)
+modulate = Color(1, 1, 1, 0.498039)
 scale = Vector2(2, 2)
-texture = ExtResource("2_cvnsp")
+texture = ExtResource("3_x3wgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qxrlw")
@@ -110,9 +110,9 @@ shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_x3wgy")
-bus = &"sfx"
 
 [node name="Heart" type="Sprite2D" parent="."]
+visible = false
 top_level = true
 position = Vector2(32, 0)
 texture = ExtResource("5_fkybt")

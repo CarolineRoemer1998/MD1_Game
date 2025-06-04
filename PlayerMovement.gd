@@ -195,7 +195,7 @@ func possess_or_unpossess_creature():
 
 		currently_possessed_creature = null
 		label_press_f_to_control.visible = true
-		sprite_2d.modulate = Color(1, 1, 1, 0.3)
+		sprite_2d.modulate = Color(1, 1, 1, 0.5)
 
 	else:
 		# Possess: Übernehmen und sofort synchronisieren

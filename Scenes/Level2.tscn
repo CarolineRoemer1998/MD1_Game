@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkgklepu2xm6g"]
+[gd_scene load_steps=11 format=3 uid="uid://neelpapjqc4u"]
 
 [ext_resource type="PackedScene" uid="uid://drl8fvb23s6aj" path="res://Scenes/background_lvl1.tscn" id="1_0plju"]
 [ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scenes/level.gd" id="1_70df5"]
@@ -6,14 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://g3u7bc1jo6gj" path="res://Scenes/player.tscn" id="2_ms0wi"]
 [ext_resource type="PackedScene" uid="uid://oy61arlldjo3" path="res://Scenes/pushable.tscn" id="3_jriq2"]
 [ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/creature.tscn" id="4_ehjmi"]
-[ext_resource type="Texture2D" uid="uid://b5oef15uma7m5" path="res://Sprites/creature1.png" id="5_p4u3k"]
-[ext_resource type="Texture2D" uid="uid://dk3restrcp6l4" path="res://Sprites/creature1_white_border.png" id="6_70df5"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/merged_creature.tscn" id="6_au75x"]
+[ext_resource type="Texture2D" uid="uid://cwx0mgxmotrej" path="res://Sprites/creature2_blue.png" id="7_ejprb"]
+[ext_resource type="Texture2D" uid="uid://c7p7y7nww4tef" path="res://Sprites/creature1_yellow_left.png" id="8_ejprb"]
+[ext_resource type="Texture2D" uid="uid://ca1gqbcm7vxgc" path="res://Sprites/creature1_white_border_left.png" id="9_ejprb"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_70df5")
 
 [node name="Background_Lvl1" parent="." instance=ExtResource("1_0plju")]
+
+[node name="Player" parent="." instance=ExtResource("2_ms0wi")]
+position = Vector2(352, 608)
 
 [node name="MergedCreature" parent="." instance=ExtResource("6_au75x")]
 visible = false
@@ -66,22 +70,22 @@ position = Vector2(352, 96)
 position = Vector2(160, 224)
 desired_color = 6
 
+[node name="Sprite2D" parent="Creatures/CreatureRED" index="0"]
+texture = ExtResource("7_ejprb")
+
 [node name="CreatureORANGE" parent="Creatures" instance=ExtResource("4_ehjmi")]
 position = Vector2(544, 224)
 own_color = 6
 desired_color = 0
 
 [node name="Sprite2D" parent="Creatures/CreatureORANGE" index="0"]
-texture = ExtResource("5_p4u3k")
+texture = ExtResource("8_ejprb")
 
 [node name="Border" parent="Creatures/CreatureORANGE" index="1"]
-texture = ExtResource("6_70df5")
-
-[node name="Player" parent="." instance=ExtResource("2_ms0wi")]
-top_level = true
-position = Vector2(352, 608)
+texture = ExtResource("9_ejprb")
 
 [node name="WinScreen" parent="." instance=ExtResource("2_ejprb")]
 
+[editable path="Creatures/CreatureRED"]
 [editable path="Creatures/CreatureORANGE"]
 [editable path="WinScreen"]
