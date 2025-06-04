@@ -17,6 +17,8 @@ var possessed_creature_until_next_tile: Creature = null
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var heart: Sprite2D = $Heart
 @onready var label_press_f_to_control: Label = $LabelPressFToControl
+@onready var audio_control: AudioStreamPlayer2D = $AudioControl
+@onready var audio_uncontrol: AudioStreamPlayer2D = $AudioUncontrol
 
 var can_move := true
 
@@ -196,6 +198,7 @@ func possess_or_unpossess_creature():
 		currently_possessed_creature = null
 		label_press_f_to_control.visible = true
 		sprite_2d.modulate = Color(1, 1, 1, 0.5)
+		audio_uncontrol.play()
 
 	else:
 		# Possess: Übernehmen und sofort synchronisieren
@@ -204,6 +207,7 @@ func possess_or_unpossess_creature():
 			label_press_f_to_control.visible = false
 			currently_possessed_creature.border.visible = true
 			sprite_2d.modulate = Color(1, 1, 1, 0.1)
+			audio_control.play()
 
 			# Position sofort synchronisieren
 			currently_possessed_creature.position = target_position

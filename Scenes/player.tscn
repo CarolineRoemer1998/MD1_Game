@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://g3u7bc1jo6gj"]
+[gd_scene load_steps=17 format=3 uid="uid://g3u7bc1jo6gj"]
 
 [ext_resource type="Script" uid="uid://dr4elx8otc5ga" path="res://PlayerMovement.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://cknlg04piy5rc" path="res://Scenes/move_trail.tscn" id="3_6t5aa"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://damiurfwmb0mb" path="res://Sounds/step5.mp3" id="4_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://cofwdobgak6xr" path="res://Sprites/heart.png" id="5_fkybt"]
 [ext_resource type="FontFile" uid="uid://d3id6ewnchky" path="res://Fonts/GrapeSoda.ttf" id="6_x3wgy"]
+[ext_resource type="AudioStream" uid="uid://cg110h5fksqrl" path="res://Sounds/control2.mp3" id="7_8erm5"]
+[ext_resource type="AudioStream" uid="uid://dbr1bkia48w5f" path="res://Sounds/uncontrol1.mp3" id="8_f1ek2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
 size = Vector2(64, 64)
@@ -110,6 +112,7 @@ shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_x3wgy")
+volume_db = 3.0
 
 [node name="Heart" type="Sprite2D" parent="."]
 visible = false
@@ -146,6 +149,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_8erm5")
 }
 autoplay = "Float"
+
+[node name="AudioControl" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_8erm5")
+pitch_scale = 0.6
+bus = &"sfx"
+
+[node name="AudioUncontrol" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_f1ek2")
+pitch_scale = 0.6
+bus = &"sfx"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_creature_detected"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_creature_undetected"]
