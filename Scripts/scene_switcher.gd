@@ -23,4 +23,5 @@ func go_to_next_level():
 		switch_scene("res://Scenes/Level"+ str(nextLevel) +".tscn")
 		current_level = nextLevel
 	else:
+		current_level = 1
 		switch_scene("res://Scenes/Menu/MainMenu.tscn")
