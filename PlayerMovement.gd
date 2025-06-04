@@ -16,6 +16,7 @@ var possessed_creature_until_next_tile: Creature = null
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var heart: Sprite2D = $Heart
+@onready var label_press_f_to_control: Label = $LabelPressFToControl
 
 var can_move := true
 
@@ -193,12 +194,14 @@ func possess_or_unpossess_creature():
 			currently_possessed_creature.border.visible = false
 
 		currently_possessed_creature = null
+		label_press_f_to_control.visible = true
 		sprite_2d.modulate = Color(1, 1, 1, 0.3)
 
 	else:
 		# Possess: Übernehmen und sofort synchronisieren
 		if hovering_over and hovering_over is Creature:
 			currently_possessed_creature = hovering_over
+			label_press_f_to_control.visible = false
 			currently_possessed_creature.border.visible = true
 			sprite_2d.modulate = Color(1, 1, 1, 0.1)
 
@@ -215,6 +218,7 @@ func _on_creature_detected(body: Node) -> void:
 	if body is Creature:
 		if currently_possessed_creature == null:
 			hovering_over = body
+			label_press_f_to_control.visible = true
 		else:
 			# Merge Möglichkeit eröffnen
 			pass
@@ -224,6 +228,7 @@ func _on_creature_detected(body: Node) -> void:
 func _on_creature_undetected(body: Node) -> void:
 	if body is Creature and hovering_over == body:
 		hovering_over = null
+		label_press_f_to_control.visible = false
 
 
 func spawn_trail(input_position: Vector2):
