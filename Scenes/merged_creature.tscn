@@ -129,3 +129,4 @@ libraries = {
 
 [node name="AudioWin" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_hlrf2")
+bus = &"sfx"
