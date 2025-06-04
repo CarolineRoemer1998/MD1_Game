@@ -49,25 +49,21 @@ func disappear():
 func on_creature_to_right(body: Node2D) -> void:
 	if body is Creature:
 		neighbor_right = body
-		print(own_color, " has neighbor ", desired_color)
 
 
 func on_creature_to_bottom(body: Node2D) -> void:
 	if body is Creature:
 		neighbor_bottom = body
-		print(own_color, " has neighbor ", desired_color)
 
 
 func on_creature_to_left(body: Node2D) -> void:
 	if body is Creature:
 		neighbor_left = body
-		print(own_color, " has neighbor ", desired_color)
 
 
 func on_creature_to_top(body: Node2D) -> void:
 	if body is Creature:
 		neighbor_top = body
-		print(own_color, " has neighbor ", desired_color)
 
 # -----------------------------------------------------------
 # Check if creature no longer stands next to other creature
@@ -76,22 +72,18 @@ func on_creature_to_top(body: Node2D) -> void:
 func _on_creature_right_gone(body: Node2D) -> void:
 	if body is Creature:
 		neighbor_right = null
-		print("Neighbor gone")
 
 
 func _on_creature_bottom_gone(body: Node2D) -> void:
 	if body is Creature:
 		neighbor_bottom = null
-		print("Neighbor gone")
 
 
 func _on_creature_left_gone(body: Node2D) -> void:
 	if body is Creature:
 		neighbor_left = null
-		print("Neighbor gone")
 
 
 func _on_creature_top_gone(body: Node2D) -> void:
 	if body is Creature:
 		neighbor_top = null
-		print("Neighbor gone")

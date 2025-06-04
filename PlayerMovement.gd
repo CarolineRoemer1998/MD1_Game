@@ -24,6 +24,8 @@ var heart_position_bottom := Vector2(0,32)
 var heart_position_left := Vector2(-32,0)
 var heart_position_top := Vector2(0,-32)
 
+var obstacle : Node = null
+
 
 func _ready():
 	# Spieler korrekt auf Grid ausrichten
@@ -113,7 +115,6 @@ func try_move(direction: Vector2):
 
 func merge_if_possible(direction : Vector2) -> bool:
 	if currently_possessed_creature != null:
-		print(self.position, heart_position_right, heart.position)
 		match direction:
 			Vector2(1.0, 0.0): # right
 				return await _merge(Vector2(64,0), currently_possessed_creature.neighbor_right)
@@ -149,11 +150,17 @@ func try_push_and_move(object_to_push, new_pos, direction, space_state):
 	if not obj.is_in_group("pushable"):
 		return
 
+	if currently_possessed_creature == null:
+		spawn_trail(position)
+		target_position = new_pos
+		set_is_moving(true)
+		return
+	
 	# Ziel hinter dem pushable prüfen
 	var push_target = new_pos + direction * GRID_SIZE
 	var push_query := PhysicsPointQueryParameters2D.new()
 	push_query.position = push_target
-	push_query.collision_mask = 1
+	push_query.collision_mask = 3
 	var push_result = space_state.intersect_point(push_query, 1)
 
 	# Falls frei, push ausführen
@@ -175,6 +182,8 @@ func set_is_moving(value: bool):
 		# Besessene Kreatur mitziehen lassen
 		if currently_possessed_creature:
 			possessed_creature_until_next_tile = currently_possessed_creature
+	else:
+		possessed_creature_until_next_tile = null
 
 
 func possess_or_unpossess_creature():
@@ -184,7 +193,7 @@ func possess_or_unpossess_creature():
 			currently_possessed_creature.border.visible = false
 
 		currently_possessed_creature = null
-		sprite_2d.modulate = Color(1, 1, 1, 0.6)
+		sprite_2d.modulate = Color(1, 1, 1, 0.3)
 
 	else:
 		# Possess: Übernehmen und sofort synchronisieren
@@ -198,20 +207,22 @@ func possess_or_unpossess_creature():
 			currently_possessed_creature.target_position = target_position
 
 			possessed_creature_until_next_tile = currently_possessed_creature
+	if not currently_possessed_creature:
+		possessed_creature_until_next_tile = null
 
 
-func _on_creature_detected(creature: Node) -> void:
-	if creature is Creature:
+func _on_creature_detected(body: Node) -> void:
+	if body is Creature:
 		if currently_possessed_creature == null:
-			hovering_over = creature
+			hovering_over = body
 		else:
 			# Merge Möglichkeit eröffnen
 			pass
 			
 
 
-func _on_creature_undetected(creature: Node) -> void:
-	if creature is Creature and hovering_over == creature:
+func _on_creature_undetected(body: Node) -> void:
+	if body is Creature and hovering_over == body:
 		hovering_over = null
 
 
