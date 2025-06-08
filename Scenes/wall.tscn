@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtlse07i5w70y"]
+
+[ext_resource type="Script" uid="uid://c3no2lx41nut1" path="res://Scripts/wall.gd" id="1_yjehn"]
+[ext_resource type="Texture2D" uid="uid://drf5ssafggu2u" path="res://Sprites/Mauer/mauer.png" id="2_m8ojb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3spc7"]
+size = Vector2(64, 64)
+
+[node name="Wall" type="Node2D"]
+script = ExtResource("1_yjehn")
+buttons = Array[NodePath]([NodePath("../Button")])
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_3spc7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m8ojb")
