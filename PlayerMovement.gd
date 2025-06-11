@@ -43,33 +43,39 @@ func _process(delta):
 
 
 func _unhandled_input(event):
-	if event is InputEventKey and event.pressed:
-		var direction := Vector2.ZERO
-		if can_move:
-			# Bewegungsrichtungen abfragen
-			match event.keycode:
-				KEY_W: 
-					direction = Vector2.UP
-				KEY_S: 
-					direction = Vector2.DOWN
-				KEY_A: 
-					direction = Vector2.LEFT
-				KEY_D: 
-					direction = Vector2.RIGHT
-					
-				KEY_F:
-					if not is_moving:
-						possess_or_unpossess_creature()
+	if not event.is_pressed():
+		return
 
-			# Bewegungsversuch oder Puffern bei laufender Bewegung
-			if direction != Vector2.ZERO:
-				if is_moving:
-					buffered_direction = direction
-				else:
-					try_move(direction)
-		else:
-			if event.keycode == KEY_SPACE or event.keycode == MOUSE_BUTTON_LEFT:
-				SceneSwitcher.go_to_next_level()
+	var direction := Vector2.ZERO
+
+	if can_move:
+		# Bewegungsrichtungen (directional input)
+		if event.is_action_pressed("Player_Up"):
+			direction = Vector2.UP
+		elif event.is_action_pressed("Player_Down"):
+			direction = Vector2.DOWN
+		elif event.is_action_pressed("Player_Left"):
+			direction = Vector2.LEFT
+		elif event.is_action_pressed("Player_Right"):
+			direction = Vector2.RIGHT
+
+		# Interaktionsbutton
+		elif event.is_action_pressed("Interact"):
+			if not is_moving:
+				possess_or_unpossess_creature()
+
+		# Bewegungsversuch oder Puffern
+		if direction != Vector2.ZERO:
+			if is_moving:
+				buffered_direction = direction
+			else:
+				try_move(direction)
+	else:
+		# Szenewechsel durch Tastatur, Maus oder Gamepad
+		
+		if event.is_action_pressed("UI_Accept"):# or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) :
+			SceneSwitcher.go_to_next_level()
+
 
 
 func move(delta):
