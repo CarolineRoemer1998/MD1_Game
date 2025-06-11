@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scenes/level.gd" id="1_bdlbp"]
 [ext_resource type="PackedScene" uid="uid://drl8fvb23s6aj" path="res://Scenes/background_lvl1.tscn" id="1_ysn8j"]
 [ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/creature.tscn" id="2_6ll4n"]
-[ext_resource type="PackedScene" uid="uid://dtlse07i5w70y" path="res://Scenes/wall.tscn" id="3_2h8qs"]
+[ext_resource type="PackedScene" path="res://Scenes/wall.tscn" id="3_2h8qs"]
 [ext_resource type="PackedScene" uid="uid://g3u7bc1jo6gj" path="res://Scenes/player.tscn" id="3_kylad"]
 [ext_resource type="Texture2D" uid="uid://cwx0mgxmotrej" path="res://Sprites/creature2_blue.png" id="4_kylad"]
 [ext_resource type="Texture2D" uid="uid://c7p7y7nww4tef" path="res://Sprites/creature1_yellow_left.png" id="5_kylad"]
 [ext_resource type="Texture2D" uid="uid://ca1gqbcm7vxgc" path="res://Sprites/creature1_white_border_left.png" id="6_kylad"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/merged_creature.tscn" id="8_6ll4n"]
 [ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="9_kylad"]
-[ext_resource type="PackedScene" uid="uid://dd64royl54oq6" path="res://Scenes/button.tscn" id="11_rpty4"]
+[ext_resource type="PackedScene" path="res://Scenes/button.tscn" id="11_rpty4"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_bdlbp")

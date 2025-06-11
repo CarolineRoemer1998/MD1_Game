@@ -14,11 +14,13 @@ var possessed_creature_until_next_tile: Creature = null
 @export var trail_scene: PackedScene 
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var heart: Sprite2D = $Heart
 @onready var label_press_f_to_control: Label = $LabelPressFToControl
 @onready var audio_control: AudioStreamPlayer2D = $AudioControl
 @onready var audio_uncontrol: AudioStreamPlayer2D = $AudioUncontrol
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 var can_move := true
 
@@ -40,14 +42,16 @@ func _ready():
 func _process(delta):
 	move(delta)
 	update_heart_visibility()
+	animation_tree.get("parameters/playback").travel("Idle")
 
 
 func _unhandled_input(event):
+	
 	if not event.is_pressed():
 		return
-
+		
 	var direction := Vector2.ZERO
-
+	
 	if can_move:
 		# Bewegungsrichtungen (directional input)
 		if event.is_action_pressed("Player_Up"):
@@ -63,6 +67,8 @@ func _unhandled_input(event):
 		elif event.is_action_pressed("Interact"):
 			if not is_moving:
 				possess_or_unpossess_creature()
+		
+		animation_tree.set("parameters/Idle/BlendSpace2D/blend_position", direction)
 
 		# Bewegungsversuch oder Puffern
 		if direction != Vector2.ZERO:
@@ -75,6 +81,7 @@ func _unhandled_input(event):
 		
 		if event.is_action_pressed("UI_Accept"):# or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) :
 			SceneSwitcher.go_to_next_level()
+	
 
 
 
@@ -203,7 +210,7 @@ func possess_or_unpossess_creature():
 
 		currently_possessed_creature = null
 		label_press_f_to_control.visible = true
-		sprite_2d.modulate = Color(1, 1, 1, 0.5)
+		animated_sprite_2d.modulate = Color(1, 1, 1, 0.8)
 		audio_uncontrol.play()
 
 	else:
@@ -212,7 +219,7 @@ func possess_or_unpossess_creature():
 			currently_possessed_creature = hovering_over
 			label_press_f_to_control.visible = false
 			currently_possessed_creature.border.visible = true
-			sprite_2d.modulate = Color(1, 1, 1, 0.1)
+			animated_sprite_2d.modulate = Color(1, 1, 1, 0)
 			audio_control.play()
 
 			# Position sofort synchronisieren
