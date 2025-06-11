@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca1gqbcm7vxgc"
-path="res://.godot/imported/creature1_white_border_left.png-b7a3c37355c4b2d5c212ae1203dd728d.ctex"
+uid="uid://devqcoc3h5ih"
+path="res://.godot/imported/Tile_brown - Kopie.png-ed0e7e207bde5c36931ab72e021ad18b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/creature1_white_border_left.png"
-dest_files=["res://.godot/imported/creature1_white_border_left.png-b7a3c37355c4b2d5c212ae1203dd728d.ctex"]
+source_file="res://Sprites/Verworfen/Tile_brown - Kopie.png"
+dest_files=["res://.godot/imported/Tile_brown - Kopie.png-ed0e7e207bde5c36931ab72e021ad18b.ctex"]
 
 [params]
 

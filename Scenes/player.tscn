@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dr4elx8otc5ga" path="res://PlayerMovement.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://cknlg04piy5rc" path="res://Scenes/move_trail.tscn" id="3_6t5aa"]
 [ext_resource type="AudioStream" uid="uid://damiurfwmb0mb" path="res://Sounds/step5.mp3" id="4_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://cofwdobgak6xr" path="res://Sprites/heart.png" id="5_fkybt"]
+[ext_resource type="Texture2D" uid="uid://dugdhrnqmujux" path="res://Sprites/heart.png" id="5_fkybt"]
 [ext_resource type="FontFile" uid="uid://d3id6ewnchky" path="res://Fonts/GrapeSoda.ttf" id="6_x3wgy"]
 [ext_resource type="AudioStream" uid="uid://cg110h5fksqrl" path="res://Sounds/control2.mp3" id="7_8erm5"]
 [ext_resource type="AudioStream" uid="uid://dbr1bkia48w5f" path="res://Sounds/uncontrol1.mp3" id="8_f1ek2"]
-[ext_resource type="Texture2D" uid="uid://d3yq3dcmqqpig" path="res://Sprites/player_6_animated-sheet.png" id="9_f1ek2"]
+[ext_resource type="Texture2D" uid="uid://cswpl2tlxvkhe" path="res://Sprites/player_6_animated-sheet.png" id="9_f1ek2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
 size = Vector2(64, 64)
@@ -57,6 +57,7 @@ _data = {
 [sub_resource type="Animation" id="Animation_x3wgy"]
 resource_name = "Float"
 loop_mode = 1
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -64,10 +65,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-38, -48), Vector2(-38, -43), Vector2(-38, -48)]
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-38, -48), Vector2(-38, -46), Vector2(-38, -44), Vector2(-38, -46), Vector2(-38, -48)]
 }
 
 [sub_resource type="Animation" id="Animation_3smsa"]

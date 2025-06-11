@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fbu0srp6ldnp"
-path="res://.godot/imported/dot.png-a2bb906f2fb15d052ec491672a36655e.ctex"
+uid="uid://ddhu75e372wk7"
+path="res://.godot/imported/creature-merge-1-2_green.png-58a1d1bae5a0d0c89277ee08d1757223.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/dot.png"
-dest_files=["res://.godot/imported/dot.png-a2bb906f2fb15d052ec491672a36655e.ctex"]
+source_file="res://Sprites/Creatures/creature-merge-1-2_green.png"
+dest_files=["res://.godot/imported/creature-merge-1-2_green.png-58a1d1bae5a0d0c89277ee08d1757223.ctex"]
 
 [params]
 

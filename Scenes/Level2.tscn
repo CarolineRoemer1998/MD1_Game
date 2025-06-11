@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://neelpapjqc4u"]
+[gd_scene load_steps=12 format=3 uid="uid://neelpapjqc4u"]
 
 [ext_resource type="PackedScene" uid="uid://drl8fvb23s6aj" path="res://Scenes/background_lvl1.tscn" id="1_0plju"]
 [ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scenes/level.gd" id="1_70df5"]
@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://oy61arlldjo3" path="res://Scenes/pushable.tscn" id="3_jriq2"]
 [ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/creature.tscn" id="4_ehjmi"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/merged_creature.tscn" id="6_au75x"]
-[ext_resource type="Texture2D" uid="uid://cwx0mgxmotrej" path="res://Sprites/creature2_blue.png" id="7_ejprb"]
-[ext_resource type="Texture2D" uid="uid://c7p7y7nww4tef" path="res://Sprites/creature1_yellow_left.png" id="8_ejprb"]
-[ext_resource type="Texture2D" uid="uid://ca1gqbcm7vxgc" path="res://Sprites/creature1_white_border_left.png" id="9_ejprb"]
+[ext_resource type="Texture2D" uid="uid://7rp7tk5tlb1m" path="res://Sprites/Creatures/creature2_blue.png" id="7_au75x"]
+[ext_resource type="Texture2D" uid="uid://hs5h70vwdnfj" path="res://Sprites/Creatures/creature2_white_border.png" id="8_62f1r"]
+[ext_resource type="Texture2D" uid="uid://c23yaavf8vmvm" path="res://Sprites/Creatures/creature1_yellow_left.png" id="9_1je60"]
+[ext_resource type="Texture2D" uid="uid://53c1nsyg7ifu" path="res://Sprites/Creatures/creature1_white_border_left.png" id="10_ycmr1"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_70df5")
@@ -67,26 +68,31 @@ position = Vector2(480, 352)
 
 [node name="Creatures" type="Node" parent="."]
 
-[node name="CreatureRED" parent="Creatures" instance=ExtResource("4_ehjmi")]
+[node name="CreatureBlue" parent="Creatures" instance=ExtResource("4_ehjmi")]
 position = Vector2(160, 224)
-desired_color = 6
+own_color = 1
+desired_color = 2
 
-[node name="Sprite2D" parent="Creatures/CreatureRED" index="0"]
-texture = ExtResource("7_ejprb")
+[node name="Sprite2D" parent="Creatures/CreatureBlue" index="0"]
+texture = ExtResource("7_au75x")
 
-[node name="CreatureORANGE" parent="Creatures" instance=ExtResource("4_ehjmi")]
+[node name="Border" parent="Creatures/CreatureBlue" index="1"]
+texture = ExtResource("8_62f1r")
+
+[node name="CreatureYellow" parent="Creatures" instance=ExtResource("4_ehjmi")]
 position = Vector2(544, 224)
-own_color = 6
-desired_color = 0
+own_color = 2
+desired_color = 1
 
-[node name="Sprite2D" parent="Creatures/CreatureORANGE" index="0"]
-texture = ExtResource("8_ejprb")
+[node name="Sprite2D" parent="Creatures/CreatureYellow" index="0"]
+texture = ExtResource("9_1je60")
 
-[node name="Border" parent="Creatures/CreatureORANGE" index="1"]
-texture = ExtResource("9_ejprb")
+[node name="Border" parent="Creatures/CreatureYellow" index="1"]
+texture = ExtResource("10_ycmr1")
 
 [node name="WinScreen" parent="." instance=ExtResource("2_ejprb")]
 
-[editable path="Creatures/CreatureRED"]
-[editable path="Creatures/CreatureORANGE"]
+[editable path="MergedCreature"]
+[editable path="Creatures/CreatureBlue"]
+[editable path="Creatures/CreatureYellow"]
 [editable path="WinScreen"]

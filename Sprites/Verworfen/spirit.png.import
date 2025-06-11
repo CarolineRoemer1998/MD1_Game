@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fbu0srp6ldnp"
-path="res://.godot/imported/dot.png-a2bb906f2fb15d052ec491672a36655e.ctex"
+uid="uid://cvvog6fsad4rn"
+path="res://.godot/imported/spirit.png-91e9d24461da15b0ae18bab05c5e61a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/dot.png"
-dest_files=["res://.godot/imported/dot.png-a2bb906f2fb15d052ec491672a36655e.ctex"]
+source_file="res://Sprites/Verworfen/spirit.png"
+dest_files=["res://.godot/imported/spirit.png-91e9d24461da15b0ae18bab05c5e61a1.ctex"]
 
 [params]
 

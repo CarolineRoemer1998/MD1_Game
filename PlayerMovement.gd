@@ -36,17 +36,15 @@ func _ready():
 	# Spieler korrekt auf Grid ausrichten
 	target_position = position.snapped(GRID_SIZE / 2)
 	position = target_position
-	
+	animation_tree.get("parameters/playback").travel("Idle")
 
 
 func _process(delta):
 	move(delta)
 	update_heart_visibility()
-	animation_tree.get("parameters/playback").travel("Idle")
 
 
 func _unhandled_input(event):
-	
 	if not event.is_pressed():
 		return
 		
@@ -81,8 +79,6 @@ func _unhandled_input(event):
 		
 		if event.is_action_pressed("UI_Accept"):# or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) :
 			SceneSwitcher.go_to_next_level()
-	
-
 
 
 func move(delta):
@@ -141,7 +137,8 @@ func merge_if_possible(direction : Vector2) -> bool:
 			Vector2(0.0, -1.0): # top
 				return await _merge(Vector2(0,-64), currently_possessed_creature.neighbor_top)
 	return false
-	
+
+
 func _merge(direction : Vector2, neighbor : Creature):
 	if neighbor != null:
 		if currently_possessed_creature.can_merge_with(neighbor):
@@ -239,7 +236,6 @@ func _on_creature_detected(body: Node) -> void:
 		else:
 			# Merge Möglichkeit eröffnen
 			pass
-			
 
 
 func _on_creature_undetected(body: Node) -> void:

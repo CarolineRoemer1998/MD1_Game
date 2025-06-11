@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5oef15uma7m5"
-path="res://.godot/imported/creature1.png-07e80b082a1ecec0ac127820ad37ed2d.ctex"
+uid="uid://pss7p5g6em7g"
+path="res://.godot/imported/wall_alpha.png-b6bea9dc2e8be438e8a0b8d0cfba4e54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/creature1.png"
-dest_files=["res://.godot/imported/creature1.png-07e80b082a1ecec0ac127820ad37ed2d.ctex"]
+source_file="res://Sprites/Verworfen/wall_alpha.png"
+dest_files=["res://.godot/imported/wall_alpha.png-b6bea9dc2e8be438e8a0b8d0cfba4e54.ctex"]
 
 [params]
 

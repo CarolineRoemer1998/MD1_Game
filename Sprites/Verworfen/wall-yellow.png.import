@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkwqs8t200o3w"
-path="res://.godot/imported/creature-merge-1-2.png-76bf96760010bb2810e9ae891d59a555.ctex"
+uid="uid://cqt86ydnjg0sy"
+path="res://.godot/imported/wall-yellow.png-8e4e408769714bcaf879f031b9137ccc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/creature-merge-1-2.png"
-dest_files=["res://.godot/imported/creature-merge-1-2.png-76bf96760010bb2810e9ae891d59a555.ctex"]
+source_file="res://Sprites/Verworfen/wall-yellow.png"
+dest_files=["res://.godot/imported/wall-yellow.png-8e4e408769714bcaf879f031b9137ccc.ctex"]
 
 [params]
 

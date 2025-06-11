@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7p7y7nww4tef"
-path="res://.godot/imported/creature1_yellow_left.png-e402db3004b203d16977f971ee12b4bc.ctex"
+uid="uid://drdgc6wcsqdeh"
+path="res://.godot/imported/Walls-4-corners.png-f61bdd0a04ba19f3c7dae6c974b052e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/creature1_yellow_left.png"
-dest_files=["res://.godot/imported/creature1_yellow_left.png-e402db3004b203d16977f971ee12b4bc.ctex"]
+source_file="res://Sprites/Verworfen/Walls-4-corners.png"
+dest_files=["res://.godot/imported/Walls-4-corners.png-f61bdd0a04ba19f3c7dae6c974b052e9.ctex"]
 
 [params]
 

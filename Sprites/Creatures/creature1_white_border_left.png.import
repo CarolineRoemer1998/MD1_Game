@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fbu0srp6ldnp"
-path="res://.godot/imported/dot.png-a2bb906f2fb15d052ec491672a36655e.ctex"
+uid="uid://53c1nsyg7ifu"
+path="res://.godot/imported/creature1_white_border_left.png-692df742569c043328cc6d0dc6370a5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/dot.png"
-dest_files=["res://.godot/imported/dot.png-a2bb906f2fb15d052ec491672a36655e.ctex"]
+source_file="res://Sprites/Creatures/creature1_white_border_left.png"
+dest_files=["res://.godot/imported/creature1_white_border_left.png-692df742569c043328cc6d0dc6370a5e.ctex"]
 
 [params]
 

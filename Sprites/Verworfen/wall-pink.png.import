@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxqtt8bthdbbk"
-path="res://.godot/imported/spirit.png-2e7b731626d638a551bc87ee4bfe7aef.ctex"
+uid="uid://cfxv6jkisdbr7"
+path="res://.godot/imported/wall-pink.png-6dc5439ad18b16724ff94c7dd7aeacbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/spirit.png"
-dest_files=["res://.godot/imported/spirit.png-2e7b731626d638a551bc87ee4bfe7aef.ctex"]
+source_file="res://Sprites/Verworfen/wall-pink.png"
+dest_files=["res://.godot/imported/wall-pink.png-6dc5439ad18b16724ff94c7dd7aeacbc.ctex"]
 
 [params]
 

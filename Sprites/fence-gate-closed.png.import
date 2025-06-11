@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2daiyonkbh6l"
-path="res://.godot/imported/creature2_white_border.png-87fee915eef8a9e43b3b08ae3494b8f7.ctex"
+uid="uid://byoqexwjlcug4"
+path="res://.godot/imported/fence-gate-closed.png-1ad45d7d58481844d22306a01624de88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/creature2_white_border.png"
-dest_files=["res://.godot/imported/creature2_white_border.png-87fee915eef8a9e43b3b08ae3494b8f7.ctex"]
+source_file="res://Sprites/fence-gate-closed.png"
+dest_files=["res://.godot/imported/fence-gate-closed.png-1ad45d7d58481844d22306a01624de88.ctex"]
 
 [params]
 

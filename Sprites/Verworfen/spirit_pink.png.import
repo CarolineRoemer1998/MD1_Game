@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk3restrcp6l4"
-path="res://.godot/imported/creature1_white_border.png-cbfb5d991659d95a09d3551a9ac1c9e6.ctex"
+uid="uid://b8467h6mgkb6u"
+path="res://.godot/imported/spirit_pink.png-f5aeb9f10221bb2d01e7638da183b542.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/creature1_white_border.png"
-dest_files=["res://.godot/imported/creature1_white_border.png-cbfb5d991659d95a09d3551a9ac1c9e6.ctex"]
+source_file="res://Sprites/Verworfen/spirit_pink.png"
+dest_files=["res://.godot/imported/spirit_pink.png-f5aeb9f10221bb2d01e7638da183b542.ctex"]
 
 [params]
 
