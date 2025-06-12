@@ -6,12 +6,13 @@ enum CREATURE_COLOR {Red, Blue, Yellow, Green, Purple, Turquois, Orange, Pink}
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-@onready var border: Sprite2D = $Border
+@onready var border: AnimatedSprite2D = $AnimatedSpriteBorder
 
 @onready var area_2d_right: Area2D = $Area2D_Right
 @onready var area_2d_bottom: Area2D = $Area2D_Bottom
 @onready var area_2d_left: Area2D = $Area2D_Left
 @onready var area_2d_top: Area2D = $Area2D_Top
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 const GRID_SIZE := Vector2(64, 64)
 var target_position: Vector2
@@ -28,6 +29,7 @@ var neighbor_top : Creature = null
 func _ready():
 	target_position = position.snapped(GRID_SIZE / 2)
 	position = target_position
+	animation_tree.get("parameters/playback").travel("Idle")
 
 
 func can_merge_with(creature : Creature) -> bool:

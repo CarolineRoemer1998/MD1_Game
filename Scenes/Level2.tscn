@@ -1,16 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://neelpapjqc4u"]
+[gd_scene load_steps=9 format=3 uid="uid://neelpapjqc4u"]
 
 [ext_resource type="PackedScene" uid="uid://drl8fvb23s6aj" path="res://Scenes/background_lvl1.tscn" id="1_0plju"]
 [ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scenes/level.gd" id="1_70df5"]
 [ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="2_ejprb"]
 [ext_resource type="PackedScene" uid="uid://g3u7bc1jo6gj" path="res://Scenes/player.tscn" id="2_ms0wi"]
 [ext_resource type="PackedScene" uid="uid://oy61arlldjo3" path="res://Scenes/pushable.tscn" id="3_jriq2"]
-[ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/creature.tscn" id="4_ehjmi"]
+[ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/creature_blue.tscn" id="4_ehjmi"]
+[ext_resource type="PackedScene" uid="uid://be6k5yjppap8y" path="res://Scenes/creature_yellow.tscn" id="5_p4u3k"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/merged_creature.tscn" id="6_au75x"]
-[ext_resource type="Texture2D" uid="uid://7rp7tk5tlb1m" path="res://Sprites/Creatures/creature2_blue.png" id="7_au75x"]
-[ext_resource type="Texture2D" uid="uid://hs5h70vwdnfj" path="res://Sprites/Creatures/creature2_white_border.png" id="8_62f1r"]
-[ext_resource type="Texture2D" uid="uid://c23yaavf8vmvm" path="res://Sprites/Creatures/creature1_yellow_left.png" id="9_1je60"]
-[ext_resource type="Texture2D" uid="uid://53c1nsyg7ifu" path="res://Sprites/Creatures/creature1_white_border_left.png" id="10_ycmr1"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_70df5")
@@ -58,6 +55,14 @@ position = Vector2(352, 160)
 [node name="Pushable13" parent="Pushables" instance=ExtResource("3_jriq2")]
 position = Vector2(352, 96)
 
+[node name="Creatures" type="Node" parent="."]
+
+[node name="CreatureBlue" parent="Creatures" instance=ExtResource("4_ehjmi")]
+position = Vector2(160, 224)
+
+[node name="CreatureYellow" parent="Creatures" instance=ExtResource("5_p4u3k")]
+position = Vector2(542, 224)
+
 [node name="Player" parent="." instance=ExtResource("2_ms0wi")]
 top_level = true
 position = Vector2(352, 608)
@@ -66,33 +71,8 @@ position = Vector2(352, 608)
 visible = false
 position = Vector2(480, 352)
 
-[node name="Creatures" type="Node" parent="."]
-
-[node name="CreatureBlue" parent="Creatures" instance=ExtResource("4_ehjmi")]
-position = Vector2(160, 224)
-own_color = 1
-desired_color = 2
-
-[node name="Sprite2D" parent="Creatures/CreatureBlue" index="0"]
-texture = ExtResource("7_au75x")
-
-[node name="Border" parent="Creatures/CreatureBlue" index="1"]
-texture = ExtResource("8_62f1r")
-
-[node name="CreatureYellow" parent="Creatures" instance=ExtResource("4_ehjmi")]
-position = Vector2(544, 224)
-own_color = 2
-desired_color = 1
-
-[node name="Sprite2D" parent="Creatures/CreatureYellow" index="0"]
-texture = ExtResource("9_1je60")
-
-[node name="Border" parent="Creatures/CreatureYellow" index="1"]
-texture = ExtResource("10_ycmr1")
-
 [node name="WinScreen" parent="." instance=ExtResource("2_ejprb")]
 
-[editable path="MergedCreature"]
 [editable path="Creatures/CreatureBlue"]
-[editable path="Creatures/CreatureYellow"]
+[editable path="MergedCreature"]
 [editable path="WinScreen"]

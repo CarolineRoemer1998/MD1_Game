@@ -67,6 +67,8 @@ func _unhandled_input(event):
 				possess_or_unpossess_creature()
 		
 		animation_tree.set("parameters/Idle/BlendSpace2D/blend_position", direction)
+		if currently_possessed_creature:
+			currently_possessed_creature.animation_tree.set("parameters/Idle/BlendSpace2D/blend_position", direction)
 
 		# Bewegungsversuch oder Puffern
 		if direction != Vector2.ZERO:
