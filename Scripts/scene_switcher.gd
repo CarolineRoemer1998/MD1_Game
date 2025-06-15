@@ -49,6 +49,18 @@ func go_to_current_level():
 		switch_scene("res://Scenes/Menu/MainMenu.tscn")
 		current_level = 0
 
+func reload_level():
+	if current_scene:
+		current_scene.queue_free()
+
+	if current_level > 0 and current_level <= levelCount:
+		switch_scene("res://Scenes/Level" + str(current_level) + ".tscn")
+	else:
+		current_level = 0
+		switch_scene("res://Scenes/Menu/MainMenu.tscn")
+	print("scene reloaded")
+
+
 # New functions for settings
 func go_to_settings():
 	switch_scene("res://Scenes/Menu/Settings.tscn", true)
