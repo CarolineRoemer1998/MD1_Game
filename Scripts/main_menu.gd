@@ -1,12 +1,15 @@
 extends Control
 
 
+func _ready() -> void:
+	$VBoxContainer/Start.grab_focus()
+
 func _on_start_pressed() -> void:
-	SceneSwitcher.switch_scene("res://Scenes/Level1.tscn")
+	SceneSwitcher.go_to_next_level()
 
 
 func _on_stettings_pressed() -> void:
-	SceneSwitcher.switch_scene("res://Scenes/Menu/Settings.tscn")
+	SceneSwitcher.go_to_settings()
 
 
 func _on_exit_pressed() -> void:

@@ -50,6 +50,9 @@ func _unhandled_input(event):
 		
 	var direction := Vector2.ZERO
 	
+	if event.is_action_pressed("ui_cancel"):
+			SceneSwitcher.go_to_settings()
+	
 	if can_move:
 		# Bewegungsrichtungen (directional input)
 		if event.is_action_pressed("Player_Up"):
@@ -79,7 +82,7 @@ func _unhandled_input(event):
 	else:
 		# Szenewechsel durch Tastatur, Maus oder Gamepad
 		
-		if event.is_action_pressed("UI_Accept"):# or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) :
+		if event.is_action_pressed("ui_accept"):# or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) :
 			SceneSwitcher.go_to_next_level()
 
 

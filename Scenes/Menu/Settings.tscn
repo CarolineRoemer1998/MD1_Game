@@ -5,14 +5,13 @@
 [ext_resource type="FontFile" uid="uid://d3id6ewnchky" path="res://Fonts/GrapeSoda.ttf" id="2_lnv33"]
 [ext_resource type="PackedScene" uid="uid://c7xbrqq8jp67b" path="res://Scenes/Menu/VolumeSlider.tscn" id="3_lnv33"]
 [ext_resource type="AudioStream" uid="uid://bsx3skhivxvr3" path="res://Sounds/mixkit-sweet-kitty-meow-93.wav" id="5_7rr2e"]
+[ext_resource type="Script" uid="uid://bld4747e6bxrc" path="res://Scenes/Menu/menu_button.gd" id="5_f2des"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ng16n"]
 texture = ExtResource("1_312i6")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7rr2e"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2des"]
-bg_color = Color(0.282737, 0.276598, 0.269531, 0.996078)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os8bt"]
+bg_color = Color(0.674316, 0.666508, 0.64531, 0.996078)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -20,8 +19,8 @@ corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 3.5)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os8bt"]
-bg_color = Color(0.674316, 0.666508, 0.64531, 0.996078)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2des"]
+bg_color = Color(0.282737, 0.276598, 0.269531, 0.996078)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -69,6 +68,7 @@ offset_right = 143.0
 offset_bottom = 115.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Music" type="Label" parent="VBoxContainer"]
@@ -105,12 +105,13 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_lnv33")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7rr2e")
+theme_override_styles/focus = SubResource("StyleBoxFlat_os8bt")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_f2des")
 theme_override_styles/hover = SubResource("StyleBoxFlat_os8bt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f2des")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dps5m")
 text = "Back"
+script = ExtResource("5_f2des")
 
 [node name="Settings" type="Label" parent="."]
 layout_mode = 1
@@ -133,11 +134,13 @@ vertical_alignment = 1
 stream = ExtResource("5_7rr2e")
 volume_db = -30.0
 autoplay = true
+bus = &"music"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_7rr2e")
 volume_db = -40.0
 pitch_scale = 3.58
 autoplay = true
+bus = &"sfx"
 
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
