@@ -53,7 +53,7 @@ func go_to_current_level():
 func go_to_settings():
 	switch_scene("res://Scenes/Menu/Settings.tscn", true)
 
-func return_from_settings():
+func return_from_scene():
 	if is_paused and paused_scene:
 		# Free the settings scene and restore the paused scene
 		current_scene.queue_free()
