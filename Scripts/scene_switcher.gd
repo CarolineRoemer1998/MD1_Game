@@ -19,11 +19,13 @@ func _deferred_switch_scene(res_path, pause_current=false):
 		current_scene.hide()
 		paused_scene = current_scene
 		is_paused = true
+		get_tree().paused = true
 	else:
 		# If we're returning from a paused scene, free the paused scene
 		if is_paused:
 			paused_scene.free()
 			is_paused = false
+			get_tree().paused = false
 		# Otherwise free current scene normally
 		elif current_scene:
 			current_scene.free()
@@ -72,6 +74,7 @@ func return_from_scene():
 		paused_scene.show()
 		current_scene = paused_scene
 		is_paused = false
+		get_tree().paused = false
 		get_tree().current_scene = current_scene
 	else:
 		# Fallback if something went wrong

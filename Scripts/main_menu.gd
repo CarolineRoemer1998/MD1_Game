@@ -11,7 +11,7 @@ func _on_stettings_pressed() -> void:
 	SceneSwitcher.go_to_settings()
 
 func _on_credits_pressed() -> void:
-	SceneSwitcher.switch_scene("res://Scenes/Menu/credit_scene.tscn",true)
+	SceneSwitcher.switch_scene("res://Scenes/Menu/credit_scene.tscn")
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

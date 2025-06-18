@@ -6,4 +6,4 @@ func _ready() -> void:
 
 
 func _on_exit_pressed() -> void:
-	SceneSwitcher.return_from_scene()
+	SceneSwitcher.switch_scene("res://Scenes/Menu/MainMenu.tscn")
