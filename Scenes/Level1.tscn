@@ -1,29 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs2a730k3etf4"]
+[gd_scene load_steps=8 format=3 uid="uid://bs2a730k3etf4"]
 
 [ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scenes/level.gd" id="1_bdlbp"]
 [ext_resource type="PackedScene" uid="uid://drl8fvb23s6aj" path="res://Scenes/background_lvl1.tscn" id="1_ysn8j"]
 [ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/creature_blue.tscn" id="2_6ll4n"]
-[ext_resource type="PackedScene" uid="uid://c6dmpno4s3103" path="res://Scenes/door.tscn" id="3_2h8qs"]
 [ext_resource type="PackedScene" uid="uid://g3u7bc1jo6gj" path="res://Scenes/player.tscn" id="3_kylad"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/merged_creature.tscn" id="8_6ll4n"]
 [ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="9_kylad"]
 [ext_resource type="PackedScene" uid="uid://be6k5yjppap8y" path="res://Scenes/creature_yellow.tscn" id="11_2h8qs"]
-[ext_resource type="PackedScene" uid="uid://bt4pnhd7cx7xc" path="res://Scenes/button.tscn" id="11_rpty4"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_bdlbp")
 
 [node name="Background_Lvl1" parent="." instance=ExtResource("1_ysn8j")]
-
-[node name="Wall2" parent="." instance=ExtResource("3_2h8qs")]
-position = Vector2(160, 480)
-buttons = Array[NodePath]([NodePath("../Button"), NodePath("../Button2")])
-
-[node name="Button" parent="." instance=ExtResource("11_rpty4")]
-position = Vector2(162, 355)
-
-[node name="Button2" parent="." instance=ExtResource("11_rpty4")]
-position = Vector2(351, 422)
 
 [node name="Creature" parent="." instance=ExtResource("2_6ll4n")]
 position = Vector2(288, 288)
