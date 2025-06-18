@@ -3,6 +3,7 @@ extends Node2D
 class_name Door
 
 @export var buttons: Array[NodePath] = [] # Set this from the editor
+@export var door_can_close: bool = false
 
 @onready var button_refs: Array = []
 @onready var sprite: Sprite2D = $Sprite2D
@@ -29,8 +30,8 @@ func _on_button_state_changed():
 
 func _check_buttons():
 	for button in button_refs:
-		if not button.is_pressed():
-			#_close_door()
+		if not button.is_pressed() and door_can_close:
+			_close_door()
 			return
 	
 	_open_door()
