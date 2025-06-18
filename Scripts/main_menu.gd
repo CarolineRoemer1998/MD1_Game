@@ -8,7 +8,7 @@ func _on_start_pressed() -> void:
 	SceneSwitcher.go_to_next_level()
 
 func _on_stettings_pressed() -> void:
-	SceneSwitcher.go_to_settings()
+	SceneSwitcher.switch_scene("res://Scenes/Menu/Settings.tscn")
 
 func _on_credits_pressed() -> void:
 	SceneSwitcher.switch_scene("res://Scenes/Menu/credit_scene.tscn")
