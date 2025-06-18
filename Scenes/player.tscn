@@ -417,7 +417,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 2
+collision_layer = 17
+collision_mask = 11
 script = ExtResource("1_cvnsp")
 trail_scene = ExtResource("3_6t5aa")
 

@@ -1,10 +1,15 @@
 extends Node2D
 
+class_name Door
+
 @export var buttons: Array[NodePath] = [] # Set this from the editor
 
 @onready var button_refs: Array = []
-@onready var collider: CollisionShape2D = $StaticBody2D/CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var collider: CollisionShape2D = $CollisionShape2D
+
+var opened_door_sprite := preload("res://Sprites/fence-gate-open.png")
+var closed_door_sprite := preload("res://Sprites/fence-gate-closed.png")
 
 var wall_active := true
 
@@ -25,23 +30,23 @@ func _on_button_state_changed():
 func _check_buttons():
 	for button in button_refs:
 		if not button.is_pressed():
-			#_activate_wall()
+			#_close_door()
 			return
 	
-	_deactivate_wall()
+	_open_door()
 
-func _deactivate_wall():
+func _open_door():
 	if wall_active:
 		wall_active = false
 		collider.disabled = true
 		print("Collider disabled:", collider.disabled)
-		sprite.modulate = Color(1, 1, 1, 0.3)
+		sprite.texture = opened_door_sprite
 		print("Wall deactivated!")
 
-func _activate_wall():
+func _close_door():
 	if not wall_active:
 		wall_active = true
 		collider.disabled = false
 		print("Collider disabled:", collider.disabled)
-		sprite.modulate = Color(1, 1, 1, 1)
+		sprite.texture = closed_door_sprite
 		print("Wall activated!")

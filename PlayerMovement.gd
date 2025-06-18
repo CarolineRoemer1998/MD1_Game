@@ -22,6 +22,11 @@ var possessed_creature_until_next_tile: Creature = null
 @onready var audio_uncontrol: AudioStreamPlayer2D = $AudioUncontrol
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+# LAYER BITS
+const WALL_AND_PLAYER_LAYER_BIT := 0
+const PUSHABLE_LAYER_BIT := 2
+const DOOR_LAYER_BIT     := 3
+
 var can_move := true
 
 var heart_position_right := Vector2(32,0)
@@ -120,7 +125,7 @@ func try_move(direction: Vector2):
 	# Prüfen ob ein Objekt am Zielort ist
 	var query := PhysicsPointQueryParameters2D.new()
 	query.position = new_pos
-	query.collision_mask = 1
+	query.collision_mask = (1 << PUSHABLE_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << WALL_AND_PLAYER_LAYER_BIT)
 	var result = space_state.intersect_point(query, 1)
 
 	# Kein Objekt: Bewegung frei
@@ -169,14 +174,24 @@ func _merge(direction : Vector2, neighbor : Creature):
 func try_push_and_move(object_to_push, new_pos, direction, space_state):
 	# Objekt vorhanden, prüfen ob pushable
 	var obj = object_to_push[0].collider
-	if not obj.is_in_group("pushable"):
+	if not obj.is_in_group("pushable") and not obj.is_in_group("door"):
 		return
-
+	
 	if currently_possessed_creature == null:
 		spawn_trail(position)
 		target_position = new_pos
 		set_is_moving(true)
 		return
+	
+	if obj.is_in_group("door"):
+		if obj is Door:
+			if obj.wall_active:
+				return
+			elif not obj.wall_active:
+				spawn_trail(position)
+				target_position = new_pos
+				set_is_moving(true)
+				return
 	
 	# Ziel hinter dem pushable prüfen
 	var push_target = new_pos + direction * GRID_SIZE
