@@ -42,6 +42,8 @@ func _ready():
 func _process(delta):
 	move(delta)
 	update_heart_visibility()
+	
+	
 
 
 func _unhandled_input(event):

@@ -41,15 +41,13 @@ func go_to_next_level():
 		switch_scene("res://Scenes/Level"+ str(nextLevel) +".tscn")
 		current_level = nextLevel
 	else:
-		current_level = 0
-		switch_scene("res://Scenes/Menu/MainMenu.tscn")
+		go_to_main_menu()
 
 func go_to_current_level():
 	if current_level > 0 and current_level <= levelCount:
 		switch_scene("res://Scenes/Level"+ str(current_level) +".tscn")
 	else:
-		switch_scene("res://Scenes/Menu/MainMenu.tscn")
-		current_level = 0
+		go_to_main_menu()
 
 func reload_level():
 	if current_scene:
@@ -58,14 +56,20 @@ func reload_level():
 	if current_level > 0 and current_level <= levelCount:
 		switch_scene("res://Scenes/Level" + str(current_level) + ".tscn")
 	else:
-		current_level = 0
-		switch_scene("res://Scenes/Menu/MainMenu.tscn")
+		go_to_main_menu()
 	print("scene reloaded")
 
 
 # New functions for settings
 func go_to_settings():
-	switch_scene("res://Scenes/Menu/Settings.tscn", true)
+	switch_scene("res://Scenes/Menu/InGameSettings.tscn", true)
+
+func go_to_main_menu(ending_game: bool = false):
+	if ending_game:
+		current_scene.queue_free()
+	current_level = 0
+	switch_scene("res://Scenes/Menu/MainMenu.tscn")
+
 
 func return_from_scene():
 	if is_paused and paused_scene:
