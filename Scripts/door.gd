@@ -30,10 +30,10 @@ func _on_button_state_changed():
 
 func _check_buttons():
 	for button in button_refs:
-		if not button.is_pressed() and door_can_close:
-			_close_door()
+		if not button.is_pressed():
+			if door_can_close:
+				_close_door()
 			return
-	
 	_open_door()
 
 func _open_door():
