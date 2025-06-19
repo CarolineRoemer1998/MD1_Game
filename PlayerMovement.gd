@@ -18,6 +18,7 @@ var possessed_creature_until_next_tile: Creature = null
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var heart: Sprite2D = $Heart
 @onready var label_press_f_to_control: Label = $LabelPressFToControl
+@onready var label_press_f_to_stop_control: Label = $LabelPressFToStopControl
 @onready var audio_control: AudioStreamPlayer2D = $AudioControl
 @onready var audio_uncontrol: AudioStreamPlayer2D = $AudioUncontrol
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -231,6 +232,7 @@ func possess_or_unpossess_creature():
 
 		currently_possessed_creature = null
 		label_press_f_to_control.visible = true
+		label_press_f_to_stop_control.visible = false
 		animated_sprite_2d.modulate = Color(1, 1, 1, 0.8)
 		audio_uncontrol.play()
 
@@ -239,6 +241,7 @@ func possess_or_unpossess_creature():
 		if hovering_over and hovering_over is Creature:
 			currently_possessed_creature = hovering_over
 			label_press_f_to_control.visible = false
+			label_press_f_to_stop_control.visible = true
 			currently_possessed_creature.border.visible = true
 			animated_sprite_2d.modulate = Color(1, 1, 1, 0)
 			audio_control.play()
