@@ -2,7 +2,7 @@ extends Node
 
 var current_scene = null
 var current_level = 0
-var levelCount = 3
+var levelCount = 4
 var paused_scene = null  # To store the paused scene
 var is_paused = false   # To track if we're in a paused state
 

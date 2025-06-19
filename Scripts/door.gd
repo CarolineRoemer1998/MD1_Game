@@ -12,7 +12,7 @@ class_name Door
 var opened_door_sprite := preload("res://Sprites/fence-gate-open.png")
 var closed_door_sprite := preload("res://Sprites/fence-gate-closed.png")
 
-var wall_active := true
+var door_is_closed := true
 
 func _ready():
 	# Resolve NodePaths to actual button nodes
@@ -37,20 +37,16 @@ func _check_buttons():
 	_open_door()
 
 func _open_door():
-	if wall_active:
-		wall_active = false
+	if door_is_closed:
+		door_is_closed = false
 		collider.disabled = true
-		print("Collider disabled:", collider.disabled)
 		sprite.texture = opened_door_sprite
-		print("Wall deactivated!")
 	if not door_can_close:
 		for button in button_refs:
 			button.set_door_is_permanently_opened()
 
 func _close_door():
-	if not wall_active:
-		wall_active = true
+	if not door_is_closed:
+		door_is_closed = true
 		collider.disabled = false
-		print("Collider disabled:", collider.disabled)
 		sprite.texture = closed_door_sprite
-		print("Wall activated!")

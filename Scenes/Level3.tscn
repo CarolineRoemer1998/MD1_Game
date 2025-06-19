@@ -22,13 +22,12 @@ door_can_close = true
 
 [node name="Button" parent="." instance=ExtResource("5_ncjpd")]
 position = Vector2(480, 416)
-type = 2
 
 [node name="Button2" parent="." instance=ExtResource("5_ncjpd")]
-position = Vector2(480, 288)
-type = 2
+position = Vector2(608, 416)
 
 [node name="MergedCreature" parent="." instance=ExtResource("8_t5kwq")]
+visible = false
 position = Vector2(824, 64)
 
 [node name="CreatureBlue" parent="." instance=ExtResource("6_ffsx8")]

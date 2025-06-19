@@ -123,22 +123,32 @@ func try_move(direction: Vector2):
 	var new_pos = target_position + direction * GRID_SIZE
 	var space_state = get_world_2d().direct_space_state
 	merge_if_possible(direction)
+	
 	# Prüfen ob ein Objekt am Zielort ist
 	var query := PhysicsPointQueryParameters2D.new()
 	query.position = new_pos
-	query.collision_mask = (1 << PUSHABLE_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << WALL_AND_PLAYER_LAYER_BIT)
-	var result = space_state.intersect_point(query, 1)
-
+	
+	# Query für Pushables
+	query.collision_mask = (1 << PUSHABLE_LAYER_BIT)
+	var result_pushables = space_state.intersect_point(query, 1)
+	
+	# Query für Türen
+	query.collision_mask = (1 << DOOR_LAYER_BIT)
+	var result_doors = space_state.intersect_point(query, 1)
+	
+	# Query für Blockaden
+	query.collision_mask = (1 << WALL_AND_PLAYER_LAYER_BIT)
+	var result_wall = space_state.intersect_point(query, 1)
+	
 	# Kein Objekt: Bewegung frei
-	if result.is_empty():
+	if (result_pushables.is_empty() or currently_possessed_creature == null) and (result_doors.is_empty() or currently_possessed_creature == null) and result_wall.is_empty():
 		spawn_trail(position)
 		target_position = new_pos
 		set_is_moving(true)
 		return
-		
-	# Objekt vorhanden, prüfen ob pushable
-	try_push_and_move(result, new_pos, direction, space_state)
-
+	
+	try_push_and_move(result_pushables, result_doors, result_wall, new_pos, direction, space_state)
+	
 
 func merge_if_possible(direction : Vector2) -> bool:
 	if currently_possessed_creature != null:
@@ -172,39 +182,56 @@ func _merge(direction : Vector2, neighbor : Creature):
 	return false
 
 
-func try_push_and_move(object_to_push, new_pos, direction, space_state):
-	# Objekt vorhanden, prüfen ob pushable
-	var obj = object_to_push[0].collider
-	if not obj.is_in_group("pushable") and not obj.is_in_group("door"):
+func try_push_and_move(pushable, door, wall, new_pos, direction, space_state):
+	
+	# Wand vor Spieler, keine Bewegung
+	if pushable.is_empty() and door.is_empty() and not wall.is_empty():
 		return
 	
+	# Spieler ist Geist und kann sich durch restliche Objekte durch bewegen
 	if currently_possessed_creature == null:
 		spawn_trail(position)
 		target_position = new_pos
 		set_is_moving(true)
 		return
 	
-	if obj.is_in_group("door"):
-		if obj is Door:
-			if obj.wall_active:
-				return
-			elif not obj.wall_active:
-				spawn_trail(position)
-				target_position = new_pos
-				set_is_moving(true)
+	# Tür vor Spieler
+	if not door.is_empty():
+		# Tür verschlossen, keine Bewegung
+		if door[0].collider.door_is_closed:
+			return
+			
+		# Tür offen
+		elif not door[0].collider.door_is_closed:
+			spawn_trail(position)
+			target_position = new_pos
+			set_is_moving(true)
+			# Wenn Spieler kein Pushable durch die Tür schiebt, Funktion hier beenden
+			if pushable.is_empty():
 				return
 	
 	# Ziel hinter dem pushable prüfen
 	var push_target = new_pos + direction * GRID_SIZE
 	var push_query := PhysicsPointQueryParameters2D.new()
 	push_query.position = push_target
-	push_query.collision_mask = 3
+	push_query.collision_mask = (1 << PUSHABLE_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << WALL_AND_PLAYER_LAYER_BIT)
 	var push_result = space_state.intersect_point(push_query, 1)
-
-	# Falls frei, push ausführen
-	if push_result.is_empty() and obj.push(direction):
-		target_position = new_pos
-		set_is_moving(true)
+	#TODO: Steine lassen sich mit push_query.collision_mask = 5 nicht aufeinander schieben (was so sein soll), 
+	#      aber sie lassen sich so (und auch mit = 3, wie es vorher war) auf geschlossene türen schieben
+	for i in push_result:
+		if i.collider is Door and not i.collider.door_is_closed:
+			if pushable[0].collider.push(direction):
+				target_position = new_pos
+				set_is_moving(true)
+				return
+		print(i.collider)
+		print(i.collider is Door)
+		
+	# Falls frei oder Tür die offen ist, push ausführen
+	if push_result.is_empty():
+		if pushable[0].collider.push(direction):
+			target_position = new_pos
+			set_is_moving(true)
 	else:
 		buffered_direction = Vector2.ZERO
 
