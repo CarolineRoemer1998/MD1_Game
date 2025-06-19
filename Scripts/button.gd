@@ -5,6 +5,12 @@ signal deactivated
 
 enum BUTTON_TYPE {TOGGLE, STICKY, PRESSURE}
 
+var sprite_sticky_off := preload("res://Sprites/button_unpressed.png")
+var sprite_sticky_on := preload("res://Sprites/button_pressed.png")
+var sprite_pressure_off := preload("res://Sprites/pressure_plate_off.png")
+var sprite_pressure_on := preload("res://Sprites/pressure_plate_on.png")
+
+
 @export var type : BUTTON_TYPE = BUTTON_TYPE.STICKY
 
 var active: bool = false
@@ -17,6 +23,7 @@ var sticky_audio_played = false
 @onready var audio_leave: AudioStreamPlayer2D = $AudioLeave
 
 func _ready() -> void:
+	_set_button_sprites()
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
 	_update_button_color()
@@ -73,3 +80,14 @@ func pressure_button():
 		set_active(true)
 		emit_signal("activated")
 		audio_push_button.play()
+
+func _set_button_sprites():
+	match type:
+		BUTTON_TYPE.TOGGLE:
+			return
+		BUTTON_TYPE.STICKY:
+			button_green.texture = sprite_sticky_on
+			button_red.texture = sprite_sticky_off
+		BUTTON_TYPE.PRESSURE:
+			button_green.texture = sprite_pressure_on
+			button_red.texture = sprite_pressure_off
