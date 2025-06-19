@@ -43,6 +43,9 @@ func _open_door():
 		print("Collider disabled:", collider.disabled)
 		sprite.texture = opened_door_sprite
 		print("Wall deactivated!")
+	if not door_can_close:
+		for button in button_refs:
+			button.set_door_is_permanently_opened()
 
 func _close_door():
 	if not wall_active:

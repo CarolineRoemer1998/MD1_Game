@@ -10,11 +10,11 @@ var sprite_sticky_on := preload("res://Sprites/button_pressed.png")
 var sprite_pressure_off := preload("res://Sprites/pressure_plate_off.png")
 var sprite_pressure_on := preload("res://Sprites/pressure_plate_on.png")
 
-
 @export var type : BUTTON_TYPE = BUTTON_TYPE.STICKY
 
 var active: bool = false
-var sticky_audio_played = false
+var sticky_audio_played : bool = false
+var door_is_permanently_opened : bool = false
 
 @onready var button_green: Sprite2D = $Button_GREEN
 @onready var button_red: Sprite2D = $Button_RED
@@ -29,6 +29,9 @@ func _ready() -> void:
 	_update_button_color()
 
 func _on_body_entered(body: Node) -> void:
+	if door_is_permanently_opened:
+		return
+	
 	match type:
 		BUTTON_TYPE.TOGGLE: 
 			toggle_button()
@@ -38,6 +41,9 @@ func _on_body_entered(body: Node) -> void:
 			pressure_button()
 	
 func _on_body_exited(body: Node) -> void:
+	if door_is_permanently_opened:
+		return
+	
 	# Optional: only deactivate if no bodies are left
 	if type == BUTTON_TYPE.TOGGLE or type == BUTTON_TYPE.STICKY:
 		return
@@ -91,3 +97,6 @@ func _set_button_sprites():
 		BUTTON_TYPE.PRESSURE:
 			button_green.texture = sprite_pressure_on
 			button_red.texture = sprite_pressure_off
+			
+func set_door_is_permanently_opened():
+	door_is_permanently_opened = true
