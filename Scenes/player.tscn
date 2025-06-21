@@ -455,8 +455,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 17
-collision_mask = 11
+collision_mask = 15
 script = ExtResource("1_cvnsp")
 trail_scene = ExtResource("3_6t5aa")
 
@@ -531,7 +530,7 @@ autoplay = "Float"
 [node name="LabelPressFToStopControl" type="Label" parent="."]
 visible = false
 top_level = true
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

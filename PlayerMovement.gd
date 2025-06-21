@@ -25,6 +25,7 @@ var possessed_creature_until_next_tile: Creature = null
 
 # LAYER BITS
 const WALL_AND_PLAYER_LAYER_BIT := 0
+const CREATURE_LAYER_BIT := 1
 const PUSHABLE_LAYER_BIT := 2
 const DOOR_LAYER_BIT     := 3
 
@@ -214,7 +215,7 @@ func try_push_and_move(pushable, door, wall, new_pos, direction, space_state):
 	var push_target = new_pos + direction * GRID_SIZE
 	var push_query := PhysicsPointQueryParameters2D.new()
 	push_query.position = push_target
-	push_query.collision_mask = (1 << PUSHABLE_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << WALL_AND_PLAYER_LAYER_BIT)
+	push_query.collision_mask = (1 << PUSHABLE_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << WALL_AND_PLAYER_LAYER_BIT) | (1 << CREATURE_LAYER_BIT)
 	var push_result = space_state.intersect_point(push_query, 1)
 	#TODO: Steine lassen sich mit push_query.collision_mask = 5 nicht aufeinander schieben (was so sein soll), 
 	#      aber sie lassen sich so (und auch mit = 3, wie es vorher war) auf geschlossene türen schieben

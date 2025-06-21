@@ -665,7 +665,7 @@ _data = {
 
 [node name="CreatureYellow" type="CharacterBody2D" groups=["creature"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_clbwa")
 own_color = 2
 desired_color = 1
