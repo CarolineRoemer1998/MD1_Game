@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs2a730k3etf4"]
+[gd_scene load_steps=9 format=3 uid="uid://bs2a730k3etf4"]
 
 [ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scenes/level.gd" id="1_bdlbp"]
 [ext_resource type="PackedScene" uid="uid://drl8fvb23s6aj" path="res://Scenes/background_lvl1.tscn" id="1_ysn8j"]
 [ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/creature_blue.tscn" id="2_6ll4n"]
 [ext_resource type="PackedScene" uid="uid://g3u7bc1jo6gj" path="res://Scenes/player.tscn" id="3_kylad"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/merged_creature.tscn" id="8_6ll4n"]
+[ext_resource type="PackedScene" uid="uid://cvpsunu2hglj1" path="res://Scenes/reset_bar.tscn" id="8_kylad"]
 [ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="9_kylad"]
 [ext_resource type="PackedScene" uid="uid://be6k5yjppap8y" path="res://Scenes/creature_yellow.tscn" id="11_2h8qs"]
 
@@ -26,6 +27,12 @@ position = Vector2(352, 480)
 visible = false
 
 [node name="WinScreen" parent="." instance=ExtResource("9_kylad")]
+
+[node name="ResetBar" parent="." instance=ExtResource("8_kylad")]
+offset_left = 32.0
+offset_top = 672.0
+offset_right = 32.0
+offset_bottom = 672.0
 
 [editable path="Creature"]
 [editable path="MergedCreature"]
