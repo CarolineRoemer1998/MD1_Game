@@ -36,6 +36,9 @@ func _deferred_switch_scene(res_path, pause_current=false):
 	get_tree().current_scene = current_scene
 
 func go_to_next_level():
+	if current_level == levelCount:
+		switch_scene("res://Scenes/Menu/credit_scene.tscn")
+		return
 	var nextLevel = current_level + 1
 	if nextLevel <= levelCount:
 		switch_scene("res://Scenes/Level"+ str(nextLevel) +".tscn")
