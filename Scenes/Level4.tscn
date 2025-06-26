@@ -76,9 +76,7 @@ visible = false
 [node name="WinScreen" parent="." instance=ExtResource("8_xgp81")]
 
 [node name="ResetBar" parent="." instance=ExtResource("10_nv5kp")]
-offset_left = 32.0
-offset_top = 672.0
-offset_right = 32.0
-offset_bottom = 672.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [editable path="Doors&Buttons/Door1"]

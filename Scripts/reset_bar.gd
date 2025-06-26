@@ -10,14 +10,14 @@ var reset_hold_timer := 0.0
 
 func _ready():
 	_reset_progress_bar_state()
+	reset_progress_bar.value = 0
 
 func _process(delta):
 	# Check if the reset input action is currently pressed
 	if Input.is_action_pressed(RESET_INPUT_ACTION):
 		if not is_reset_input_held:
 			is_reset_input_held = true
-			reset_hold_timer = 0.0
-			reset_progress_bar.visible = true # Show the progress bar
+			reset_hold_timer = 0.0 # Show the progress bar
 		
 		reset_hold_timer += delta
 		
@@ -41,4 +41,3 @@ func _process(delta):
 func _reset_progress_bar_state():
 	reset_hold_timer = 0.0
 	reset_progress_bar.value = 0
-	reset_progress_bar.visible = false # Hide the progress bar
