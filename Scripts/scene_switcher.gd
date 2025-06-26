@@ -3,7 +3,7 @@ extends Node
 var current_scene = null
 var current_level = 0
 var levelCount = 4
-var paused_scene = null  # To store the paused scene
+var paused_scene = null  # T o store the paused scene
 var is_paused = false   # To track if we're in a paused state
 
 func _ready() -> void:
@@ -83,3 +83,9 @@ func return_from_scene():
 	else:
 		# Fallback if something went wrong
 		go_to_current_level()
+
+func set_curent_level(level_number: int):
+	if level_number >= 0 and level_number <= levelCount:
+		current_level = level_number
+	else:
+		current_level = 0
