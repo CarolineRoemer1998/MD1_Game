@@ -455,7 +455,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 15
+collision_mask = 47
 script = ExtResource("1_cvnsp")
 trail_scene = ExtResource("3_6t5aa")
 
@@ -481,7 +481,7 @@ visible = false
 shape = SubResource("RectangleShape2D_qxrlw")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 6
+collision_mask = 38
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false

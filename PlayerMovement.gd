@@ -3,6 +3,7 @@ class_name Player
 
 const GRID_SIZE := Vector2(64, 64)
 const MOVE_SPEED := 500.0
+const ICE_MOVE_SPEED := 400.0
 
 var target_position: Vector2
 var is_moving := false
@@ -28,6 +29,7 @@ const WALL_AND_PLAYER_LAYER_BIT := 0
 const CREATURE_LAYER_BIT := 1
 const PUSHABLE_LAYER_BIT := 2
 const DOOR_LAYER_BIT     := 3
+const ICE_LAYER_BIT      := 5
 
 var can_move := true
 
@@ -37,6 +39,10 @@ var heart_position_left := Vector2(-32,0)
 var heart_position_top := Vector2(0,-32)
 
 var obstacle : Node = null
+
+var is_on_ice := false
+
+var current_direction := Vector2(0,0)
 
 
 func _ready():
@@ -99,8 +105,15 @@ func _unhandled_input(event):
 
 func move(delta):
 	if is_moving:
+		if is_on_ice and currently_possessed_creature:
+			move_on_ice(delta)
+			return
+	
+				
 		position = position.move_toward(target_position, MOVE_SPEED * delta)
 		
+		
+			
 		if possessed_creature_until_next_tile:
 			# Besessene Kreatur mitziehen
 			possessed_creature_until_next_tile.position = possessed_creature_until_next_tile.position.move_toward(
@@ -120,14 +133,59 @@ func move(delta):
 				buffered_direction = Vector2.ZERO
 
 
+func move_on_ice(delta):
+	set_is_on_ice(target_position + current_direction * GRID_SIZE)
+	#MOVE_SPEED = 400.0
+	
+	var space = get_world_2d().direct_space_state
+	var slide_pos = target_position
+	var result_block
+	var result_ice
+	while true:
+		var next_pos = slide_pos + current_direction * GRID_SIZE
+		
+		var block_query = PhysicsPointQueryParameters2D.new()
+		block_query.position = next_pos
+		block_query.collision_mask = (1 << WALL_AND_PLAYER_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << CREATURE_LAYER_BIT) | (1 << PUSHABLE_LAYER_BIT)
+		result_block = space.intersect_point(block_query, 1)
+		if not result_block.is_empty():
+			break
+		
+		var ice_query = PhysicsPointQueryParameters2D.new()
+		ice_query.position = next_pos
+		ice_query.collision_mask = 1 << ICE_LAYER_BIT
+		ice_query.collide_with_areas = true
+		ice_query.collide_with_bodies = true
+		result_ice = space.intersect_point(ice_query, 1)
+		if result_ice.is_empty():
+			break
+		
+		print("Block Query: ", space.intersect_point(block_query, 1), "\nIce Query: ", space.intersect_point(ice_query, 1), "\n")
+		
+		slide_pos = next_pos
+		
+	if slide_pos != target_position or not result_block.is_empty():
+		spawn_trail(position)
+		target_position = slide_pos
+		set_is_moving(true)
+	else:
+		target_position += current_direction * GRID_SIZE
+		set_is_moving(true)
+
 func try_move(direction: Vector2):
 	var new_pos = target_position + direction * GRID_SIZE
+	current_direction = direction
 	var space_state = get_world_2d().direct_space_state
+	
+	set_is_on_ice(new_pos)
+		
 	merge_if_possible(direction)
 	
 	# Prüfen ob ein Objekt am Zielort ist
 	var query := PhysicsPointQueryParameters2D.new()
 	query.position = new_pos
+	
+	
 	
 	# Query für Pushables
 	query.collision_mask = (1 << PUSHABLE_LAYER_BIT)
@@ -149,7 +207,16 @@ func try_move(direction: Vector2):
 		return
 	
 	try_push_and_move(result_pushables, result_doors, result_wall, new_pos, direction, space_state)
-	
+
+func set_is_on_ice(new_pos) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var ice_query = PhysicsPointQueryParameters2D.new()
+	ice_query.position = new_pos
+	ice_query.collision_mask = 1 << ICE_LAYER_BIT
+	ice_query.collide_with_bodies = true
+	ice_query.collide_with_areas  = true
+	is_on_ice = not space_state.intersect_point(ice_query, 1).is_empty()
+	return is_on_ice
 
 func merge_if_possible(direction : Vector2) -> bool:
 	if currently_possessed_creature != null:
@@ -163,7 +230,6 @@ func merge_if_possible(direction : Vector2) -> bool:
 			Vector2(0.0, -1.0): # top
 				return await _merge(Vector2(0,-64), currently_possessed_creature.neighbor_top)
 	return false
-
 
 func _merge(direction : Vector2, neighbor : Creature):
 	if neighbor != null:
@@ -181,7 +247,6 @@ func _merge(direction : Vector2, neighbor : Creature):
 			can_move = false
 			return true
 	return false
-
 
 func try_push_and_move(pushable, door, wall, new_pos, direction, space_state):
 	
@@ -217,20 +282,17 @@ func try_push_and_move(pushable, door, wall, new_pos, direction, space_state):
 	push_query.position = push_target
 	push_query.collision_mask = (1 << PUSHABLE_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << WALL_AND_PLAYER_LAYER_BIT) | (1 << CREATURE_LAYER_BIT)
 	var push_result = space_state.intersect_point(push_query, 1)
-	#TODO: Steine lassen sich mit push_query.collision_mask = 5 nicht aufeinander schieben (was so sein soll), 
-	#      aber sie lassen sich so (und auch mit = 3, wie es vorher war) auf geschlossene türen schieben
+	
 	for i in push_result:
 		if i.collider is Door and not i.collider.door_is_closed:
 			if pushable[0].collider.push(direction):
 				target_position = new_pos
 				set_is_moving(true)
 				return
-		print(i.collider)
-		print(i.collider is Door)
 		
 	# Falls frei oder Tür die offen ist, push ausführen
 	if push_result.is_empty():
-		if pushable[0].collider.push(direction):
+		if pushable[0].collider.push(direction * GRID_SIZE):
 			target_position = new_pos
 			set_is_moving(true)
 	else:

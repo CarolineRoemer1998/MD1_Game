@@ -12,11 +12,11 @@ func _ready():
 	target_position = position.snapped(GRID_SIZE / 2)
 	position = target_position
 
-func push(direction: Vector2) -> bool:
+func push(goal_position: Vector2) -> bool:
 	if is_moving:
 		return false
 
-	target_position += direction * GRID_SIZE
+	target_position += goal_position
 	is_moving = true
 	return true
 
