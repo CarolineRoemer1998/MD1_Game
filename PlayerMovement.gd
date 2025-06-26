@@ -107,7 +107,6 @@ func move(delta):
 	if is_moving:
 		if is_on_ice and currently_possessed_creature:
 			move_on_ice(delta)
-			return
 	
 				
 		position = position.move_toward(target_position, MOVE_SPEED * delta)
@@ -133,44 +132,59 @@ func move(delta):
 				buffered_direction = Vector2.ZERO
 
 
+# ???????????????????????????????????????????????????????????????????????????????????????????????????????
+# ?? BUG: If stone is on ice and creature walks on a spot thats 2 tiles away from stone, it gets stuck ??
+# ???????????????????????????????????????????????????????????????????????????????????????????????????????
 func move_on_ice(delta):
 	set_is_on_ice(target_position + current_direction * GRID_SIZE)
 	#MOVE_SPEED = 400.0
 	
+	var block_mask = (1 << WALL_AND_PLAYER_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << CREATURE_LAYER_BIT) | (1 << PUSHABLE_LAYER_BIT)
 	var space = get_world_2d().direct_space_state
-	var slide_pos = target_position
+	var slide_end = target_position
 	var result_block
 	var result_ice
+	
 	while true:
-		var next_pos = slide_pos + current_direction * GRID_SIZE
+		var next_pos = slide_end + current_direction * GRID_SIZE
+		result_block = check_if_collides(next_pos, block_mask)
 		
-		var block_query = PhysicsPointQueryParameters2D.new()
-		block_query.position = next_pos
-		block_query.collision_mask = (1 << WALL_AND_PLAYER_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << CREATURE_LAYER_BIT) | (1 << PUSHABLE_LAYER_BIT)
-		result_block = space.intersect_point(block_query, 1)
-		if not result_block.is_empty():
+		result_ice = check_if_collides(next_pos, 1 << ICE_LAYER_BIT)
+		
+		print("Block Result: ", result_block, "\nIce Result: ", result_ice, "\n---------------------------------------------------------------------------------------------------------------------------------------")
+		
+		if check_if_collides(next_pos, block_mask):
 			break
-		
-		var ice_query = PhysicsPointQueryParameters2D.new()
-		ice_query.position = next_pos
-		ice_query.collision_mask = 1 << ICE_LAYER_BIT
-		ice_query.collide_with_areas = true
-		ice_query.collide_with_bodies = true
-		result_ice = space.intersect_point(ice_query, 1)
-		if result_ice.is_empty():
+			
+		if not check_is_ice(next_pos):
+			slide_end = next_pos
 			break
+				
+		slide_end = next_pos
+	
 		
-		print("Block Query: ", space.intersect_point(block_query, 1), "\nIce Query: ", space.intersect_point(ice_query, 1), "\n")
-		
-		slide_pos = next_pos
-		
-	if slide_pos != target_position or not result_block.is_empty():
-		spawn_trail(position)
-		target_position = slide_pos
-		set_is_moving(true)
-	else:
-		target_position += current_direction * GRID_SIZE
-		set_is_moving(true)
+	if slide_end != target_position: #or not result_block.is_empty():
+		target_position = slide_end
+	#else:
+		#target_position += current_direction * GRID_SIZE
+
+func check_is_ice(pos: Vector2) -> bool:
+	var space = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = pos
+	query.collision_mask = 1 << ICE_LAYER_BIT
+	var result = space.intersect_point(query, 1)
+	return not result.is_empty()
+
+func check_if_collides(position, layer_mask) -> bool:
+	var space = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = position
+	query.collision_mask = layer_mask
+	var result = space.intersect_point(query, 1)
+	return not result.is_empty()
+
+
 
 func try_move(direction: Vector2):
 	var new_pos = target_position + direction * GRID_SIZE
