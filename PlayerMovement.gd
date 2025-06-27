@@ -56,7 +56,45 @@ func _process(delta):
 	move(delta)
 	update_heart_visibility()
 	
-	
+		
+	#var direction := Vector2.ZERO
+	#
+	#if Input.is_action_just_pressed("ui_cancel"):
+			#SceneSwitcher.go_to_settings()
+	##if event.is_action_pressed("Reload_Level"):
+			##SceneSwitcher.reload_level()
+	#
+	#if can_move:
+		## Bewegungsrichtungen (directional input)
+		#if Input.is_action_just_pressed("Player_Up"):
+			#direction = Vector2.UP
+		#elif Input.is_action_just_pressed("Player_Down"):
+			#direction = Vector2.DOWN
+		#elif Input.is_action_just_pressed("Player_Left"):
+			#direction = Vector2.LEFT
+		#elif Input.is_action_just_pressed("Player_Right"):
+			#direction = Vector2.RIGHT
+#
+		## Interaktionsbutton
+		#elif Input.is_action_just_pressed("Interact"):
+			#if not is_moving:
+				#possess_or_unpossess_creature()
+		#
+		#animation_tree.set("parameters/Idle/BlendSpace2D/blend_position", direction)
+		#if currently_possessed_creature:
+			#currently_possessed_creature.animation_tree.set("parameters/Idle/BlendSpace2D/blend_position", direction)
+#
+		## Bewegungsversuch oder Puffern
+		#if direction != Vector2.ZERO:
+			#if is_moving:
+				#buffered_direction = direction
+			#else:
+				#try_move(direction)
+	#else:
+		## Szenewechsel durch Tastatur, Maus oder Gamepad
+		#
+		#if Input.is_action_just_pressed("ui_accept"):# or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) :
+			#SceneSwitcher.go_to_next_level()
 
 
 func _unhandled_input(event):
@@ -132,9 +170,6 @@ func move(delta):
 				buffered_direction = Vector2.ZERO
 
 
-# ???????????????????????????????????????????????????????????????????????????????????????????????????????
-# ?? BUG: If stone is on ice and creature walks on a spot thats 2 tiles away from stone, it gets stuck ??
-# ???????????????????????????????????????????????????????????????????????????????????????????????????????
 func move_on_ice(delta):
 	set_is_on_ice(target_position + current_direction * GRID_SIZE)
 	#MOVE_SPEED = 400.0
@@ -145,13 +180,20 @@ func move_on_ice(delta):
 	var result_block
 	var result_ice
 	
-	while true:
+	var can_slide = true
+	
+	var next_collision = get_collision_on_tile(slide_end, 1 << PUSHABLE_LAYER_BIT)
+	if next_collision.size() > 0:
+		if next_collision[0].collider is Pushable:
+			can_slide = false
+			slide_end = slide_end - current_direction * GRID_SIZE
+			return
+	
+	while can_slide:
 		var next_pos = slide_end + current_direction * GRID_SIZE
+		
 		result_block = check_if_collides(next_pos, block_mask)
-		
 		result_ice = check_if_collides(next_pos, 1 << ICE_LAYER_BIT)
-		
-		print("Block Result: ", result_block, "\nIce Result: ", result_ice, "\n---------------------------------------------------------------------------------------------------------------------------------------")
 		
 		if check_if_collides(next_pos, block_mask):
 			break
@@ -184,6 +226,12 @@ func check_if_collides(position, layer_mask) -> bool:
 	var result = space.intersect_point(query, 1)
 	return not result.is_empty()
 
+func get_collision_on_tile(position, layer_mask):
+	var space = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = position
+	query.collision_mask = layer_mask
+	return space.intersect_point(query, 1)
 
 
 func try_move(direction: Vector2):

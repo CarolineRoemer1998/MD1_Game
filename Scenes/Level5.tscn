@@ -36,6 +36,27 @@ position = Vector2(512, 320)
 [node name="IceFloor7" parent="." instance=ExtResource("3_wik46")]
 position = Vector2(576, 384)
 
+[node name="IceFloor9" parent="." instance=ExtResource("3_wik46")]
+position = Vector2(384, 384)
+
+[node name="IceFloor10" parent="." instance=ExtResource("3_wik46")]
+position = Vector2(384, 320)
+
+[node name="IceFloor11" parent="." instance=ExtResource("3_wik46")]
+position = Vector2(448, 384)
+
+[node name="IceFloor12" parent="." instance=ExtResource("3_wik46")]
+position = Vector2(448, 320)
+
+[node name="IceFloor13" parent="." instance=ExtResource("3_wik46")]
+position = Vector2(512, 384)
+
+[node name="IceFloor14" parent="." instance=ExtResource("3_wik46")]
+position = Vector2(512, 320)
+
+[node name="IceFloor15" parent="." instance=ExtResource("3_wik46")]
+position = Vector2(576, 384)
+
 [node name="IceFloor8" parent="." instance=ExtResource("3_wik46")]
 position = Vector2(576, 320)
 
