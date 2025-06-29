@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://g3u7bc1jo6gj"]
+[gd_scene load_steps=52 format=3 uid="uid://g3u7bc1jo6gj"]
 
 [ext_resource type="Script" uid="uid://dr4elx8otc5ga" path="res://PlayerMovement.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://cknlg04piy5rc" path="res://Scenes/move_trail.tscn" id="3_6t5aa"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dugdhrnqmujux" path="res://Sprites/heart.png" id="5_fkybt"]
 [ext_resource type="FontFile" uid="uid://d3id6ewnchky" path="res://Fonts/GrapeSoda.ttf" id="6_x3wgy"]
 [ext_resource type="AudioStream" uid="uid://cg110h5fksqrl" path="res://Sounds/control2.mp3" id="7_8erm5"]
+[ext_resource type="Texture2D" uid="uid://dlpkvrjy1fpb1" path="res://Scenes/Ui_Controller/Ui_Interact.tres" id="7_f1ek2"]
 [ext_resource type="AudioStream" uid="uid://dbr1bkia48w5f" path="res://Sounds/uncontrol1.mp3" id="8_f1ek2"]
 [ext_resource type="Texture2D" uid="uid://cswpl2tlxvkhe" path="res://Sprites/player_6_animated-sheet.png" id="9_f1ek2"]
 
@@ -519,7 +520,12 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.45, 0.297, 0.3225, 0.992157)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("6_x3wgy")
-text = "F to control"
+text = "  to control"
+
+[node name="UiInteract" type="Sprite2D" parent="LabelPressFToControl"]
+position = Vector2(-2, 8)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_f1ek2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LabelPressFToControl"]
 libraries = {
@@ -528,7 +534,6 @@ libraries = {
 autoplay = "Float"
 
 [node name="LabelPressFToStopControl" type="Label" parent="."]
-visible = false
 top_level = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -545,8 +550,13 @@ theme_override_colors/font_outline_color = Color(0.45, 0.297, 0.3225, 0.992157)
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("6_x3wgy")
 theme_override_font_sizes/font_size = 32
-text = "F to stop control"
+text = "  to stop control"
 metadata/_edit_use_anchors_ = true
+
+[node name="UiInteract" type="Sprite2D" parent="LabelPressFToStopControl"]
+position = Vector2(-1.00136e-05, 16)
+scale = Vector2(0.3825, 0.3825)
+texture = ExtResource("7_f1ek2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LabelPressFToStopControl"]
 libraries = {
