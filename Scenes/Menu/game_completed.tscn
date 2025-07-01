@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckkosqi7rtbdb"]
+[gd_scene load_steps=10 format=3 uid="uid://ckkosqi7rtbdb"]
 
 [ext_resource type="FontFile" uid="uid://d3id6ewnchky" path="res://Fonts/GrapeSoda.ttf" id="1_diuch"]
 [ext_resource type="Texture2D" uid="uid://dugdhrnqmujux" path="res://Sprites/heart.png" id="2_xh2fq"]
+[ext_resource type="Texture2D" uid="uid://v56kyxx7qfib" path="res://Scenes/Ui_Controller/Ui_Acept.tres" id="3_oupf0"]
 
 [sub_resource type="Animation" id="Animation_2h8qs"]
 length = 0.001
@@ -239,6 +240,10 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_diuch")
 theme_override_font_sizes/font_size = 30
-text = "Press Space"
-horizontal_alignment = 1
+text = "Press"
 vertical_alignment = 1
+
+[node name="UiAcept" type="Sprite2D" parent="WinLable/Label"]
+position = Vector2(121, 16)
+scale = Vector2(0.5525, 0.5525)
+texture = ExtResource("3_oupf0")
