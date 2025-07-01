@@ -244,6 +244,6 @@ text = "Press"
 vertical_alignment = 1
 
 [node name="UiAcept" type="Sprite2D" parent="WinLable/Label"]
-position = Vector2(121, 16)
-scale = Vector2(0.5525, 0.5525)
+position = Vector2(117, 17)
+scale = Vector2(0.51625, 0.53625)
 texture = ExtResource("3_oupf0")
