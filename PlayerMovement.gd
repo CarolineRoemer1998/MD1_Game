@@ -106,17 +106,14 @@ func move(delta):
 	if is_moving:
 		if is_on_ice and currently_possessed_creature:
 			move_on_ice(delta)
-			print("Target Position: ", target_position, "\nCurrent Position: ", position)
 			if target_position == position:
 				is_sliding = false
-				print("is_sliding was reset to false")
 				
 		position = position.move_toward(target_position, MOVE_SPEED * delta)
 		if target_position == position:
 				is_sliding = false
-				print("is_sliding was reset to false")
+				#print("is_sliding was reset to false")
 		
-			
 		if possessed_creature_until_next_tile:
 			# Besessene Kreatur mitziehen
 			possessed_creature_until_next_tile.position = possessed_creature_until_next_tile.position.move_toward(
@@ -137,33 +134,23 @@ func move(delta):
 
 
 func move_on_ice(delta):
-	var can_slide = true
 	var block_mask = (1 << WALL_AND_PLAYER_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << CREATURE_LAYER_BIT) | (1 << PUSHABLE_LAYER_BIT)
-	var space = get_world_2d().direct_space_state
 	var slide_end = target_position
+	var push_end = Vector2(0,0)
 	var result_block
 	var result_ice
 	
-	
 	set_is_on_ice(target_position + current_direction * GRID_SIZE)
-	#MOVE_SPEED = 400.0
-	
-	
 	
 	var next_collision = get_collision_on_tile(slide_end, 1 << PUSHABLE_LAYER_BIT)
 	if not is_sliding and next_collision.size() > 0:
 		if next_collision[0].collider is Pushable:
 			is_sliding = true
-			can_slide = false
-			#print("slide_end: ", slide_end)
-			#print("current_direction: ", current_direction)
-			#print("GRID_SIZE: ", GRID_SIZE, "\n")
-			#print("target_position: ", target_position, "\n")
-			#print(current_direction, " * ", GRID_SIZE, " = ", current_direction * GRID_SIZE, "\nslide_end: ", slide_end, "\n", slide_end, " - ( ", current_direction * GRID_SIZE, " ) = ", slide_end - (current_direction * GRID_SIZE))
+			push_end = slide_end
 			slide_end = slide_end - (current_direction * GRID_SIZE)
-			return
+			slide_end += current_direction * GRID_SIZE
 	
-	while not is_sliding and can_slide:
+	while true:
 		var next_pos = slide_end + current_direction * GRID_SIZE
 		
 		result_block = check_if_collides(next_pos, block_mask)
@@ -171,18 +158,25 @@ func move_on_ice(delta):
 		
 		if check_if_collides(next_pos, block_mask):
 			break
-			
-		if not check_is_ice(next_pos):
+		print(check_is_ice(next_pos))
+		if not check_is_ice(next_pos) and not is_sliding:
 			slide_end = next_pos
 			break
-				
-		slide_end = next_pos
 		
+		#if result_ice:
+			#print(result_ice)
+		#if not check_is_ice(next_pos) and is_sliding:
+			#break
+		
+		slide_end = next_pos
+	
+	if is_sliding and next_collision.size() > 0 and not next_collision[0].collider.is_sliding:
+		if next_collision[0].collider.is_sliding == false:
+			next_collision[0].collider.is_sliding = true
+			next_collision[0].collider.slide(slide_end)
 			
-	if slide_end != target_position: #or not result_block.is_empty():
+	if not is_sliding and slide_end != target_position: 
 		target_position = slide_end
-	#else:
-		#target_position += current_direction * GRID_SIZE
 
 func check_is_ice(pos: Vector2) -> bool:
 	var space = get_world_2d().direct_space_state
@@ -214,7 +208,7 @@ func try_move(direction: Vector2):
 	var space_state = get_world_2d().direct_space_state
 	
 	set_is_on_ice(new_pos)
-		
+	
 	merge_if_possible(direction)
 	
 	# Prüfen ob ein Objekt am Zielort ist
