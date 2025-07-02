@@ -24,6 +24,42 @@ level_number = 5
 [node name="IceFloor" parent="IceTiles" instance=ExtResource("3_wik46")]
 position = Vector2(64, 256)
 
+[node name="IceFloor26" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(64, 192)
+
+[node name="IceFloor27" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(64, 128)
+
+[node name="IceFloor28" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(64, 64)
+
+[node name="IceFloor29" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(128, 64)
+
+[node name="IceFloor30" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(128, 128)
+
+[node name="IceFloor31" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(128, 192)
+
+[node name="IceFloor32" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(512, 192)
+
+[node name="IceFloor33" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(576, 192)
+
+[node name="IceFloor34" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(576, 128)
+
+[node name="IceFloor35" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(576, 64)
+
+[node name="IceFloor36" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(512, 64)
+
+[node name="IceFloor37" parent="IceTiles" instance=ExtResource("3_wik46")]
+position = Vector2(512, 128)
+
 [node name="IceFloor2" parent="IceTiles" instance=ExtResource("3_wik46")]
 position = Vector2(128, 256)
 
@@ -98,12 +134,15 @@ position = Vector2(576, 384)
 
 [node name="Button" parent="." instance=ExtResource("11_ytef6")]
 position = Vector2(224, 416)
+type = 2
 
 [node name="Button2" parent="." instance=ExtResource("11_ytef6")]
 position = Vector2(480, 288)
+type = 2
 
 [node name="Button3" parent="." instance=ExtResource("11_ytef6")]
 position = Vector2(416, 544)
+type = 2
 
 [node name="Pushable" parent="." instance=ExtResource("9_4kscp")]
 position = Vector2(160, 416)
@@ -115,13 +154,10 @@ position = Vector2(480, 352)
 position = Vector2(416, 288)
 
 [node name="Pushable4" parent="." instance=ExtResource("9_4kscp")]
-position = Vector2(288, 288)
-
-[node name="Pushable5" parent="." instance=ExtResource("9_4kscp")]
-position = Vector2(544, 160)
+position = Vector2(288, 352)
 
 [node name="Pushable6" parent="." instance=ExtResource("9_4kscp")]
-position = Vector2(160, 160)
+position = Vector2(96, 288)
 
 [node name="Player" parent="." instance=ExtResource("4_to3se")]
 position = Vector2(352, 608)
