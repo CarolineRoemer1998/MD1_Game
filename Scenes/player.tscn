@@ -511,19 +511,19 @@ autoplay = "pulse"
 
 [node name="LabelPressFToControl" type="Label" parent="."]
 visible = false
-offset_left = -38.0
+offset_left = -24.0
 offset_top = -48.0
-offset_right = 39.0
+offset_right = 48.0
 offset_bottom = -32.0
 pivot_offset = Vector2(38.5, 8)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.45, 0.297, 0.3225, 0.992157)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("6_x3wgy")
-text = "  to control"
+text = " to control"
 
 [node name="UiInteract" type="Sprite2D" parent="LabelPressFToControl"]
-position = Vector2(-2, 8)
+position = Vector2(-10, 8)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_f1ek2")
 
@@ -554,8 +554,8 @@ text = "  to stop control"
 metadata/_edit_use_anchors_ = true
 
 [node name="UiInteract" type="Sprite2D" parent="LabelPressFToStopControl"]
-position = Vector2(-1.00136e-05, 16)
-scale = Vector2(0.3825, 0.3825)
+position = Vector2(-16, 16)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_f1ek2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LabelPressFToStopControl"]

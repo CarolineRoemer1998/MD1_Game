@@ -40,9 +40,9 @@ theme_override_colors/font_outline_color = Color(0.45, 0.297, 0.3225, 0.992157)
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("3_t2yve")
 theme_override_font_sizes/font_size = 32
-text = "    to Restart"
+text = "R   to Restart"
 
 [node name="UiRestart" type="Sprite2D" parent="TextureProgressBar"]
 position = Vector2(16, 16)
-scale = Vector2(0.256667, 0.247816)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_54yt7")

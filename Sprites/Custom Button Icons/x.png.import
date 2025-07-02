@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c62f2a36c0mvx"
-path="res://.godot/imported/b.png-80e4c32ae4527fdcb995a9e786adbdbf.ctex"
+uid="uid://5au3v6s25m4b"
+path="res://.godot/imported/x.png-6180043f8402325074342247e0c47698.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/controller_icons/assets/xbox360/b.png"
-dest_files=["res://.godot/imported/b.png-80e4c32ae4527fdcb995a9e786adbdbf.ctex"]
+source_file="res://Sprites/Custom Button Icons/x.png"
+dest_files=["res://.godot/imported/x.png-6180043f8402325074342247e0c47698.ctex"]
 
 [params]
 
