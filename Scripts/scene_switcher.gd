@@ -3,17 +3,19 @@ extends Node
 @onready var fade_scene = preload("res://Scenes/Menu/fade.tscn")
 var fade_node = null
 var fade_animation = null
+var level_folder = "res://Scenes/Level/"
 
 var current_scene = null
 var current_level = 0
-var levelCount = 5
+var levelCount = 0
 var paused_scene = null  # T o store the paused scene
 var is_paused = false   # To track if we're in a paused state
 
 func _ready() -> void:
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
-	
+	levelCount = get_level_count_from_folder(level_folder)
+	print("Found %d levels in %s" % [levelCount, level_folder])
 	
 func switch_scene(res_path, pause_current=false):
 	call_deferred("_deferred_switch_scene", res_path, pause_current)
@@ -40,7 +42,7 @@ func _deferred_switch_scene(res_path, pause_current=false):
 	get_tree().current_scene = current_scene
 
 	# Inject fade if it's a level scene
-	if res_path.contains("/Scenes/Level"):
+	if res_path.contains("/Scenes/Level/Level"):
 		if not fade_node:
 			fade_node = fade_scene.instantiate()
 		current_scene.add_child(fade_node)  # Important: add it to new scene, not root
@@ -48,6 +50,8 @@ func _deferred_switch_scene(res_path, pause_current=false):
 		fade_animation.play("fade")
 		await fade_animation.animation_finished
 
+func switch_to_level(levelID: int):
+	switch_scene(level_folder + "Level"+ str(levelID) +".tscn")
 
 func go_to_next_level():
 	if current_level == levelCount:
@@ -56,14 +60,14 @@ func go_to_next_level():
 		return
 	var nextLevel = current_level + 1
 	if nextLevel <= levelCount:
-		switch_scene("res://Scenes/Level"+ str(nextLevel) +".tscn")
+		switch_to_level(nextLevel)
 		current_level = nextLevel
 	else:
 		go_to_main_menu()
 
 func go_to_current_level():
 	if current_level > 0 and current_level <= levelCount:
-		switch_scene("res://Scenes/Level"+ str(current_level) +".tscn")
+		switch_to_level(current_level)
 	else:
 		go_to_main_menu()
 
@@ -72,7 +76,7 @@ func reload_level():
 		current_scene.queue_free()
 
 	if current_level > 0 and current_level <= levelCount:
-		switch_scene("res://Scenes/Level" + str(current_level) + ".tscn")
+		switch_to_level(current_level)
 	else:
 		go_to_main_menu()
 	print("scene reloaded")
@@ -107,3 +111,20 @@ func set_curent_level(level_number: int):
 		current_level = level_number
 	else:
 		current_level = 0
+
+func get_level_count_from_folder(folder_path: String) -> int:
+	var dir = DirAccess.open(folder_path)
+	if dir == null:
+		push_error("Failed to open folder: " + folder_path)
+		return 0
+	
+	var count = 0
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".tscn"):
+			count += 1
+		file_name = dir.get_next()
+	dir.list_dir_end()
+	
+	return count
