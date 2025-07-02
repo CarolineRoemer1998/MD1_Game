@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg3b3arkh57kj"
-path="res://.godot/imported/b.png-d585ecbc7f7bee0037b88fabd6d2c037.ctex"
+uid="uid://daikryy4tb82s"
+path="res://.godot/imported/a.png-478f76d2536e5d7248a5216baddeb0c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Custom Button Icons/b.png"
-dest_files=["res://.godot/imported/b.png-d585ecbc7f7bee0037b88fabd6d2c037.ctex"]
+source_file="res://Sprites/Custom Button Icons/Controller/Xbox/a.png"
+dest_files=["res://.godot/imported/a.png-478f76d2536e5d7248a5216baddeb0c4.ctex"]
 
 [params]
 

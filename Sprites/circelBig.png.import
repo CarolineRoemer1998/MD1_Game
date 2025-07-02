@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5au3v6s25m4b"
-path="res://.godot/imported/x.png-6180043f8402325074342247e0c47698.ctex"
+uid="uid://ca50fts6eoamr"
+path="res://.godot/imported/circelBig.png-8db059b882fb3c88be30358ac6f685f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Custom Button Icons/x.png"
-dest_files=["res://.godot/imported/x.png-6180043f8402325074342247e0c47698.ctex"]
+source_file="res://Sprites/circelBig.png"
+dest_files=["res://.godot/imported/circelBig.png-8db059b882fb3c88be30358ac6f685f5.ctex"]
 
 [params]
 

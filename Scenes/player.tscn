@@ -510,7 +510,6 @@ libraries = {
 autoplay = "pulse"
 
 [node name="LabelPressFToControl" type="Label" parent="."]
-visible = false
 offset_left = -24.0
 offset_top = -48.0
 offset_right = 48.0
@@ -524,7 +523,7 @@ text = " to control"
 
 [node name="UiInteract" type="Sprite2D" parent="LabelPressFToControl"]
 position = Vector2(-10, 8)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_f1ek2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LabelPressFToControl"]
@@ -555,7 +554,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="UiInteract" type="Sprite2D" parent="LabelPressFToStopControl"]
 position = Vector2(-16, 16)
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_f1ek2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LabelPressFToStopControl"]

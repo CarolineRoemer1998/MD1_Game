@@ -26,7 +26,6 @@ level_number = 4
 position = Vector2(352, 160)
 rotation = -1.5708
 buttons = Array[NodePath]([NodePath("../Button1")])
-door_can_close = true
 
 [node name="Button1" parent="Doors&Buttons" instance=ExtResource("6_nv5kp")]
 position = Vector2(288, 96)
@@ -34,7 +33,6 @@ position = Vector2(288, 96)
 [node name="Door2" parent="Doors&Buttons" instance=ExtResource("5_xgp81")]
 position = Vector2(544, 288)
 buttons = Array[NodePath]([NodePath("../Button2"), NodePath("../Button3")])
-door_can_close = true
 
 [node name="Button2" parent="Doors&Buttons" instance=ExtResource("6_nv5kp")]
 position = Vector2(608, 224)
