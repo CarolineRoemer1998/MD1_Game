@@ -347,7 +347,7 @@ func try_push_and_move(pushable, door, wall, new_pos, direction, space_state):
 	
 	for i in push_result:
 		if i.collider is Door and not i.collider.door_is_closed:
-			if pushable[0].collider.push(direction):
+			if pushable[0].collider.push(direction * GRID_SIZE):
 				target_position = new_pos
 				set_is_moving(true)
 				return
