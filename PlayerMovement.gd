@@ -7,6 +7,7 @@ const ICE_MOVE_SPEED := 400.0
 
 var target_position: Vector2
 var is_moving := false
+var is_sliding := false
 var buffered_direction: Vector2 = Vector2.ZERO
 
 var hovering_over: Creature = null
@@ -55,46 +56,6 @@ func _ready():
 func _process(delta):
 	move(delta)
 	update_heart_visibility()
-	
-		
-	#var direction := Vector2.ZERO
-	#
-	#if Input.is_action_just_pressed("ui_cancel"):
-			#SceneSwitcher.go_to_settings()
-	##if event.is_action_pressed("Reload_Level"):
-			##SceneSwitcher.reload_level()
-	#
-	#if can_move:
-		## Bewegungsrichtungen (directional input)
-		#if Input.is_action_just_pressed("Player_Up"):
-			#direction = Vector2.UP
-		#elif Input.is_action_just_pressed("Player_Down"):
-			#direction = Vector2.DOWN
-		#elif Input.is_action_just_pressed("Player_Left"):
-			#direction = Vector2.LEFT
-		#elif Input.is_action_just_pressed("Player_Right"):
-			#direction = Vector2.RIGHT
-#
-		## Interaktionsbutton
-		#elif Input.is_action_just_pressed("Interact"):
-			#if not is_moving:
-				#possess_or_unpossess_creature()
-		#
-		#animation_tree.set("parameters/Idle/BlendSpace2D/blend_position", direction)
-		#if currently_possessed_creature:
-			#currently_possessed_creature.animation_tree.set("parameters/Idle/BlendSpace2D/blend_position", direction)
-#
-		## Bewegungsversuch oder Puffern
-		#if direction != Vector2.ZERO:
-			#if is_moving:
-				#buffered_direction = direction
-			#else:
-				#try_move(direction)
-	#else:
-		## Szenewechsel durch Tastatur, Maus oder Gamepad
-		#
-		#if Input.is_action_just_pressed("ui_accept"):# or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) :
-			#SceneSwitcher.go_to_next_level()
 
 
 func _unhandled_input(event):
@@ -145,10 +106,15 @@ func move(delta):
 	if is_moving:
 		if is_on_ice and currently_possessed_creature:
 			move_on_ice(delta)
-	
+			print("Target Position: ", target_position, "\nCurrent Position: ", position)
+			if target_position == position:
+				is_sliding = false
+				print("is_sliding was reset to false")
 				
 		position = position.move_toward(target_position, MOVE_SPEED * delta)
-		
+		if target_position == position:
+				is_sliding = false
+				print("is_sliding was reset to false")
 		
 			
 		if possessed_creature_until_next_tile:
@@ -171,25 +137,33 @@ func move(delta):
 
 
 func move_on_ice(delta):
-	set_is_on_ice(target_position + current_direction * GRID_SIZE)
-	#MOVE_SPEED = 400.0
-	
+	var can_slide = true
 	var block_mask = (1 << WALL_AND_PLAYER_LAYER_BIT) | (1 << DOOR_LAYER_BIT) | (1 << CREATURE_LAYER_BIT) | (1 << PUSHABLE_LAYER_BIT)
 	var space = get_world_2d().direct_space_state
 	var slide_end = target_position
 	var result_block
 	var result_ice
 	
-	var can_slide = true
+	
+	set_is_on_ice(target_position + current_direction * GRID_SIZE)
+	#MOVE_SPEED = 400.0
+	
+	
 	
 	var next_collision = get_collision_on_tile(slide_end, 1 << PUSHABLE_LAYER_BIT)
-	if next_collision.size() > 0:
+	if not is_sliding and next_collision.size() > 0:
 		if next_collision[0].collider is Pushable:
+			is_sliding = true
 			can_slide = false
-			slide_end = slide_end - current_direction * GRID_SIZE
+			#print("slide_end: ", slide_end)
+			#print("current_direction: ", current_direction)
+			#print("GRID_SIZE: ", GRID_SIZE, "\n")
+			#print("target_position: ", target_position, "\n")
+			#print(current_direction, " * ", GRID_SIZE, " = ", current_direction * GRID_SIZE, "\nslide_end: ", slide_end, "\n", slide_end, " - ( ", current_direction * GRID_SIZE, " ) = ", slide_end - (current_direction * GRID_SIZE))
+			slide_end = slide_end - (current_direction * GRID_SIZE)
 			return
 	
-	while can_slide:
+	while not is_sliding and can_slide:
 		var next_pos = slide_end + current_direction * GRID_SIZE
 		
 		result_block = check_if_collides(next_pos, block_mask)
@@ -203,8 +177,8 @@ func move_on_ice(delta):
 			break
 				
 		slide_end = next_pos
-	
 		
+			
 	if slide_end != target_position: #or not result_block.is_empty():
 		target_position = slide_end
 	#else:
