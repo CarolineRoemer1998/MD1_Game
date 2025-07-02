@@ -8,13 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/merged_creature.tscn" id="6_rbgxu"]
 [ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="7_4kscp"]
 [ext_resource type="PackedScene" uid="uid://be6k5yjppap8y" path="res://Scenes/creature_yellow.tscn" id="7_ytef6"]
-[ext_resource type="PackedScene" path="res://Scenes/reset_bar.tscn" id="8_xnl3v"]
+[ext_resource type="PackedScene" uid="uid://cvpsunu2hglj1" path="res://Scenes/reset_bar.tscn" id="8_xnl3v"]
 [ext_resource type="PackedScene" uid="uid://oy61arlldjo3" path="res://Scenes/pushable.tscn" id="9_4kscp"]
 [ext_resource type="PackedScene" uid="uid://c6dmpno4s3103" path="res://Scenes/door.tscn" id="10_2xldr"]
 [ext_resource type="PackedScene" uid="uid://bt4pnhd7cx7xc" path="res://Scenes/button.tscn" id="11_ytef6"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_nonkr")
+level_number = 5
 
 [node name="Background_Lvl5" parent="." instance=ExtResource("2_hurp7")]
 
@@ -97,15 +98,12 @@ position = Vector2(576, 384)
 
 [node name="Button" parent="." instance=ExtResource("11_ytef6")]
 position = Vector2(224, 416)
-type = 2
 
 [node name="Button2" parent="." instance=ExtResource("11_ytef6")]
 position = Vector2(480, 288)
-type = 2
 
 [node name="Button3" parent="." instance=ExtResource("11_ytef6")]
 position = Vector2(416, 544)
-type = 2
 
 [node name="Pushable" parent="." instance=ExtResource("9_4kscp")]
 position = Vector2(160, 416)

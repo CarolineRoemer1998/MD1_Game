@@ -6,7 +6,7 @@ var fade_animation = null
 
 var current_scene = null
 var current_level = 0
-var levelCount = 4
+var levelCount = 5
 var paused_scene = null  # T o store the paused scene
 var is_paused = false   # To track if we're in a paused state
 
