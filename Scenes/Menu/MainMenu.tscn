@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cglpr8l7nytcg"]
+[gd_scene load_steps=43 format=4 uid="uid://cglpr8l7nytcg"]
 
 [ext_resource type="Script" uid="uid://bnbypousm8hex" path="res://Scripts/main_menu.gd" id="1_35riq"]
 [ext_resource type="Texture2D" uid="uid://daocnama176b2" path="res://Sprites/Tile.png" id="2_p4pvn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dlgbpysuafk0b" path="res://Sprites/Verworfen/wall-new.png" id="4_ykvod"]
 [ext_resource type="Texture2D" uid="uid://c651rcsia4yvj" path="res://Sprites/wall-sprites-4-corners.png" id="5_tjif3"]
 [ext_resource type="Texture2D" uid="uid://d0gndbeyxhfii" path="res://Sprites/grass-floor.png" id="6_0nor7"]
+[ext_resource type="Texture2D" uid="uid://dl7xjixsr51hy" path="res://Sprites/creature1_yellow_walk.png" id="10_0nor7"]
 [ext_resource type="Texture2D" uid="uid://cvaa3r5fe6x78" path="res://Sprites/creature2_blue_walk.png" id="10_828jk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dryh"]
@@ -312,20 +313,41 @@ _data = {
 &"title_walk": SubResource("Animation_oromi")
 }
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tjif3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_828jk"]
+atlas = ExtResource("10_0nor7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i240n"]
+atlas = ExtResource("10_0nor7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_355gb"]
+atlas = ExtResource("10_0nor7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oromi"]
+atlas = ExtResource("10_0nor7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxmme"]
+atlas = ExtResource("10_0nor7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82pqm"]
+atlas = ExtResource("10_0nor7")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcekd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_syprg")
+"texture": SubResource("AtlasTexture_828jk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lplmr")
+"texture": SubResource("AtlasTexture_i240n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5exbe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jmrtg")
+"texture": SubResource("AtlasTexture_355gb")
 }],
 "loop": true,
 "name": &"walk_left",
@@ -333,16 +355,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_urltk")
+"texture": SubResource("AtlasTexture_oromi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lwki5")
+"texture": SubResource("AtlasTexture_mxmme")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d1232")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sfjps")
+"texture": SubResource("AtlasTexture_82pqm")
 }],
 "loop": true,
 "name": &"walk_right",
@@ -415,7 +434,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(4, 12, 18, 26),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(736, 75), Vector2(-32, 75), Vector2(-32, 75), Vector2(736, 75)]
+"values": [Vector2(736, 70), Vector2(-32, 70), Vector2(-32, 70), Vector2(736, 70)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -439,7 +458,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 7.75, 8, 8.25, 8.5, 8.75, 9, 9.25, 9.5, 9.75, 10, 10.25, 10.5, 10.75, 11, 11.25, 11.5, 11.75, 12, 18, 18.25, 18.5, 18.75, 19, 19.25, 19.5, 19.75, 20, 20.25, 20.5, 20.75, 21, 21.25, 21.5, 21.75, 22, 22.25, 22.5, 22.75, 23, 23.25, 23.5, 23.75, 24, 24.25, 24.5, 24.75, 25, 25.25, 25.5, 25.75, 26),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0]
+"values": [0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -626,7 +645,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CreatureBlue2"]
-sprite_frames = SubResource("SpriteFrames_tjif3")
+sprite_frames = SubResource("SpriteFrames_vcekd")
 animation = &"walk_right"
 
 [node name="AnimationPlayerMovement" type="AnimationPlayer" parent="CreatureBlue2"]
