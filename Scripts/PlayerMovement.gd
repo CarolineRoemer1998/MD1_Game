@@ -66,8 +66,6 @@ func _unhandled_input(event):
 	
 	if event.is_action_pressed("ui_cancel"):
 			SceneSwitcher.go_to_settings()
-	#if event.is_action_pressed("Reload_Level"):
-			#SceneSwitcher.reload_level()
 	
 	if can_move:
 		# Bewegungsrichtungen (directional input)
@@ -112,7 +110,6 @@ func move(delta):
 		position = position.move_toward(target_position, MOVE_SPEED * delta)
 		if target_position == position:
 				is_sliding = false
-				#print("is_sliding was reset to false")
 		
 		if possessed_creature_until_next_tile:
 			# Besessene Kreatur mitziehen
@@ -158,16 +155,10 @@ func move_on_ice(delta):
 		
 		if check_if_collides(next_pos, block_mask):
 			break
-		print(check_is_ice(next_pos))
 		if not check_is_ice(next_pos) and not is_sliding:
 			slide_end = next_pos
 			break
-		
-		#if result_ice:
-			#print(result_ice)
-		#if not check_is_ice(next_pos) and is_sliding:
-			#break
-		
+			
 		slide_end = next_pos
 	
 	if is_sliding and next_collision.size() > 0 and not next_collision[0].collider.is_sliding:

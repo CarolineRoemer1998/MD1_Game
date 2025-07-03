@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://hpxk1smna33t"]
 
 [ext_resource type="Texture2D" uid="uid://bch4qo0v7oudb" path="res://Sprites/Verworfen/Wall.png" id="1_312i6"]
-[ext_resource type="Script" uid="uid://c8cn18kkxej2q" path="res://Scripts/settings.gd" id="1_ng16n"]
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_ng16n"]
 [ext_resource type="FontFile" uid="uid://d3id6ewnchky" path="res://Fonts/GrapeSoda.ttf" id="2_lnv33"]
 [ext_resource type="PackedScene" uid="uid://c7xbrqq8jp67b" path="res://Scenes/Menu/VolumeSlider.tscn" id="3_lnv33"]
 [ext_resource type="AudioStream" uid="uid://bsx3skhivxvr3" path="res://Sounds/mixkit-sweet-kitty-meow-93.wav" id="5_7rr2e"]
-[ext_resource type="Script" uid="uid://bld4747e6bxrc" path="res://Scripts/menu_button.gd" id="5_f2des"]
+[ext_resource type="Script" path="res://Scripts/menu_button.gd" id="5_f2des"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ng16n"]
 texture = ExtResource("1_312i6")

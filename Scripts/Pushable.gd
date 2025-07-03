@@ -14,21 +14,14 @@ func _ready():
 	position = target_position
 
 func slide(goal_position: Vector2) -> bool:
-	print(is_sliding)
 	if is_sliding:
 		target_position = goal_position
-		#is_moving = true
 		return true
 	else:
 		return false
 
 func push(goal_position: Vector2) -> bool:
-	#if is_moving:
-		#return false
 	if not is_moving and not is_sliding:
-		print("TARGET POSITION: ", target_position)
-		print("GOAL POSITION: ", goal_position)
-		print("TARGET + GOAL: ", target_position + goal_position)
 		target_position += goal_position
 		is_moving = true
 		return true
@@ -38,7 +31,6 @@ func push(goal_position: Vector2) -> bool:
 func _process(delta):
 	if is_moving or is_sliding:
 		position = position.move_toward(target_position, MOVE_SPEED * delta)
-		#print("Position: ", position, "\nTarget: ", target_position)
 		if position == target_position:
 			is_moving = false
 			is_sliding = false
