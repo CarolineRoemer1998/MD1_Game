@@ -79,7 +79,6 @@ func reload_level():
 		switch_to_level(current_level)
 	else:
 		go_to_main_menu()
-	print("scene reloaded")
 
 
 # New functions for settings

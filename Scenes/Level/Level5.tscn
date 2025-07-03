@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=3 uid="uid://bvr06lubx5mid"]
 
-[ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scripts/level.gd" id="1_nonkr"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_nonkr"]
 [ext_resource type="PackedScene" uid="uid://brnhwhfg812y2" path="res://Scenes/background_lvl_5.tscn" id="2_hurp7"]
 [ext_resource type="PackedScene" uid="uid://i448npnkeckp" path="res://Scenes/ice_floor.tscn" id="3_wik46"]
 [ext_resource type="PackedScene" uid="uid://g3u7bc1jo6gj" path="res://Scenes/CreaturesAndPlayer/player.tscn" id="4_to3se"]
 [ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/CreaturesAndPlayer/creature_blue.tscn" id="5_213sf"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/CreaturesAndPlayer/merged_creature.tscn" id="6_rbgxu"]
-[ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="7_4kscp"]
 [ext_resource type="PackedScene" uid="uid://be6k5yjppap8y" path="res://Scenes/CreaturesAndPlayer/creature_yellow.tscn" id="7_ytef6"]
-[ext_resource type="PackedScene" uid="uid://cvpsunu2hglj1" path="res://Scenes/Menu/reset_bar.tscn" id="8_xnl3v"]
+[ext_resource type="PackedScene" path="res://Scenes/Menu/reset_bar.tscn" id="8_xnl3v"]
 [ext_resource type="PackedScene" uid="uid://oy61arlldjo3" path="res://Scenes/pushable.tscn" id="9_4kscp"]
 [ext_resource type="PackedScene" uid="uid://c6dmpno4s3103" path="res://Scenes/door.tscn" id="10_2xldr"]
 [ext_resource type="PackedScene" uid="uid://bt4pnhd7cx7xc" path="res://Scenes/button.tscn" id="11_ytef6"]
+[ext_resource type="PackedScene" uid="uid://ckkosqi7rtbdb" path="res://Scenes/Menu/game_completed.tscn" id="12_61bxs"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_nonkr")
@@ -133,6 +133,10 @@ position = Vector2(512, 384)
 [node name="IceFloor25" parent="IceTiles" instance=ExtResource("3_wik46")]
 position = Vector2(576, 384)
 
+[node name="Door" parent="." instance=ExtResource("10_2xldr")]
+position = Vector2(352, 224)
+buttons = Array[NodePath]([NodePath("../Button"), NodePath("../Button2"), NodePath("../Button3")])
+
 [node name="Button" parent="." instance=ExtResource("11_ytef6")]
 position = Vector2(224, 416)
 type = 2
@@ -160,9 +164,6 @@ position = Vector2(288, 352)
 [node name="Pushable6" parent="." instance=ExtResource("9_4kscp")]
 position = Vector2(96, 288)
 
-[node name="Player" parent="." instance=ExtResource("4_to3se")]
-position = Vector2(352, 608)
-
 [node name="CreatureBlue" parent="." instance=ExtResource("5_213sf")]
 position = Vector2(352, 480)
 
@@ -172,10 +173,9 @@ position = Vector2(352, 160)
 [node name="MergedCreature" parent="." instance=ExtResource("6_rbgxu")]
 visible = false
 
-[node name="WinScreen" parent="." instance=ExtResource("7_4kscp")]
+[node name="Player" parent="." instance=ExtResource("4_to3se")]
+position = Vector2(352, 608)
 
 [node name="ResetBar" parent="." instance=ExtResource("8_xnl3v")]
 
-[node name="Door" parent="." instance=ExtResource("10_2xldr")]
-position = Vector2(352, 224)
-buttons = Array[NodePath]([NodePath("../Button"), NodePath("../Button2"), NodePath("../Button3")])
+[node name="GameCompleted" parent="." instance=ExtResource("12_61bxs")]
