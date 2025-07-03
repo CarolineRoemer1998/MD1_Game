@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://cglpr8l7nytcg"]
+[gd_scene load_steps=45 format=4 uid="uid://cglpr8l7nytcg"]
 
 [ext_resource type="Script" uid="uid://bnbypousm8hex" path="res://Scripts/main_menu.gd" id="1_35riq"]
 [ext_resource type="Texture2D" uid="uid://daocnama176b2" path="res://Sprites/Tile.png" id="2_p4pvn"]
@@ -104,7 +104,7 @@ sources/8 = SubResource("TileSetAtlasSource_sqxn1")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghw46"]
 texture = ExtResource("3_rsxkb")
-modulate_color = Color(0, 0, 0, 0.203922)
+modulate_color = Color(0, 0, 0, 0.137255)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8saeu"]
 bg_color = Color(0.674316, 0.666508, 0.64531, 0.996078)
@@ -265,7 +265,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 8, 12, 20),
+"times": PackedFloat32Array(0.5, 8.5, 12.5, 20.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-32, 630), Vector2(736, 630), Vector2(736, 630), Vector2(-32, 630)]
@@ -277,7 +277,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 12),
+"times": PackedFloat32Array(0.5, 12.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [&"walk_right", &"walk_left"]
@@ -289,7 +289,7 @@ tracks/2/path = NodePath("AnimatedSprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 7.75, 8, 12, 12.25, 12.5, 12.75, 13, 13.25, 13.5, 13.75, 14, 14.25, 14.5, 14.75, 15, 15.25, 15.5, 15.75, 16, 16.25, 16.5, 16.75, 17, 17.25, 17.5, 17.75, 18, 18.25, 18.5, 18.75, 19, 19.25, 19.5, 19.75, 20),
+"times": PackedFloat32Array(0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 7.75, 8, 8.25, 8.5, 12.5, 12.75, 13, 13.25, 13.5, 13.75, 14, 14.25, 14.5, 14.75, 15, 15.25, 15.5, 15.75, 16, 16.25, 16.5, 16.75, 17, 17.25, 17.5, 17.75, 18, 18.25, 18.5, 18.75, 19, 19.25, 19.5, 19.75, 20, 20.25, 20.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0]
@@ -301,7 +301,7 @@ tracks/3/path = NodePath(".:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
@@ -313,17 +313,21 @@ _data = {
 &"title_walk": SubResource("Animation_oromi")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_828jk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nor7"]
 atlas = ExtResource("10_0nor7")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i240n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_828jk"]
 atlas = ExtResource("10_0nor7")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_355gb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i240n"]
 atlas = ExtResource("10_0nor7")
 region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_355gb"]
+atlas = ExtResource("10_0nor7")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oromi"]
 atlas = ExtResource("10_0nor7")
@@ -337,9 +341,16 @@ region = Rect2(32, 32, 32, 32)
 atlas = ExtResource("10_0nor7")
 region = Rect2(64, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcekd"]
+atlas = ExtResource("10_0nor7")
+region = Rect2(96, 32, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vcekd"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nor7")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_828jk")
 }, {
@@ -362,6 +373,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_82pqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcekd")
 }],
 "loop": true,
 "name": &"walk_right",
@@ -458,7 +472,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 7.75, 8, 8.25, 8.5, 8.75, 9, 9.25, 9.5, 9.75, 10, 10.25, 10.5, 10.75, 11, 11.25, 11.5, 11.75, 12, 18, 18.25, 18.5, 18.75, 19, 19.25, 19.5, 19.75, 20, 20.25, 20.5, 20.75, 21, 21.25, 21.5, 21.75, 22, 22.25, 22.5, 22.75, 23, 23.25, 23.5, 23.75, 24, 24.25, 24.5, 24.75, 25, 25.25, 25.5, 25.75, 26),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0]
+"values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -498,12 +512,6 @@ position = Vector2(0, 256)
 tile_map_data = PackedByteArray("AAAJAP3/CAAAAAEAAAAIAP3/CAACAAEAAAAHAP3/CAABAAEAAAAGAP3/CAAAAAEAAAAFAP3/CAABAAIAAAAEAP3/CAABAAEAAAADAP3/CAAAAAEAAAACAP3/CAACAAEAAAABAP3/CAABAAEAAAABAP7/CAABAAIAAAACAP7/CAACAAIAAAADAP7/CAAAAAIAAAAEAP7/CAABAAIAAAAFAP7/CAAAAAAAAAAGAP7/CAACAAEAAAAHAP7/CAABAAIAAAAIAP7/CAACAAIAAAAJAP7/CAAAAAIAAAAJAP//CAACAAAAAAAIAP//CAAAAAAAAAAHAP//CAAAAAAAAAAGAP//CAACAAAAAAAFAP//CAABAAAAAAAEAP//CAAAAAAAAAADAP//CAACAAAAAAACAP//CAAAAAAAAAABAP//CAAAAAAAAAABAAAACAAAAAEAAAACAAAACAABAAEAAAADAAAACAACAAEAAAAEAAAACAAAAAEAAAAFAAAACAABAAEAAAAGAAAACAABAAIAAAAHAAAACAAAAAEAAAAIAAAACAABAAEAAAAJAAAACAACAAEAAAAJAAEACAACAAIAAAAIAAEACAABAAIAAAAHAAEACAAAAAIAAAAGAAEACAAAAAAAAAAFAAEACAABAAIAAAAEAAEACAABAAIAAAADAAEACAACAAIAAAACAAEACAABAAIAAAABAAEACAAAAAIAAAABAAIACAABAAAAAAACAAIACAAAAAAAAAADAAIACAABAAAAAAAEAAIACAACAAAAAAAFAAIACAAAAAAAAAAGAAIACAABAAAAAAAHAAIACAACAAAAAAAIAAIACAAAAAAAAAAJAAIACAABAAAAAAAJAAMACAABAAEAAAAIAAMACAAAAAEAAAAHAAMACAACAAEAAAAGAAMACAABAAEAAAAFAAMACAAAAAEAAAAEAAMACAACAAEAAAADAAMACAABAAEAAAACAAMACAAAAAEAAAABAAMACAABAAEAAAABAAQACAABAAIAAAACAAQACAAAAAIAAAADAAQACAABAAIAAAAEAAQACAACAAIAAAAFAAQACAABAAIAAAAGAAQACAABAAIAAAAHAAQACAAAAAAAAAAIAAQACAABAAIAAAAJAAQACAABAAIAAAAJAAUACAAAAAEAAAAIAAUACAACAAEAAAAHAAUACAABAAEAAAAGAAUACAAAAAEAAAAFAAUACAABAAIAAAAEAAUACAABAAEAAAADAAUACAAAAAEAAAACAAUACAACAAEAAAABAAUACAABAAEAAAAAAPz/CAAAAAAAAAAAAP3/CAAAAAEAAAAAAP7/CAAAAAIAAAAAAP//CAACAAAAAAAAAAAACAACAAEAAAAAAAEACAACAAIAAAAAAAIACAAAAAAAAAAAAAMACAAAAAEAAAAAAAUACAAAAAEAAAAAAAYACAAAAAIAAAABAAYACAABAAIAAAAAAAQACAAAAAIAAAACAAYACAACAAIAAAADAAYACAAAAAIAAAAEAAYACAABAAIAAAAFAAYACAACAAIAAAAGAAYACAAAAAIAAAAHAAYACAABAAIAAAAIAAYACAACAAIAAAAJAAYACAAAAAIAAAAKAAYACAABAAIAAAAKAAUACAABAAEAAAAKAAQACAACAAIAAAAKAAMACAACAAEAAAAKAAIACAACAAAAAAAKAAEACAACAAIAAAAKAAAACAACAAEAAAAKAP//CAACAAAAAAAKAP7/CAABAAIAAAAKAP3/CAABAAEAAAAKAPz/CAABAAAAAAAJAPz/CAAAAAAAAAAIAPz/CAACAAAAAAAHAPz/CAABAAAAAAAGAPz/CAAAAAAAAAAFAPz/CAACAAAAAAAEAPz/CAABAAAAAAADAPz/CAAAAAAAAAACAPz/CAACAAAAAAABAPz/CAABAAAAAAA=")
 tile_set = SubResource("TileSet_ebmjs")
 
-[node name="wall" type="TileMapLayer" parent="Background_Lvl1"]
-use_parent_material = true
-position = Vector2(0, 256)
-tile_map_data = PackedByteArray("AAAAAAYABgABAAQAAAACAAYABgABAAQAAAAEAAYABgABAAQAAAAGAAYABgABAAQAAAAIAAYABgABAAQAAAAKAAYABgABAAQAAAABAAYABgADAAQAAAADAAYABgADAAQAAAAFAAYABgADAAQAAAAHAAYABgADAAQAAAAJAAYABgADAAQAAAABAPz/BgABAAQAADADAPz/BgABAAQAADAFAPz/BgABAAQAADAHAPz/BgABAAQAADAJAPz/BgABAAQAADAAAPz/BgADAAQAADACAPz/BgADAAQAADAEAPz/BgADAAQAADAGAPz/BgADAAQAADAIAPz/BgADAAQAADAKAPz/BgADAAQAADA=")
-tile_set = SubResource("TileSet_ebmjs")
-
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -512,6 +520,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ghw46")
+
+[node name="Background_Lvl2" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ebmjs")
+format = 2
+
+[node name="wall" type="TileMapLayer" parent="Background_Lvl2"]
+use_parent_material = true
+position = Vector2(0, 256)
+tile_map_data = PackedByteArray("AAAAAAYABgABAAQAAAACAAYABgABAAQAAAAEAAYABgABAAQAAAAGAAYABgABAAQAAAAIAAYABgABAAQAAAAKAAYABgABAAQAAAABAAYABgADAAQAAAADAAYABgADAAQAAAAFAAYABgADAAQAAAAHAAYABgADAAQAAAAJAAYABgADAAQAAAABAPz/BgABAAQAADADAPz/BgABAAQAADAFAPz/BgABAAQAADAHAPz/BgABAAQAADAJAPz/BgABAAQAADAAAPz/BgADAAQAADACAPz/BgADAAQAADAEAPz/BgADAAQAADAGAPz/BgADAAQAADAIAPz/BgADAAQAADAKAPz/BgADAAQAADA=")
+tile_set = SubResource("TileSet_ebmjs")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
