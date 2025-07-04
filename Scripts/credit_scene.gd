@@ -1,7 +1,9 @@
 extends Control
 
+@onready var back: Button = $VBoxContainer2/Back
+
 func _ready() -> void:
-	$VBoxContainer2/Exit.grab_focus()
+	back.grab_focus()
 
 
 

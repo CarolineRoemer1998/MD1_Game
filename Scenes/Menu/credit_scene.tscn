@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://d2q7tvh62427v"]
+[gd_scene load_steps=17 format=4 uid="uid://d2q7tvh62427v"]
 
 [ext_resource type="Script" uid="uid://djjmttkmi8agm" path="res://Scripts/credit_scene.gd" id="1_skr61"]
 [ext_resource type="Texture2D" uid="uid://daocnama176b2" path="res://Sprites/Tile.png" id="2_pu1wf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bld4747e6bxrc" path="res://Scripts/menu_button.gd" id="4_ge1f6"]
 [ext_resource type="Texture2D" uid="uid://c651rcsia4yvj" path="res://Sprites/wall-sprites-4-corners.png" id="5_7ocua"]
 [ext_resource type="Texture2D" uid="uid://d0gndbeyxhfii" path="res://Sprites/grass-floor.png" id="6_74pdu"]
+[ext_resource type="Theme" uid="uid://i7fixmxgctx7" path="res://Sprites/MenuSprites/Button.tres" id="9_7ocua"]
 [ext_resource type="PackedScene" uid="uid://cnd0kjj3gexr3" path="res://Scenes/Menu/AudioManager.tscn" id="9_fh0pi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_japxf"]
@@ -100,33 +101,6 @@ sources/1 = SubResource("TileSetAtlasSource_1ffvo")
 sources/4 = SubResource("TileSetAtlasSource_vglai")
 sources/6 = SubResource("TileSetAtlasSource_k8nru")
 sources/8 = SubResource("TileSetAtlasSource_nvxm5")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8saeu"]
-bg_color = Color(0.674316, 0.666508, 0.64531, 0.996078)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 3.5)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_853f1"]
-bg_color = Color(0.282737, 0.276598, 0.269531, 0.996078)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 3.5)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnhvo"]
-bg_color = Color(1, 1, 0.996078, 0.996078)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 3.5)
 
 [node name="CreditScene" type="Control"]
 layout_mode = 3
@@ -227,21 +201,10 @@ theme_override_fonts/font = ExtResource("3_b6o8g")
 theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 
-[node name="Exit" type="Button" parent="VBoxContainer2"]
+[node name="Back" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0.458824, 0.305882, 0.329412, 1)
-theme_override_colors/font_hover_color = Color(0.458824, 0.305882, 0.329412, 1)
-theme_override_colors/font_color = Color(0.458824, 0.305882, 0.329412, 1)
-theme_override_colors/font_focus_color = Color(0.458824, 0.305882, 0.329412, 1)
-theme_override_colors/font_pressed_color = Color(0.458824, 0.305882, 0.329412, 1)
-theme_override_fonts/font = ExtResource("3_b6o8g")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxFlat_8saeu")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_853f1")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8saeu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_853f1")
-theme_override_styles/normal = SubResource("StyleBoxFlat_bnhvo")
+theme = ExtResource("9_7ocua")
 text = "Back"
 script = ExtResource("4_ge1f6")
 
@@ -262,4 +225,4 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer2/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Back" to="." method="_on_exit_pressed"]

@@ -1,7 +1,9 @@
 extends Control
 
+@onready var back: Button = $VBoxContainer/Back
+
 func _ready() -> void:
-	$VBoxContainer/Back.grab_focus()
+	back.grab_focus()
 
 func _on_back_pressed() -> void:
 	SceneSwitcher.return_from_scene()
