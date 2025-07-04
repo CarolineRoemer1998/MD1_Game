@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dl7xjixsr51hy" path="res://Sprites/creature1_yellow_walk.png" id="10_0nor7"]
 [ext_resource type="Texture2D" uid="uid://cvaa3r5fe6x78" path="res://Sprites/creature2_blue_walk.png" id="10_828jk"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dryh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0nor7"]
 texture = ExtResource("2_p4pvn")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -20,18 +20,18 @@ texture_region_size = Vector2i(64, 64)
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_828jk"]
 texture = ExtResource("3_rsxkb")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v158k"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_syprg"]
 texture = ExtResource("4_ykvod")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a1bo6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lplmr"]
 texture = ExtResource("5_tjif3")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -80,7 +80,7 @@ texture_region_size = Vector2i(64, 64)
 4:4/0 = 0
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sqxn1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5exbe"]
 texture = ExtResource("6_0nor7")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -96,31 +96,33 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_ebmjs"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_3dryh")
-sources/1 = SubResource("TileSetAtlasSource_wowpa")
-sources/4 = SubResource("TileSetAtlasSource_v158k")
-sources/6 = SubResource("TileSetAtlasSource_a1bo6")
-sources/8 = SubResource("TileSetAtlasSource_sqxn1")
+sources/0 = SubResource("TileSetAtlasSource_0nor7")
+sources/1 = SubResource("TileSetAtlasSource_828jk")
+sources/4 = SubResource("TileSetAtlasSource_syprg")
+sources/6 = SubResource("TileSetAtlasSource_lplmr")
+sources/8 = SubResource("TileSetAtlasSource_5exbe")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghw46"]
 texture = ExtResource("3_rsxkb")
 modulate_color = Color(0, 0, 0, 0.137255)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8saeu"]
-bg_color = Color(0.674316, 0.666508, 0.64531, 0.996078)
+bg_color = Color(0.76, 0.76, 0.76, 0.996078)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+shadow_color = Color(0.24, 0.1608, 0.17268, 0.388235)
 shadow_size = 5
 shadow_offset = Vector2(0, 3.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_853f1"]
-bg_color = Color(0.282737, 0.276598, 0.269531, 0.996078)
+bg_color = Color(0.616751, 0.608018, 0.597974, 0.996078)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+shadow_color = Color(0.239216, 0.160784, 0.172549, 0.54902)
 shadow_size = 5
 shadow_offset = Vector2(0, 3.5)
 
@@ -130,6 +132,7 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+shadow_color = Color(0.24, 0.1608, 0.17268, 0.54902)
 shadow_size = 5
 shadow_offset = Vector2(0, 3.5)
 
@@ -255,7 +258,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_oromi"]
 resource_name = "title_walk"
-length = 26.0
+length = 28.0
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -265,10 +268,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 8.5, 12.5, 20.5),
+"times": PackedFloat32Array(1, 9, 12.5, 20.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-32, 630), Vector2(736, 630), Vector2(736, 630), Vector2(-32, 630)]
+"values": [Vector2(-32, 630), Vector2(736, 630), Vector2(736, 70), Vector2(-32, 70)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -277,10 +280,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 12.5),
+"times": PackedFloat32Array(1, 12.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"walk_right", &"walk_left"]
+"values": [&"walk_right", &"walk_right"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -289,7 +292,7 @@ tracks/2/path = NodePath("AnimatedSprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 7.75, 8, 8.25, 8.5, 12.5, 12.75, 13, 13.25, 13.5, 13.75, 14, 14.25, 14.5, 14.75, 15, 15.25, 15.5, 15.75, 16, 16.25, 16.5, 16.75, 17, 17.25, 17.5, 17.75, 18, 18.25, 18.5, 18.75, 19, 19.25, 19.5, 19.75, 20, 20.25, 20.5),
+"times": PackedFloat32Array(1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 7.75, 8, 8.25, 8.5, 8.75, 9, 12.5, 12.75, 13, 13.25, 13.5, 13.75, 14, 14.25, 14.5, 14.75, 15, 15.25, 15.5, 15.75, 16, 16.25, 16.5, 16.75, 17, 17.25, 17.5, 17.75, 18, 18.25, 18.5, 18.75, 19, 19.25, 19.5, 19.75, 20, 20.25, 20.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0]
@@ -298,13 +301,13 @@ tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath(".:rotation")
-tracks/3/interp = 1
+tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"times": PackedFloat32Array(1, 11.25, 12.5, 23.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 3.14159, 3.14159]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mxmme"]
@@ -435,7 +438,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_0nor7"]
 resource_name = "title_walk"
-length = 30.0
+length = 28.0
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -445,10 +448,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(4, 12, 18, 26),
+"times": PackedFloat32Array(4, 12, 17, 25),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(736, 70), Vector2(-32, 70), Vector2(-32, 70), Vector2(736, 70)]
+"values": [Vector2(736, 70), Vector2(-32, 70), Vector2(-32, 630), Vector2(736, 630)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -457,10 +460,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(4, 18),
+"times": PackedFloat32Array(4, 17),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"walk_right", &"walk_left"]
+"values": [&"walk_right", &"walk_right"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -469,7 +472,7 @@ tracks/2/path = NodePath("AnimatedSprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 7.75, 8, 8.25, 8.5, 8.75, 9, 9.25, 9.5, 9.75, 10, 10.25, 10.5, 10.75, 11, 11.25, 11.5, 11.75, 12, 18, 18.25, 18.5, 18.75, 19, 19.25, 19.5, 19.75, 20, 20.25, 20.5, 20.75, 21, 21.25, 21.5, 21.75, 22, 22.25, 22.5, 22.75, 23, 23.25, 23.5, 23.75, 24, 24.25, 24.5, 24.75, 25, 25.25, 25.5, 25.75, 26),
+"times": PackedFloat32Array(4, 4.25, 4.5, 4.75, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 7.75, 8, 8.25, 8.5, 8.75, 9, 9.25, 9.5, 9.75, 10, 10.25, 10.5, 10.75, 11, 11.25, 11.5, 11.75, 12, 17, 17.25, 17.5, 17.75, 18, 18.25, 18.5, 18.75, 19, 19.25, 19.5, 19.75, 20, 20.25, 20.5, 20.75, 21, 21.25, 21.5, 21.75, 22, 22.25, 22.5, 22.75, 23, 23.25, 23.5, 23.75, 24, 24.25, 24.5, 24.75, 25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0]
@@ -478,13 +481,13 @@ tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath(".:rotation")
-tracks/3/interp = 1
+tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.14159]
+"times": PackedFloat32Array(4, 14.75, 17, 26.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3.14159, 3.14159, 0.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_828jk"]
@@ -549,11 +552,10 @@ theme_override_constants/separation = 10
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_focus_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_pressed_color = Color(0.458824, 0.305882, 0.329412, 1)
 theme_override_fonts/font = ExtResource("3_s3ie0")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxFlat_8saeu")
@@ -568,11 +570,11 @@ script = ExtResource("4_p4pvn")
 [node name="Stettings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_hover_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_focus_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_pressed_color = Color(0.458824, 0.305882, 0.329412, 1)
 theme_override_fonts/font = ExtResource("3_s3ie0")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxFlat_8saeu")
@@ -587,11 +589,11 @@ script = ExtResource("4_p4pvn")
 [node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_hover_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_focus_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_pressed_color = Color(0.458824, 0.305882, 0.329412, 1)
 theme_override_fonts/font = ExtResource("3_s3ie0")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxFlat_8saeu")
@@ -605,11 +607,11 @@ script = ExtResource("4_p4pvn")
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_hover_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_focus_color = Color(0.458824, 0.305882, 0.329412, 1)
+theme_override_colors/font_pressed_color = Color(0.458824, 0.305882, 0.329412, 1)
 theme_override_fonts/font = ExtResource("3_s3ie0")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxFlat_8saeu")

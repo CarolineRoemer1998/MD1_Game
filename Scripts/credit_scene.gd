@@ -1,7 +1,7 @@
 extends Control
 
 func _ready() -> void:
-	$VBoxContainer/Exit.grab_focus()
+	$VBoxContainer2/Exit.grab_focus()
 
 
 
