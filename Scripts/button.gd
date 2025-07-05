@@ -14,7 +14,6 @@ var sprite_toggle_purple := preload("res://Sprites/toggle-button-purple.png")
 
 @export var type : BUTTON_TYPE = BUTTON_TYPE.STICKY
 @export var start_active: bool = false
-
 var active: bool = false
 var sticky_audio_played : bool = false
 var door_is_permanently_opened : bool = false
@@ -30,11 +29,9 @@ func _ready() -> void:
 	_set_button_sprites()
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
-	_update_button_color()
+	set_active(start_active)
 	
-	if start_active:
-		set_active(true)
-
+	
 func _on_body_entered(body: Node) -> void:
 	if door_is_permanently_opened:
 		return

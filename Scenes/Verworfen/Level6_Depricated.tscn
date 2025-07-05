@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://brhwfkteg8vrm"]
 
 [ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scripts/level.gd" id="1_xkr28"]
-[ext_resource type="PackedScene" path="res://Scenes/background_lvl_6.tscn" id="2_mxqtp"]
+[ext_resource type="PackedScene" uid="uid://hje6xlb1hpw7" path="res://Scenes/background_lvl_6.tscn" id="2_mxqtp"]
 [ext_resource type="PackedScene" uid="uid://c6dmpno4s3103" path="res://Scenes/door.tscn" id="3_ua303"]
 [ext_resource type="PackedScene" uid="uid://cdt5m2v6xjjuf" path="res://Scenes/inverted_door.tscn" id="4_0ny42"]
 [ext_resource type="PackedScene" uid="uid://bt4pnhd7cx7xc" path="res://Scenes/button.tscn" id="5_v2akx"]
@@ -85,12 +85,10 @@ type = 0
 [node name="Button6" parent="Buttons" instance=ExtResource("5_v2akx")]
 position = Vector2(608, 600)
 type = 0
-start_active = true
 
 [node name="Button5" parent="Buttons" instance=ExtResource("5_v2akx")]
 position = Vector2(96, 600)
 type = 0
-start_active = true
 
 [node name="Button7" parent="Buttons" instance=ExtResource("5_v2akx")]
 position = Vector2(96, 88)
