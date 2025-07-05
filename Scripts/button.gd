@@ -11,10 +11,12 @@ var sprite_pressure_off := preload("res://Sprites/pressure_plate_off.png")
 var sprite_pressure_on := preload("res://Sprites/pressure_plate_on.png")
 
 @export var type : BUTTON_TYPE = BUTTON_TYPE.STICKY
+@export var start_active: bool = false
 
 var active: bool = false
 var sticky_audio_played : bool = false
 var door_is_permanently_opened : bool = false
+
 
 @onready var button_green: Sprite2D = $Button_GREEN
 @onready var button_red: Sprite2D = $Button_RED
@@ -27,6 +29,9 @@ func _ready() -> void:
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
 	_update_button_color()
+	
+	if start_active:
+		set_active(true)
 
 func _on_body_entered(body: Node) -> void:
 	if door_is_permanently_opened:
@@ -51,7 +56,6 @@ func _on_body_exited(body: Node) -> void:
 	await get_tree().process_frame # small delay to update collision state
 	if area.get_overlapping_bodies().is_empty():
 		set_active(false)
-		emit_signal("deactivated")
 		audio_leave.play()
 		
 func _update_button_color() -> void:
@@ -63,20 +67,21 @@ func is_pressed() -> bool:
 
 func set_active(value : bool):
 	active = value
+	if active:
+		emit_signal("activated")
+	else: 
+		emit_signal("deactivated")
 	_update_button_color()
 
 func toggle_button():
 	set_active(!active)
 	if active:
-		emit_signal("activated")
 		audio_push_button.play()
 	else:
-		emit_signal("deactivated")
 		audio_leave.play()
 	
 func sticky_button():
 	set_active(true)
-	emit_signal("activated")
 	if not sticky_audio_played:
 		audio_push_button.play()
 		sticky_audio_played = true
@@ -84,7 +89,6 @@ func sticky_button():
 func pressure_button():
 	if not active:
 		set_active(true)
-		emit_signal("activated")
 		audio_push_button.play()
 
 func _set_button_sprites():
