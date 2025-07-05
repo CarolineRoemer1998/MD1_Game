@@ -108,6 +108,9 @@ position = Vector2(416, 160)
 rotation = 1.57079
 buttons = Array[NodePath]([NodePath("../ButtonPressure")])
 
+[node name="Pushable" parent="." instance=ExtResource("14_h6i6i")]
+position = Vector2(544, 160)
+
 [node name="ButtonToggle" parent="." instance=ExtResource("4_tf17e")]
 position = Vector2(544, 476)
 type = 0
@@ -131,6 +134,3 @@ visible = false
 [node name="ResetBar" parent="." instance=ExtResource("8_keikn")]
 
 [node name="GameCompleted" parent="." instance=ExtResource("12_tf17e")]
-
-[node name="Pushable" parent="." instance=ExtResource("14_h6i6i")]
-position = Vector2(544, 160)
