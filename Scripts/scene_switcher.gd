@@ -16,6 +16,7 @@ func _ready() -> void:
 	current_scene = root.get_child(root.get_child_count() - 1)
 	levelCount = get_level_count_from_folder(level_folder)
 	print("Found %d levels in %s" % [levelCount, level_folder])
+	levelCount = 6
 	
 func switch_scene(res_path, pause_current=false):
 	call_deferred("_deferred_switch_scene", res_path, pause_current)
