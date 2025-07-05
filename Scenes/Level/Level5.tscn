@@ -11,11 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://oy61arlldjo3" path="res://Scenes/pushable.tscn" id="9_4kscp"]
 [ext_resource type="PackedScene" uid="uid://c6dmpno4s3103" path="res://Scenes/door.tscn" id="10_2xldr"]
 [ext_resource type="PackedScene" uid="uid://bt4pnhd7cx7xc" path="res://Scenes/button.tscn" id="11_ytef6"]
-[ext_resource type="PackedScene" uid="uid://ckkosqi7rtbdb" path="res://Scenes/Menu/game_completed.tscn" id="12_61bxs"]
+[ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="12_61bxs"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_nonkr")
-final_level = true
 level_number = 5
 
 [node name="Background_Lvl5" parent="." instance=ExtResource("2_hurp7")]
@@ -178,4 +177,4 @@ position = Vector2(352, 608)
 
 [node name="ResetBar" parent="." instance=ExtResource("8_xnl3v")]
 
-[node name="GameCompleted" parent="." instance=ExtResource("12_61bxs")]
+[node name="WinScreen" parent="." instance=ExtResource("12_61bxs")]
