@@ -9,6 +9,8 @@ var sprite_sticky_off := preload("res://Sprites/button_unpressed.png")
 var sprite_sticky_on := preload("res://Sprites/button_pressed.png")
 var sprite_pressure_off := preload("res://Sprites/pressure_plate_off.png")
 var sprite_pressure_on := preload("res://Sprites/pressure_plate_on.png")
+var sprite_toggle_orange := preload("res://Sprites/toggle-button-orange.png")
+var sprite_toggle_purple := preload("res://Sprites/toggle-button-purple.png")
 
 @export var type : BUTTON_TYPE = BUTTON_TYPE.STICKY
 
@@ -90,7 +92,8 @@ func pressure_button():
 func _set_button_sprites():
 	match type:
 		BUTTON_TYPE.TOGGLE:
-			return
+			button_green.texture = sprite_toggle_orange
+			button_red.texture = sprite_toggle_purple
 		BUTTON_TYPE.STICKY:
 			button_green.texture = sprite_sticky_on
 			button_red.texture = sprite_sticky_off
