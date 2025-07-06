@@ -4,7 +4,7 @@ extends Control
 func _ready() -> void:
 	$VBoxContainer/Start.grab_focus()
 	if not AudioManager.is_music_playing:
-		AudioManager.play_music("res://Sounds/Music/soft-piano-music-312509.mp3")
+		AudioManager.play_music("res://Sounds/Music/soft-piano-music-312509-lower-volume.mp3")
 
 func _on_start_pressed() -> void:
 	SceneSwitcher.go_to_next_level()

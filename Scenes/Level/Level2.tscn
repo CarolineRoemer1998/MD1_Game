@@ -71,7 +71,6 @@ position = Vector2(352, 608)
 
 [node name="MergedCreature" parent="." instance=ExtResource("6_au75x")]
 visible = false
-position = Vector2(480, 352)
 
 [node name="WinScreen" parent="." instance=ExtResource("2_ejprb")]
 

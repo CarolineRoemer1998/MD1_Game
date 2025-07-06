@@ -1,6 +1,6 @@
 extends Button
 
-const HOVER_SOUND = "res://Sounds/step3.mp3"
+const HOVER_SOUND = "res://Sounds/step4.mp3"
 const PRESS_SOUND = "res://Sounds/Push Button 4.mp3"
 
 func _ready():
