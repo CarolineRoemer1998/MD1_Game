@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://i448npnkeckp"]
 
-[ext_resource type="Script" path="res://Scripts/ice_floor.gd" id="1_53oo4"]
+[ext_resource type="Script" uid="uid://dgefssdtn30r1" path="res://Scripts/ice_floor.gd" id="1_53oo4"]
 [ext_resource type="Texture2D" uid="uid://daocnama176b2" path="res://Sprites/Tile.png" id="1_ga12v"]
 [ext_resource type="Texture2D" uid="uid://dxnoeao04xwyf" path="res://Sprites/Tile_brown_.png" id="2_53oo4"]
 [ext_resource type="Texture2D" uid="uid://dlgbpysuafk0b" path="res://Sprites/Verworfen/wall-new.png" id="3_ytyg6"]

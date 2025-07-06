@@ -19,26 +19,26 @@ shape = SubResource("RectangleShape2D_0d3l5")
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Icicle2" type="Sprite2D" parent="Sprites"]
-position = Vector2(13, 0)
+position = Vector2(10, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("2_20h07")
 
 [node name="Icicle5" type="Sprite2D" parent="Sprites"]
-position = Vector2(37, 0)
+position = Vector2(41, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("2_20h07")
 
 [node name="Icicle8" type="Sprite2D" parent="Sprites"]
-position = Vector2(61, 0)
+position = Vector2(70, -2)
 scale = Vector2(2, 2)
 texture = ExtResource("2_20h07")
 
 [node name="Icicle6" type="Sprite2D" parent="Sprites"]
-position = Vector2(49, 16)
+position = Vector2(54, 16)
 texture = ExtResource("2_20h07")
 
 [node name="Icicle9" type="Sprite2D" parent="Sprites"]
-position = Vector2(75, 16)
+position = Vector2(81, 16)
 texture = ExtResource("2_20h07")
 
 [node name="Icicle7" type="Sprite2D" parent="Sprites"]
@@ -46,14 +46,14 @@ position = Vector2(24, 16)
 texture = ExtResource("2_20h07")
 
 [node name="Icicle" type="Sprite2D" parent="Sprites"]
-position = Vector2(-11, 0)
+position = Vector2(-18, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("2_20h07")
 
 [node name="Icicle4" type="Sprite2D" parent="Sprites"]
-position = Vector2(0, 16)
+position = Vector2(-4, 16)
 texture = ExtResource("2_20h07")
 
 [node name="Icicle3" type="Sprite2D" parent="Sprites"]
-position = Vector2(-27, 16)
+position = Vector2(-30, 16)
 texture = ExtResource("2_20h07")

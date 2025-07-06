@@ -18,3 +18,11 @@ shape = SubResource("RectangleShape2D_0d3l5")
 position = Vector2(8.34465e-07, 1.90735e-06)
 scale = Vector2(2, 2)
 texture = ExtResource("1_c2d26")
+
+[node name="Icicle7" type="Sprite2D" parent="."]
+position = Vector2(22, 16)
+texture = ExtResource("1_c2d26")
+
+[node name="Icicle4" type="Sprite2D" parent="."]
+position = Vector2(-20, 16)
+texture = ExtResource("1_c2d26")

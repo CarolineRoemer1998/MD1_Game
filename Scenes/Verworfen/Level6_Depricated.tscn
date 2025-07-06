@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brhwfkteg8vrm"]
+[gd_scene load_steps=15 format=3 uid="uid://brhwfkteg8vrm"]
 
 [ext_resource type="Script" uid="uid://ddiwo6yyhfkuc" path="res://Scripts/level.gd" id="1_xkr28"]
 [ext_resource type="PackedScene" uid="uid://hje6xlb1hpw7" path="res://Scenes/background_lvl_6.tscn" id="2_mxqtp"]
@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cdt5m2v6xjjuf" path="res://Scenes/inverted_door.tscn" id="4_0ny42"]
 [ext_resource type="PackedScene" uid="uid://bt4pnhd7cx7xc" path="res://Scenes/button.tscn" id="5_v2akx"]
 [ext_resource type="PackedScene" uid="uid://ccncnjkm8w8ta" path="res://Scenes/CreaturesAndPlayer/creature_blue.tscn" id="6_34u22"]
+[ext_resource type="PackedScene" uid="uid://q064q65pkb0q" path="res://Scenes/icicle_2_v.tscn" id="6_mo0fy"]
 [ext_resource type="PackedScene" uid="uid://be6k5yjppap8y" path="res://Scenes/CreaturesAndPlayer/creature_yellow.tscn" id="7_qvxed"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/CreaturesAndPlayer/merged_creature.tscn" id="8_1obhw"]
 [ext_resource type="PackedScene" uid="uid://g3u7bc1jo6gj" path="res://Scenes/CreaturesAndPlayer/player.tscn" id="9_x2q7w"]
 [ext_resource type="PackedScene" uid="uid://bhgu3tj2dehs2" path="res://Scenes/Menu/reset_bar.tscn" id="10_phaa2"]
 [ext_resource type="PackedScene" uid="uid://ckkosqi7rtbdb" path="res://Scenes/Menu/game_completed.tscn" id="11_4bw5p"]
+[ext_resource type="PackedScene" uid="uid://ukmrqoqi27ie" path="res://Scenes/icicle_2_h.tscn" id="13_53f3k"]
+[ext_resource type="PackedScene" uid="uid://dflyfdm7ashwa" path="res://Scenes/icicle_1_Conecter_V.tscn" id="14_2754a"]
 
 [node name="Level6" type="Node2D"]
 script = ExtResource("1_xkr28")
@@ -69,7 +72,6 @@ buttons = Array[NodePath]([NodePath("../../Buttons/Button6")])
 
 [node name="Button" parent="Buttons" instance=ExtResource("5_v2akx")]
 position = Vector2(288, 88)
-type = 0
 
 [node name="Button2" parent="Buttons" instance=ExtResource("5_v2akx")]
 position = Vector2(416, 88)
@@ -96,6 +98,56 @@ position = Vector2(96, 88)
 [node name="Button8" parent="Buttons" instance=ExtResource("5_v2akx")]
 position = Vector2(544, 80)
 
+[node name="Icicle" type="Node" parent="."]
+
+[node name="Icicle 2 Horizontal3" parent="Icicle" instance=ExtResource("13_53f3k")]
+position = Vector2(168, 608)
+
+[node name="Icicle 2 Horizontal4" parent="Icicle" instance=ExtResource("13_53f3k")]
+position = Vector2(168, 544)
+
+[node name="Icicle 2 Horizontal5" parent="Icicle" instance=ExtResource("13_53f3k")]
+position = Vector2(488, 608)
+
+[node name="Icicle 2 Horizontal6" parent="Icicle" instance=ExtResource("13_53f3k")]
+position = Vector2(488, 544)
+
+[node name="Icicle 2 Vertical7" parent="Icicle" instance=ExtResource("6_mo0fy")]
+position = Vector2(352, 608)
+
+[node name="Icicle 2 Vertical8" parent="Icicle" instance=ExtResource("6_mo0fy")]
+position = Vector2(352, 416)
+
+[node name="Icicle 2 Vertical9" parent="Icicle" instance=ExtResource("6_mo0fy")]
+position = Vector2(224, 416)
+
+[node name="Icicle 2 Vertical10" parent="Icicle" instance=ExtResource("6_mo0fy")]
+position = Vector2(480, 416)
+
+[node name="Icicle2" parent="Icicle" instance=ExtResource("14_2754a")]
+position = Vector2(160, 416)
+
+[node name="Icicle3" parent="Icicle" instance=ExtResource("14_2754a")]
+position = Vector2(544, 416)
+
+[node name="Icicle 2 Vertical" parent="Icicle" instance=ExtResource("6_mo0fy")]
+position = Vector2(224, 160)
+
+[node name="Icicle 2 Vertical2" parent="Icicle" instance=ExtResource("6_mo0fy")]
+position = Vector2(224, 288)
+
+[node name="Icicle 2 Vertical3" parent="Icicle" instance=ExtResource("6_mo0fy")]
+position = Vector2(352, 160)
+
+[node name="Icicle 2 Vertical4" parent="Icicle" instance=ExtResource("6_mo0fy")]
+position = Vector2(480, 160)
+
+[node name="Icicle 2 Vertical5" parent="Icicle" instance=ExtResource("6_mo0fy")]
+position = Vector2(480, 288)
+
+[node name="Icicle 2 Vertical6" parent="Icicle" instance=ExtResource("6_mo0fy")]
+position = Vector2(352, 288)
+
 [node name="CreatureBlue" parent="." instance=ExtResource("6_34u22")]
 position = Vector2(288, 216)
 
@@ -106,6 +158,7 @@ position = Vector2(416, 224)
 visible = false
 
 [node name="Player" parent="." instance=ExtResource("9_x2q7w")]
+top_level = true
 position = Vector2(352, 480)
 
 [node name="ResetBar" parent="." instance=ExtResource("10_phaa2")]
