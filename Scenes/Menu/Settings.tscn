@@ -5,9 +5,9 @@
 [ext_resource type="FontFile" uid="uid://d3id6ewnchky" path="res://Fonts/GrapeSoda.ttf" id="2_lnv33"]
 [ext_resource type="PackedScene" uid="uid://cnd0kjj3gexr3" path="res://Scenes/Menu/AudioManager.tscn" id="2_os8bt"]
 [ext_resource type="PackedScene" uid="uid://c7xbrqq8jp67b" path="res://Scenes/Menu/VolumeSlider.tscn" id="3_lnv33"]
-[ext_resource type="AudioStream" uid="uid://bsx3skhivxvr3" path="res://Sounds/mixkit-sweet-kitty-meow-93.wav" id="5_7rr2e"]
 [ext_resource type="Theme" uid="uid://i7fixmxgctx7" path="res://Sprites/MenuSprites/Button.tres" id="5_dps5m"]
 [ext_resource type="Script" uid="uid://bld4747e6bxrc" path="res://Scripts/menu_button.gd" id="5_f2des"]
+[ext_resource type="Theme" uid="uid://dn5ts3pcaoad5" path="res://Sprites/MenuSprites/HSlider.tres" id="5_wi6js"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ng16n"]
 texture = ExtResource("1_312i6")
@@ -57,6 +57,7 @@ vertical_alignment = 1
 
 [node name="MusicSlider" parent="VBoxContainer" instance=ExtResource("3_lnv33")]
 layout_mode = 2
+theme = ExtResource("5_wi6js")
 bus_name = "music"
 
 [node name="SFX" type="Label" parent="VBoxContainer"]
@@ -69,6 +70,7 @@ vertical_alignment = 1
 
 [node name="SFXSlider" parent="VBoxContainer" instance=ExtResource("3_lnv33")]
 layout_mode = 2
+theme = ExtResource("5_wi6js")
 bus_name = "sfx"
 
 [node name="Back" type="Button" parent="VBoxContainer"]
@@ -96,13 +98,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_7rr2e")
 volume_db = -30.0
 autoplay = true
 bus = &"music"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_7rr2e")
 volume_db = -40.0
 pitch_scale = 3.58
 autoplay = true

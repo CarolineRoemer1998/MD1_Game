@@ -159,11 +159,17 @@ position = Vector2(480, 352)
 [node name="Pushable3" parent="." instance=ExtResource("9_4kscp")]
 position = Vector2(416, 288)
 
-[node name="Pushable4" parent="." instance=ExtResource("9_4kscp")]
-position = Vector2(288, 352)
-
 [node name="Pushable6" parent="." instance=ExtResource("9_4kscp")]
 position = Vector2(96, 288)
+
+[node name="Icicle" parent="." instance=ExtResource("14_tebux")]
+position = Vector2(288, 352)
+
+[node name="Icicle 2 Horizontal" parent="." instance=ExtResource("13_gwimc")]
+position = Vector2(104, 96)
+
+[node name="Icicle 2 Horizontal2" parent="." instance=ExtResource("13_gwimc")]
+position = Vector2(552, 96)
 
 [node name="CreatureBlue" parent="." instance=ExtResource("5_213sf")]
 position = Vector2(352, 480)
@@ -180,12 +186,3 @@ position = Vector2(352, 608)
 [node name="ResetBar" parent="." instance=ExtResource("8_xnl3v")]
 
 [node name="WinScreen" parent="." instance=ExtResource("12_61bxs")]
-
-[node name="Icicle" parent="." instance=ExtResource("14_tebux")]
-position = Vector2(224, 544)
-
-[node name="Icicle 2 Horizontal" parent="." instance=ExtResource("13_gwimc")]
-position = Vector2(104, 544)
-
-[node name="Icicle 2 Horizontal2" parent="." instance=ExtResource("13_gwimc")]
-position = Vector2(296, 544)

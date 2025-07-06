@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/CreaturesAndPlayer/merged_creature.tscn" id="6_au75x"]
 [ext_resource type="PackedScene" uid="uid://bhgu3tj2dehs2" path="res://Scenes/Menu/reset_bar.tscn" id="9_70df5"]
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 script = ExtResource("1_70df5")
 level_number = 2
 

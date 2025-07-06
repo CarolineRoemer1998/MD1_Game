@@ -10,5 +10,7 @@ func _ready() -> void:
 	value = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
 	value_changed.connect(_on_value_changed)
 
-func _on_value_changed(v: float) -> void:
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(v))
+func _on_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
+	if bus_name == "sfx":
+		AudioManager.play_sfx("res://Sounds/step4.mp3")
