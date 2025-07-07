@@ -27,10 +27,11 @@ var possessed_creature_until_next_tile: Creature = null
 
 # LAYER BITS
 const WALL_AND_PLAYER_LAYER_BIT := 0
-const CREATURE_LAYER_BIT := 1
-const PUSHABLE_LAYER_BIT := 2
-const DOOR_LAYER_BIT     := 3
-const ICE_LAYER_BIT      := 5
+const CREATURE_LAYER_BIT 	:= 1
+const PUSHABLE_LAYER_BIT 	:= 2
+const DOOR_LAYER_BIT    	:= 3
+const ICE_LAYER_BIT     	:= 5
+const LEVEL_WALL_LAYER_BIT  := 6
 
 var can_move := true
 
@@ -217,8 +218,18 @@ func try_move(direction: Vector2):
 	var result_doors = space_state.intersect_point(query, 1)
 	
 	# Query für Blockaden
-	query.collision_mask = (1 << WALL_AND_PLAYER_LAYER_BIT)
-	var result_wall = space_state.intersect_point(query, 1)
+	var result_wall = []
+	if currently_possessed_creature != null:
+		query.collision_mask = (1 << WALL_AND_PLAYER_LAYER_BIT)
+		result_wall = space_state.intersect_point(query, 1)
+	
+	# Query für Außenwand
+	var result_level_wall = []
+	query.collision_mask = (1 << LEVEL_WALL_LAYER_BIT)
+	result_level_wall = space_state.intersect_point(query, 1)
+	
+	if not result_level_wall.is_empty():
+		return
 	
 	# Kein Objekt: Bewegung frei
 	if (result_pushables.is_empty() or currently_possessed_creature == null) and (result_doors.is_empty() or currently_possessed_creature == null) and result_wall.is_empty():
