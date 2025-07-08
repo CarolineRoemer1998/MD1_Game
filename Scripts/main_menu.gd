@@ -8,8 +8,6 @@ func _ready() -> void:
 		AudioManager.play_music("res://Sounds/Music/title-track.wav")
 
 func _on_start_pressed() -> void:
-	AudioManager.music_player.volume_db = 0
-	AudioManager.play_music("res://Sounds/Music/Nature Ambience.wav")
 	SceneSwitcher.go_to_next_level()
 
 func _on_stettings_pressed() -> void:

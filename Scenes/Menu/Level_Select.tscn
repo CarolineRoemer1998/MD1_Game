@@ -1,7 +1,6 @@
-[gd_scene load_steps=37 format=4 uid="uid://cx7is5pykis43"]
+[gd_scene load_steps=36 format=4 uid="uid://djo2acib585oq"]
 
-[ext_resource type="Script" uid="uid://ckji0el187dht" path="res://Scripts/level_select.gd" id="1_6aqvj"]
-[ext_resource type="PackedScene" uid="uid://cnd0kjj3gexr3" path="res://Scenes/Menu/AudioManager.tscn" id="2_6aqvj"]
+[ext_resource type="Script" path="res://Scripts/level_select.gd" id="1_6aqvj"]
 [ext_resource type="Texture2D" uid="uid://daocnama176b2" path="res://Sprites/Tile.png" id="3_31xks"]
 [ext_resource type="Texture2D" uid="uid://dxnoeao04xwyf" path="res://Sprites/Tile_brown_.png" id="4_403c5"]
 [ext_resource type="Texture2D" uid="uid://dlgbpysuafk0b" path="res://Sprites/Verworfen/wall-new.png" id="5_ywfc5"]
@@ -150,8 +149,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6aqvj")
-
-[node name="Hover_sound" parent="." instance=ExtResource("2_6aqvj")]
 
 [node name="Background_Lvl1" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_cqlev")
