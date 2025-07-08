@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/CreaturesAndPlayer/merged_creature.tscn" id="8_t5kwq"]
 [ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="9_p6pjf"]
 [ext_resource type="PackedScene" uid="uid://bhgu3tj2dehs2" path="res://Scenes/Menu/reset_bar.tscn" id="10_m7vvj"]
-[ext_resource type="PackedScene" uid="uid://dp2qf8g2kvpfa" path="res://Scenes/level_wall.tscn" id="11_wxy6n"]
+[ext_resource type="PackedScene" path="res://Scenes/level_wall.tscn" id="11_wxy6n"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_cp0jt")
@@ -47,6 +47,7 @@ position = Vector2(224, 160)
 [node name="WinScreen" parent="." instance=ExtResource("9_p6pjf")]
 
 [node name="ResetBar" parent="." instance=ExtResource("10_m7vvj")]
+visible = false
 offset_right = 0.0
 offset_bottom = 0.0
 

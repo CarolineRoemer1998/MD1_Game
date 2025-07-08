@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://be6k5yjppap8y" path="res://Scenes/CreaturesAndPlayer/creature_yellow.tscn" id="5_p4u3k"]
 [ext_resource type="PackedScene" uid="uid://23u33yt4jga3" path="res://Scenes/CreaturesAndPlayer/merged_creature.tscn" id="6_au75x"]
 [ext_resource type="PackedScene" uid="uid://bhgu3tj2dehs2" path="res://Scenes/Menu/reset_bar.tscn" id="9_70df5"]
-[ext_resource type="PackedScene" uid="uid://dp2qf8g2kvpfa" path="res://Scenes/level_wall.tscn" id="10_n7tbg"]
+[ext_resource type="PackedScene" path="res://Scenes/level_wall.tscn" id="10_n7tbg"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_70df5")
@@ -76,6 +76,7 @@ visible = false
 [node name="WinScreen" parent="." instance=ExtResource("2_ejprb")]
 
 [node name="ResetBar" parent="." instance=ExtResource("9_70df5")]
+visible = false
 offset_right = 0.0
 offset_bottom = 0.0
 
