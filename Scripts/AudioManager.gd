@@ -4,6 +4,7 @@ extends Node
 @onready var music_player = $MusicAudioPlayer
 @onready var wind_player: AudioStreamPlayer = $WindPlayer
 
+var curently_playing_song: String = ""
 var is_music_playing = false
 
 func play_sfx(path: String):
@@ -11,7 +12,10 @@ func play_sfx(path: String):
 	sfx_player.play()
 
 func play_music(path: String):
+	if curently_playing_song == path:
+		return
 	music_player.stream = load(path)
+	curently_playing_song = path
 	is_music_playing = true
 	music_player.play()
 	print ("music Playing")
