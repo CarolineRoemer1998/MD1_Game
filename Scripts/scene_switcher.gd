@@ -16,6 +16,7 @@ func _ready() -> void:
 	current_scene = root.get_child(root.get_child_count() - 1)
 	levelCount = get_level_count_from_folder(level_folder)
 	print("Found %d levels in %s" % [levelCount, level_folder])
+	#levelCount = 9
 	
 func switch_scene(res_path, pause_current=false):
 	call_deferred("_deferred_switch_scene", res_path, pause_current)
@@ -57,6 +58,7 @@ func go_to_next_level():
 	if current_level == levelCount:
 		current_level = 0
 		switch_scene("res://Scenes/Menu/credit_scene.tscn")
+		AudioManager.play_music("res://Sounds/Music/title-track.wav")
 		return
 	var nextLevel = current_level + 1
 	if nextLevel <= levelCount:
@@ -89,6 +91,7 @@ func go_to_main_menu(ending_game: bool = false):
 	if ending_game:
 		current_scene.queue_free()
 	current_level = 0
+	AudioManager.play_music("res://Sounds/Music/title-track.wav")
 	switch_scene("res://Scenes/Menu/MainMenu.tscn")
 
 

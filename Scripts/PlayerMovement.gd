@@ -184,6 +184,10 @@ func check_if_collides(position, layer_mask) -> bool:
 	query.position = position
 	query.collision_mask = layer_mask
 	var result = space.intersect_point(query, 1)
+	if not result.is_empty():
+		if result[0].collider is Door:
+			if not result[0].collider.door_is_closed:
+				return false
 	return not result.is_empty()
 
 func get_collision_on_tile(position, layer_mask):
@@ -336,8 +340,9 @@ func set_is_moving(value: bool):
 
 	if value:
 		# Sound NUR EINMAL pro Tile-Bewegung abspielen
-		audio_stream_player_2d.stop()
-		audio_stream_player_2d.play()
+		#audio_stream_player_2d.stop()
+		#audio_stream_player_2d.play()
+		AudioManager.play_sfx("res://Sounds/step5.mp3")
 
 		# Besessene Kreatur mitziehen lassen
 		if currently_possessed_creature:
@@ -356,7 +361,8 @@ func possess_or_unpossess_creature():
 		label_press_f_to_control.visible = true
 		label_press_f_to_stop_control.visible = false
 		animated_sprite_2d.modulate = Color(1, 1, 1, 0.8)
-		audio_uncontrol.play()
+		#audio_uncontrol.play()
+		AudioManager.play_sfx("res://Sounds/uncontrol.mp3")
 
 	else:
 		# Possess: Übernehmen und sofort synchronisieren
@@ -366,7 +372,8 @@ func possess_or_unpossess_creature():
 			label_press_f_to_stop_control.visible = true
 			currently_possessed_creature.border.visible = true
 			animated_sprite_2d.modulate = Color(1, 1, 1, 0)
-			audio_control.play()
+			#audio_control.play()
+			AudioManager.play_sfx("res://Sounds/control.mp3")
 
 			# Position sofort synchronisieren
 			currently_possessed_creature.position = target_position

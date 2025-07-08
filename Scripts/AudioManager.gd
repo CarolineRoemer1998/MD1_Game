@@ -2,6 +2,7 @@ extends Node
 
 @onready var sfx_player = $SFXAudioPlayer
 @onready var music_player = $MusicAudioPlayer
+@onready var wind_player: AudioStreamPlayer = $WindPlayer
 
 var is_music_playing = false
 
@@ -18,3 +19,6 @@ func play_music(path: String):
 func stop_music():
 	music_player.stop()
 	is_music_playing = false
+
+func play_wind():
+	wind_player.play()

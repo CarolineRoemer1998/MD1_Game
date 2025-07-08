@@ -30,10 +30,12 @@ shape = SubResource("RectangleShape2D_2kp8h")
 
 [node name="AudioPushButton" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_edukx")
+volume_db = 10.0
 bus = &"sfx"
 
 [node name="AudioLeave" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_edukx")
+volume_db = 10.0
 bus = &"sfx"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

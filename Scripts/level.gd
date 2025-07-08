@@ -9,6 +9,9 @@ extends Node2D
 func _ready() -> void:
 	Globals.SHOW_WIN_SCREEN.connect(show_win_screen)
 	SceneSwitcher.set_curent_level(level_number)
+	if level_number == 6:
+		AudioManager.music_player.volume_db = -14
+		AudioManager.play_music("res://Sounds/Music/winter-ambience.wav")
 
 func show_win_screen():
 	if final_level:

@@ -16,4 +16,5 @@ func emit_win_screen():
 	Globals.SHOW_WIN_SCREEN.emit()
 
 func play_win_sound():
-	audio_win.play()
+	#audio_win.play()
+	AudioManager.play_sfx("res://Sounds/win2.mp3")
