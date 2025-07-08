@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2wcstlnxmknt"
-path="res://.godot/imported/Ice-floor-6.png-fa9af0dbcfdd6a77d0c683e378d177ba.ctex"
+uid="uid://dhgxskyq6mhsp"
+path="res://.godot/imported/Ice-floor-B.png-37584743d34d85be96050f19eeb9a505.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/IceFloor/Ice-floor-6.png"
-dest_files=["res://.godot/imported/Ice-floor-6.png-fa9af0dbcfdd6a77d0c683e378d177ba.ctex"]
+source_file="res://Sprites/IceFloor/Ice-floor-B.png"
+dest_files=["res://.godot/imported/Ice-floor-B.png-37584743d34d85be96050f19eeb9a505.ctex"]
 
 [params]
 
