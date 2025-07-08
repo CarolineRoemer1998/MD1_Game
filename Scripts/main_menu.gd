@@ -8,8 +8,6 @@ func _ready() -> void:
 		AudioManager.play_music("res://Sounds/Music/title-track.wav")
 
 func _on_start_pressed() -> void:
-	AudioManager.music_player.volume_db = 0
-	AudioManager.play_music("res://Sounds/Music/Nature Ambience.wav")
 	SceneSwitcher.go_to_next_level()
 
 func _on_stettings_pressed() -> void:
@@ -28,3 +26,7 @@ func _on_exit_pressed() -> void:
 
 func on_button_hovering() -> void:
 	AudioManager.play_sfx("res://Sounds/step2.mp3")
+
+
+func _on_level_select_pressed() -> void:
+	SceneSwitcher.switch_scene("res://Scenes/Menu/Level_Select.tscn")

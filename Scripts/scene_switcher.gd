@@ -58,6 +58,7 @@ func go_to_next_level():
 	if current_level == levelCount:
 		current_level = 0
 		switch_scene("res://Scenes/Menu/credit_scene.tscn")
+		AudioManager.music_player.volume_db = -14
 		AudioManager.play_music("res://Sounds/Music/title-track.wav")
 		return
 	var nextLevel = current_level + 1
@@ -91,6 +92,7 @@ func go_to_main_menu(ending_game: bool = false):
 	if ending_game:
 		current_scene.queue_free()
 	current_level = 0
+	AudioManager.music_player.volume_db = -14
 	AudioManager.play_music("res://Sounds/Music/title-track.wav")
 	switch_scene("res://Scenes/Menu/MainMenu.tscn")
 
