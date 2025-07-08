@@ -281,62 +281,49 @@ position = Vector2(64, 64)
 texture = ExtResource("8_s0dtf")
 
 [node name="ButtonTop" parent="." instance=ExtResource("5_mehec")]
-visible = false
 position = Vector2(352, 160)
 type = 0
 
 [node name="ButtonRight" parent="." instance=ExtResource("5_mehec")]
-visible = false
 position = Vector2(544, 348)
 type = 0
 
 [node name="ButtonBottom" parent="." instance=ExtResource("5_mehec")]
-visible = false
 position = Vector2(352, 540)
 
 [node name="ButtonBottom2" parent="." instance=ExtResource("5_mehec")]
-visible = false
 position = Vector2(417, 540)
 
 [node name="ButtonBottom3" parent="." instance=ExtResource("5_mehec")]
-visible = false
 position = Vector2(481, 540)
 
 [node name="ButtonLeft" parent="." instance=ExtResource("5_mehec")]
-visible = false
 position = Vector2(160, 352)
 type = 0
 
 [node name="DoorRight" parent="." instance=ExtResource("4_fy58k")]
-visible = false
 position = Vector2(416, 352)
 buttons = Array[NodePath]([NodePath("../ButtonRight")])
 
 [node name="DoorLeft" parent="." instance=ExtResource("4_fy58k")]
-visible = false
 position = Vector2(288, 352)
 buttons = Array[NodePath]([NodePath("../ButtonLeft")])
 
 [node name="DoorTop" parent="." instance=ExtResource("4_fy58k")]
-visible = false
 position = Vector2(352, 288)
 rotation = 1.57079
 buttons = Array[NodePath]([NodePath("../ButtonTop")])
 
 [node name="DoorExit" parent="." instance=ExtResource("4_fy58k")]
-visible = false
 position = Vector2(416, 480)
 buttons = Array[NodePath]([NodePath("../ButtonBottom"), NodePath("../ButtonBottom2"), NodePath("../ButtonBottom3")])
 
 [node name="LevelWall" parent="." instance=ExtResource("15_dtgac")]
-visible = false
 
 [node name="Pushable" parent="." instance=ExtResource("7_787sw")]
-visible = false
 position = Vector2(160, 544)
 
 [node name="Icicles" type="Node2D" parent="."]
-visible = false
 
 [node name="Icicle" parent="Icicles" instance=ExtResource("4_rew0p")]
 position = Vector2(96, 96)
@@ -363,18 +350,15 @@ position = Vector2(96, 608)
 position = Vector2(96, 544)
 
 [node name="CreatureBlue" parent="." instance=ExtResource("9_qunt2")]
-visible = false
 position = Vector2(225, 608)
 
 [node name="CreatureYellow" parent="." instance=ExtResource("4_ba60x")]
-visible = false
 position = Vector2(288, 416)
 
 [node name="MergedCreature" parent="." instance=ExtResource("12_2eq8c")]
 visible = false
 
 [node name="Player" parent="." instance=ExtResource("11_34cvg")]
-visible = false
 position = Vector2(416, 288)
 
 [node name="LevelWall2" parent="." instance=ExtResource("15_dtgac")]
