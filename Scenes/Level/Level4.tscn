@@ -75,7 +75,6 @@ position = Vector2(544, 160)
 visible = false
 
 [node name="ResetBar" parent="." instance=ExtResource("10_nv5kp")]
-visible = false
 offset_right = 0.0
 offset_bottom = 0.0
 

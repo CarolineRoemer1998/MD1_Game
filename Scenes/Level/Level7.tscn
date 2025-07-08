@@ -155,7 +155,6 @@ visible = false
 position = Vector2(544, 224)
 
 [node name="ResetBar" parent="." instance=ExtResource("8_keikn")]
-visible = false
 
 [node name="LevelWall" parent="." instance=ExtResource("15_dtgac")]
 

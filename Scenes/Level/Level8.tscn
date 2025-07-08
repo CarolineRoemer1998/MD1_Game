@@ -284,7 +284,6 @@ visible = false
 position = Vector2(160, 608)
 
 [node name="ResetBar" parent="." instance=ExtResource("13_efhq8")]
-visible = false
 
 [node name="WinScreen" parent="." instance=ExtResource("14_r8atn")]
 

@@ -364,6 +364,5 @@ position = Vector2(416, 288)
 [node name="LevelWall2" parent="." instance=ExtResource("15_dtgac")]
 
 [node name="ResetBar" parent="." instance=ExtResource("8_mehec")]
-visible = false
 
 [node name="WinScreen" parent="." instance=ExtResource("14_qf8l7")]

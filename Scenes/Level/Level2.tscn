@@ -76,7 +76,6 @@ visible = false
 [node name="WinScreen" parent="." instance=ExtResource("2_ejprb")]
 
 [node name="ResetBar" parent="." instance=ExtResource("9_70df5")]
-visible = false
 offset_right = 0.0
 offset_bottom = 0.0
 

@@ -47,7 +47,6 @@ position = Vector2(224, 160)
 [node name="WinScreen" parent="." instance=ExtResource("9_p6pjf")]
 
 [node name="ResetBar" parent="." instance=ExtResource("10_m7vvj")]
-visible = false
 offset_right = 0.0
 offset_bottom = 0.0
 
