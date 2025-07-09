@@ -26,6 +26,7 @@ AudioManager="*res://Scenes/Menu/AudioManager.tscn"
 
 window/size/viewport_width=704
 window/size/viewport_height=704
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [editor_plugins]
