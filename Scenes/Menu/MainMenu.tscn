@@ -583,6 +583,7 @@ offset_top = 560.0
 offset_right = 680.0
 offset_bottom = 624.0
 theme = ExtResource("10_syprg")
+script = ExtResource("4_p4pvn")
 
 [node name="Panel" type="Panel" parent="LevelSelect"]
 layout_mode = 0
