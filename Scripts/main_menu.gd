@@ -23,7 +23,5 @@ func _on_exit_pressed() -> void:
 	else:
 		get_tree().quit()
 
-
-
 func _on_level_select_pressed() -> void:
 	SceneSwitcher.switch_scene("res://Scenes/Menu/Level_Select.tscn")
