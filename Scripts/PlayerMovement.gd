@@ -340,9 +340,9 @@ func set_is_moving(value: bool):
 
 	if value:
 		# Sound NUR EINMAL pro Tile-Bewegung abspielen
-		#audio_stream_player_2d.stop()
-		#audio_stream_player_2d.play()
-		AudioManager.play_sfx("res://Sounds/step5.mp3")
+		audio_stream_player_2d.stop()
+		audio_stream_player_2d.play()
+		#AudioManager.play_sfx("res://Sounds/step5.mp3")
 
 		# Besessene Kreatur mitziehen lassen
 		if currently_possessed_creature:
@@ -361,8 +361,8 @@ func possess_or_unpossess_creature():
 		label_press_f_to_control.visible = true
 		label_press_f_to_stop_control.visible = false
 		animated_sprite_2d.modulate = Color(1, 1, 1, 0.8)
-		#audio_uncontrol.play()
-		AudioManager.play_sfx("res://Sounds/uncontrol.mp3")
+		audio_uncontrol.play()
+		#AudioManager.play_sfx("res://Sounds/uncontrol.mp3")
 
 	else:
 		# Possess: Übernehmen und sofort synchronisieren
@@ -372,8 +372,8 @@ func possess_or_unpossess_creature():
 			label_press_f_to_stop_control.visible = true
 			currently_possessed_creature.border.visible = true
 			animated_sprite_2d.modulate = Color(1, 1, 1, 0)
-			#audio_control.play()
-			AudioManager.play_sfx("res://Sounds/control.mp3")
+			audio_control.play()
+			#AudioManager.play_sfx("res://Sounds/control.mp3")
 
 			# Position sofort synchronisieren
 			currently_possessed_creature.position = target_position

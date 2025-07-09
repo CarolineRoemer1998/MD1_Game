@@ -55,8 +55,8 @@ func _on_body_exited(body: Node) -> void:
 	await get_tree().process_frame # small delay to update collision state
 	if area.get_overlapping_bodies().is_empty():
 		set_active(false)
-		#audio_leave.play()
-		AudioManager.play_sfx("res://Sounds/Leave Button 3.mp3")
+		audio_leave.play()
+		#AudioManager.play_sfx("res://Sounds/Leave Button 3.mp3")
 		
 func _update_button_color() -> void:
 	button_green.visible = active
@@ -76,24 +76,24 @@ func set_active(value : bool):
 func toggle_button():
 	set_active(!active)
 	if active:
-		#audio_push_button.play()
-		AudioManager.play_sfx("res://Sounds/Push Button 5.mp3")
+		audio_push_button.play()
+		#AudioManager.play_sfx("res://Sounds/Push Button 5.mp3")
 	else:
-		#audio_leave.play()
-		AudioManager.play_sfx("res://Sounds/Leave Button 3.mp3")
+		audio_leave.play()
+		#AudioManager.play_sfx("res://Sounds/Leave Button 3.mp3")
 	
 func sticky_button():
 	set_active(true)
 	if not sticky_audio_played:
-		#audio_push_button.play()
-		AudioManager.play_sfx("res://Sounds/Push Button 5.mp3")
+		audio_push_button.play()
+		#AudioManager.play_sfx("res://Sounds/Push Button 5.mp3")
 		sticky_audio_played = true
 	
 func pressure_button():
 	if not active:
 		set_active(true)
-		#audio_push_button.play()
-		AudioManager.play_sfx("res://Sounds/Push Button 5.mp3")
+		audio_push_button.play()
+		#AudioManager.play_sfx("res://Sounds/Push Button 5.mp3")
 
 func _set_button_sprites():
 	match type:
