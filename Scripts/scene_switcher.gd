@@ -7,18 +7,16 @@ var level_folder = "res://Scenes/Level/"
 
 var current_scene = null
 var current_level = 0
-var levelCount = 0
+var levelCount = 10
 var paused_scene = null  # T o store the paused scene
 var is_paused = false   # To track if we're in a paused state
 
 func _ready() -> void:
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
-	levelCount = get_level_count_from_folder(level_folder)
-	print("Found %d levels in %s" % [levelCount, level_folder])
-	if OS.has_feature("web"):
-		# Optional: Redirect to main menu or show a message
-		levelCount = 10
+	#levelCount = get_level_count_from_folder(level_folder)
+	#print("Found %d levels in %s" % [levelCount, level_folder])
+	levelCount = 10
 	
 func switch_scene(res_path, pause_current=false):
 	call_deferred("_deferred_switch_scene", res_path, pause_current)
@@ -51,7 +49,7 @@ func _deferred_switch_scene(res_path, pause_current=false):
 		current_scene.add_child(fade_node)  # Important: add it to new scene, not root
 		fade_animation = fade_node.get_node("AnimationPlayer")
 		fade_animation.play("fade")
-		await fade_animation.animation_finished
+		#await fade_animation.animation_finished
 
 func switch_to_level(levelID: int):
 	switch_scene(level_folder + "Level"+ str(levelID) +".tscn")
