@@ -490,7 +490,7 @@ shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_x3wgy")
-volume_db = 18.0
+volume_db = 8.0
 bus = &"sfx"
 
 [node name="Heart" type="Sprite2D" parent="."]
@@ -567,13 +567,13 @@ autoplay = "Float"
 
 [node name="AudioControl" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_8erm5")
-volume_db = 15.0
+volume_db = 5.0
 pitch_scale = 0.6
 bus = &"sfx"
 
 [node name="AudioUncontrol" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_f1ek2")
-volume_db = 15.0
+volume_db = 5.0
 pitch_scale = 0.6
 bus = &"sfx"
 

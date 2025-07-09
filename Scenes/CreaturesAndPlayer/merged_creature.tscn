@@ -132,7 +132,7 @@ libraries = {
 
 [node name="AudioWin" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_hlrf2")
-volume_db = 10.0
+volume_db = 7.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

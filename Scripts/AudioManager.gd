@@ -26,3 +26,10 @@ func stop_music():
 
 func play_wind():
 	wind_player.play()
+
+
+func _replay() -> void:
+	AudioManager.music_player.stream = load(AudioManager.curently_playing_song)
+	is_music_playing = true
+	music_player.play()
+	print ("music Playing")
