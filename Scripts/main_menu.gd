@@ -4,8 +4,8 @@ extends Control
 func _ready() -> void:
 	$VBoxContainer/Start.grab_focus()
 	if not AudioManager.is_music_playing:
-		AudioManager.music_player.volume_db = -14
-		AudioManager.play_music("res://Sounds/Music/title-track.wav")
+		#AudioManager.music_player.volume_db = -14
+		AudioManager.play_music("res://Sounds/Music/title-track.mp3")
 
 func _on_start_pressed() -> void:
 	SceneSwitcher.go_to_next_level()
@@ -23,9 +23,6 @@ func _on_exit_pressed() -> void:
 	else:
 		get_tree().quit()
 
-
-func on_button_hovering() -> void:
-	AudioManager.play_sfx("res://Sounds/step2.mp3")
 
 
 func _on_level_select_pressed() -> void:

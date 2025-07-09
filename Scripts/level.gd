@@ -10,11 +10,11 @@ func _ready() -> void:
 	Globals.SHOW_WIN_SCREEN.connect(show_win_screen)
 	SceneSwitcher.set_curent_level(level_number)
 	if level_number >= 6:
-		AudioManager.music_player.volume_db = -14
-		AudioManager.play_music("res://Sounds/Music/winter-ambience.wav")
+		#AudioManager.music_player.volume_db = -14
+		AudioManager.play_music("res://Sounds/Music/BGM-Winter.mp3")
 	else:
-		AudioManager.music_player.volume_db = 0
-		AudioManager.play_music("res://Sounds/Music/Nature Ambience.mp3")
+		#AudioManager.music_player.volume_db = 0
+		AudioManager.play_music("res://Sounds/Music/BGM-Summer.mp3")
 func show_win_screen():
 	if final_level:
 		$GameCompleted/WinAnimation.play("You win")
