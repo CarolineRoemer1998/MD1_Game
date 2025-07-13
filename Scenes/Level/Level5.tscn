@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c6dmpno4s3103" path="res://Scenes/door.tscn" id="10_2xldr"]
 [ext_resource type="PackedScene" uid="uid://bt4pnhd7cx7xc" path="res://Scenes/button.tscn" id="11_ytef6"]
 [ext_resource type="PackedScene" uid="uid://pb5o008ihthl" path="res://Scenes/Menu/win_screen.tscn" id="12_61bxs"]
-[ext_resource type="PackedScene" path="res://Scenes/level_wall.tscn" id="15_tebux"]
+[ext_resource type="PackedScene" uid="uid://dp2qf8g2kvpfa" path="res://Scenes/level_wall.tscn" id="15_tebux"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_nonkr")
@@ -80,7 +80,6 @@ position = Vector2(160, 288)
 [node name="MergedCreature" parent="." instance=ExtResource("6_rbgxu")]
 visible = false
 top_level = true
-position = Vector2(160, 352)
 
 [node name="WinScreen" parent="." instance=ExtResource("12_61bxs")]
 
