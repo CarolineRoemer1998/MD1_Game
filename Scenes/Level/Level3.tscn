@@ -29,6 +29,7 @@ position = Vector2(480, 416)
 position = Vector2(480, 288)
 
 [node name="MergedCreature" parent="." instance=ExtResource("8_t5kwq")]
+visible = false
 
 [node name="CreatureBlue" parent="." instance=ExtResource("6_ffsx8")]
 position = Vector2(544, 224)
