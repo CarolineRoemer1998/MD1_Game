@@ -1,10 +1,15 @@
 extends Control
 
 @onready var back: Button = $VBoxContainer/Back
+@onready var fullscreen: CheckButton = $VBoxContainer/Fullscreen
 
 var cooldown_timer: float = 0.2
 
 var used_controller = false
+
+func _ready() -> void:
+	if OS.has_feature("web"):
+		fullscreen.visible = false
 
 func _process(delta: float) -> void:
 	if cooldown_timer > 0:
@@ -22,3 +27,9 @@ func _on_back_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	SceneSwitcher.go_to_main_menu(true)
+
+func _on_fullscreen_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

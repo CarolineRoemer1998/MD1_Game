@@ -73,6 +73,11 @@ layout_mode = 2
 theme = ExtResource("5_klyfr")
 bus_name = "sfx"
 
+[node name="Fullscreen" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_3v052")
+text = "Fullscreen"
+
 [node name="Main Menu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -116,5 +121,6 @@ pitch_scale = 3.58
 autoplay = true
 bus = &"sfx"
 
+[connection signal="toggled" from="VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="pressed" from="VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
