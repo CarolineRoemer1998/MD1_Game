@@ -73,6 +73,13 @@ layout_mode = 2
 theme = ExtResource("5_wi6js")
 bus_name = "sfx"
 
+[node name="FullscreenToggle" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lnv33")
+theme_override_font_sizes/font_size = 30
+button_pressed = true
+text = "Fullscreen"
+
 [node name="Back" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -110,4 +117,5 @@ bus = &"sfx"
 
 [node name="Hover_sound" parent="." instance=ExtResource("2_os8bt")]
 
+[connection signal="toggled" from="VBoxContainer/FullscreenToggle" to="." method="_on_fullsceen_toggled"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
