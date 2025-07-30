@@ -13,7 +13,8 @@ config_version=5
 config/name="MD1_Game"
 run/main_scene="uid://cglpr8l7nytcg"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cqoxs6b5gg0vg"
+config/windows_native_icon="res://Sprites/ItchSprites/IcoSprites/DistantHeartsIcon.ico"
 
 [autoload]
 
@@ -26,7 +27,6 @@ AudioManager="*res://Scenes/Menu/AudioManager.tscn"
 
 window/size/viewport_width=704
 window/size/viewport_height=704
-window/size/mode=3
 window/stretch/mode="viewport"
 
 [editor_plugins]
