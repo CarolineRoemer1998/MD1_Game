@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjggi6b1cbue8"]
+[gd_scene load_steps=10 format=3 uid="uid://bjggi6b1cbue8"]
 
 [ext_resource type="Script" uid="uid://cjwotyxepuimk" path="res://Scripts/in_game_settings.gd" id="1_r2836"]
 [ext_resource type="Texture2D" uid="uid://bch4qo0v7oudb" path="res://Sprites/Verworfen/Wall.png" id="2_3v052"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://i7fixmxgctx7" path="res://Sprites/MenuSprites/Button.tres" id="5_3v052"]
 [ext_resource type="Theme" uid="uid://dn5ts3pcaoad5" path="res://Sprites/MenuSprites/HSlider.tres" id="5_klyfr"]
 [ext_resource type="Script" uid="uid://bld4747e6bxrc" path="res://Scripts/menu_button.gd" id="5_oubub"]
+[ext_resource type="Theme" uid="uid://d0haimlpaexgt" path="res://Sprites/MenuSprites/ToggleSlider.tres" id="6_klyfr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ng16n"]
 texture = ExtResource("2_3v052")
@@ -75,7 +76,7 @@ bus_name = "sfx"
 
 [node name="Fullscreen" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("5_3v052")
+theme = ExtResource("6_klyfr")
 text = "Fullscreen"
 
 [node name="Main Menu" type="Button" parent="VBoxContainer"]
